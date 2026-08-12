@@ -1,17 +1,17 @@
 {
     "arm": "B",
-    "generated_at": "2026-08-12T18:12:41+00:00",
-    "wall_seconds": 10.31,
+    "generated_at": "2026-08-12T18:29:41+00:00",
+    "wall_seconds": 7.61,
     "stage_seconds": {
-        "C-01": 7.163,
+        "C-01": 6.061,
         "C-02": 0,
         "C-03": 0,
         "C-04": 0,
-        "C-05": 2.924,
-        "C-06": 0.001,
-        "C-07": 0.023,
-        "C-08": 0.001,
-        "C-12": 0.008,
+        "C-05": 1.291,
+        "C-06": 0,
+        "C-07": 0.016,
+        "C-08": 0,
+        "C-12": 0.006,
         "C-14": 0
     },
     "gate": {
@@ -39,9 +39,9 @@
                 "threshold": 0.6,
                 "on_violation": "BLOCK",
                 "obligation": "EU AI Act Art. 17 \u2014 the suite must be shown able to detect faults, not merely to execute code",
-                "observed": 0.4731,
+                "observed": 0.4732,
                 "outcome": "BLOCK",
-                "explanation": "covered_msi = 0.4731 violates >= 0.6"
+                "explanation": "covered_msi = 0.4732 violates >= 0.6"
             },
             {
                 "id": "G-04",
@@ -117,9 +117,9 @@
                 "threshold": 0.95,
                 "on_violation": "WARN",
                 "obligation": "EU AI Act Annex IV(2)(g) \u2014 requirement to test to result chains are unbroken",
-                "observed": 0.9074,
+                "observed": 0.9259,
                 "outcome": "WARN",
-                "explanation": "traceability_completeness = 0.9074 violates >= 0.95"
+                "explanation": "traceability_completeness = 0.9259 violates >= 0.95"
             },
             {
                 "id": "G-10",
@@ -171,9 +171,9 @@
                 "threshold": 0.6,
                 "on_violation": "BLOCK",
                 "obligation": "EU AI Act Art. 17 \u2014 the suite must be shown able to detect faults, not merely to execute code",
-                "observed": 0.4731,
+                "observed": 0.4732,
                 "outcome": "BLOCK",
-                "explanation": "covered_msi = 0.4731 violates >= 0.6"
+                "explanation": "covered_msi = 0.4732 violates >= 0.6"
             }
         ],
         "warnings": [
@@ -186,9 +186,9 @@
                 "threshold": 0.95,
                 "on_violation": "WARN",
                 "obligation": "EU AI Act Annex IV(2)(g) \u2014 requirement to test to result chains are unbroken",
-                "observed": 0.9074,
+                "observed": 0.9259,
                 "outcome": "WARN",
-                "explanation": "traceability_completeness = 0.9074 violates >= 0.95"
+                "explanation": "traceability_completeness = 0.9259 violates >= 0.95"
             }
         ]
     },
@@ -201,8 +201,8 @@
     "metrics": {
         "M15_control_coverage": 0.8125,
         "M16_evidence_completeness": 0.75,
-        "M17_traceability": 0.9074,
-        "M28_wall_seconds": 10.31,
+        "M17_traceability": 0.9259,
+        "M28_wall_seconds": 7.61,
         "M11_precision": 0.0385,
         "M12_adversarial_pass_rate": 1,
         "M08_density_by_provenance": {
@@ -292,13 +292,13 @@
     "facts": {
         "tests_failing": 0,
         "line_coverage": 0.6982,
-        "covered_msi": 0.4731,
+        "covered_msi": 0.4732,
         "untriaged_findings": 0,
         "unresolved_true_positives": 0,
         "secrets_found": 0,
         "adversarial_pass_rate": 1,
         "provenance_complete": true,
-        "traceability_completeness": 0.9074,
+        "traceability_completeness": 0.9259,
         "evidence_chain_intact": true,
         "accessibility_failures": 0,
         "vulnerable_dependencies": 0

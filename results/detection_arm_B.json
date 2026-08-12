@@ -1,8 +1,8 @@
 {
     "arm": "B",
-    "generated_at": "2026-08-12T17:29:07+00:00",
+    "generated_at": "2026-08-12T18:22:05+00:00",
     "php": "8.4.24",
-    "wall_seconds": 172.25,
+    "wall_seconds": 220.39,
     "summary": {
         "total": 31,
         "detected": 30,
@@ -85,7 +85,7 @@
             "detecting_tests": [
                 "Mod01IntakeArmBTest::testPhoneFieldRejectsFreeText"
             ],
-            "seconds": 5.42
+            "seconds": 6.6
         },
         {
             "defect_id": "SD-02",
@@ -101,7 +101,7 @@
                 "Mod01IntakeArmBTest::testNarrativeLengthBoundaryHolds",
                 "Mod01IntakeArmBTest::testWhitespacePaddedNarrativeDoesNotSatisfyTheMinimum"
             ],
-            "seconds": 5.488
+            "seconds": 6.268
         },
         {
             "defect_id": "SD-03",
@@ -117,7 +117,7 @@
                 "Mod01IntakeArmBTest::testHouseholdSizeRejectsValuesOutsideItsRange",
                 "Mod01IntakeArmBTest::testHouseholdSizeRejectsAnExtremeValue"
             ],
-            "seconds": 5.445
+            "seconds": 6.944
         },
         {
             "defect_id": "SD-04",
@@ -132,7 +132,7 @@
             "detecting_tests": [
                 "Mod01IntakeArmBTest::testRenderedFieldCarriesItsLabelText"
             ],
-            "seconds": 5.338
+            "seconds": 8.381
         },
         {
             "defect_id": "SD-05",
@@ -147,7 +147,7 @@
             "detecting_tests": [
                 "Mod02EligibilityArmBTest::testAgeHardStopHoldsAtItsBoundary"
             ],
-            "seconds": 4.934
+            "seconds": 7.508
         },
         {
             "defect_id": "SD-06",
@@ -162,7 +162,7 @@
             "detecting_tests": [
                 "Mod02EligibilityArmBTest::testPovertyFlagHoldsAtItsBoundary"
             ],
-            "seconds": 5.354
+            "seconds": 6.459
         },
         {
             "defect_id": "SD-07",
@@ -177,7 +177,7 @@
             "detecting_tests": [
                 "Mod02EligibilityArmBTest::testExistingApprovedBenefitIsAHardStop"
             ],
-            "seconds": 5.37
+            "seconds": 8.678
         },
         {
             "defect_id": "SD-08",
@@ -192,7 +192,7 @@
             "detecting_tests": [
                 "Mod02EligibilityArmBTest::testActiveApplicationCapHoldsAtItsBoundary"
             ],
-            "seconds": 6.515
+            "seconds": 10.222
         },
         {
             "defect_id": "SD-09",
@@ -207,7 +207,7 @@
             "detecting_tests": [
                 "Mod03AccessControlArmBTest::testCitizenPrincipalIsAlwaysScopedToOwnRecords"
             ],
-            "seconds": 6.39
+            "seconds": 7.159
         },
         {
             "defect_id": "SD-10",
@@ -222,7 +222,7 @@
             "detecting_tests": [
                 "Mod03AccessControlArmBTest::testLooselyEqualRoleValuesAreNotAdmitted"
             ],
-            "seconds": 5.605
+            "seconds": 8.152
         },
         {
             "defect_id": "SD-11",
@@ -238,7 +238,7 @@
                 "Mod03AccessControlArmBTest::testTokenWithForgedClaimsIsRejected",
                 "Mod03AccessControlArmBTest::testTokenWithoutAValidSignatureIsRejected"
             ],
-            "seconds": 5.669
+            "seconds": 8.305
         },
         {
             "defect_id": "SD-12",
@@ -255,7 +255,7 @@
                 "Mod04WorkflowArmBTest::testApprovedIsReachableOnlyFromSupervisorReview",
                 "Mod04WorkflowArmBTest::testHighRiskCaseIsHeldUntilQualityReview"
             ],
-            "seconds": 5.85
+            "seconds": 7.548
         },
         {
             "defect_id": "SD-13",
@@ -270,7 +270,7 @@
             "detecting_tests": [
                 "Mod04WorkflowArmBTest::testSupervisorDecisionRequiresAComment"
             ],
-            "seconds": 5.835
+            "seconds": 6.924
         },
         {
             "defect_id": "SD-14",
@@ -287,7 +287,7 @@
                 "Mod05SlaArmBTest::testWeekendsAreExcludedFromEveryHorizon",
                 "Mod05SlaArmBTest::testDeadlineNeverLandsOnAWeekend"
             ],
-            "seconds": 5.52
+            "seconds": 6.369
         },
         {
             "defect_id": "SD-15",
@@ -302,7 +302,7 @@
             "detecting_tests": [
                 "Mod05SlaArmBTest::testBreachDetectionHoldsOnBothSidesOfTheDeadline"
             ],
-            "seconds": 5.385
+            "seconds": 6.356
         },
         {
             "defect_id": "SD-16",
@@ -318,7 +318,7 @@
                 "Mod06DocumentsArmBTest::testFileIsJudgedOnContentNotOnItsName",
                 "Mod06DocumentsArmBTest::testDisallowedContentIsRefusedUnderEveryName"
             ],
-            "seconds": 5.353
+            "seconds": 8.063
         },
         {
             "defect_id": "SD-17",
@@ -334,7 +334,7 @@
                 "Mod06DocumentsArmBTest::testStorageNameIsNotDerivedFromTheSuppliedName",
                 "Mod06DocumentsArmBTest::testStorageNameCarriesNoPathSeparatorsOrTraversal"
             ],
-            "seconds": 5.325
+            "seconds": 7.032
         },
         {
             "defect_id": "SD-18",
@@ -349,7 +349,7 @@
             "detecting_tests": [
                 "Mod06DocumentsArmBTest::testSizeCapHoldsAtItsBoundary"
             ],
-            "seconds": 5.751
+            "seconds": 10.627
         },
         {
             "defect_id": "SD-19",
@@ -364,7 +364,7 @@
             "detecting_tests": [
                 "Mod07NotificationsArmBTest::testStoredMessageContentCannotBecomeMarkup"
             ],
-            "seconds": 5.689
+            "seconds": 7.091
         },
         {
             "defect_id": "SD-20",
@@ -379,7 +379,7 @@
             "detecting_tests": [
                 "Mod07NotificationsArmBTest::testANotificationCannotBeMutatedByANonRecipient"
             ],
-            "seconds": 5.979
+            "seconds": 6.421
         },
         {
             "defect_id": "SD-21",
@@ -396,7 +396,7 @@
                 "Mod08ReportingArmBTest::testSortKeyIsResolvedThroughAnAllowListNotEchoed",
                 "Mod08ReportingArmBTest::testResolvedClauseIsAlwaysFromTheClosedSet"
             ],
-            "seconds": 5.607
+            "seconds": 6.654
         },
         {
             "defect_id": "SD-22",
@@ -411,7 +411,7 @@
             "detecting_tests": [
                 "Mod08ReportingArmBTest::testAuditTrailOffersNoDeletionPath"
             ],
-            "seconds": 5.348
+            "seconds": 7.335
         },
         {
             "defect_id": "SD-23",
@@ -427,7 +427,7 @@
                 "Mod09AuthSessionArmBTest::testCsrfVerificationRefusesTokensItDidNotIssue",
                 "Mod09AuthSessionArmBTest::testSessionWithoutAnIssuedTokenAcceptsNothing"
             ],
-            "seconds": 5.488
+            "seconds": 7.045
         },
         {
             "defect_id": "SD-24",
@@ -442,7 +442,7 @@
             "detecting_tests": [
                 "Mod09AuthSessionArmBTest::testSessionIdentifierChangesAtAuthentication"
             ],
-            "seconds": 5.445
+            "seconds": 5.948
         },
         {
             "defect_id": "SD-25",
@@ -457,7 +457,7 @@
             "detecting_tests": [
                 "Mod09AuthSessionArmBTest::testFailedLoginRecordCarriesNoCredential"
             ],
-            "seconds": 5.467
+            "seconds": 5.886
         },
         {
             "defect_id": "SD-26",
@@ -472,7 +472,7 @@
             "detecting_tests": [
                 "Mod09AuthSessionArmBTest::testLockoutThresholdHoldsAtItsBoundary"
             ],
-            "seconds": 5.46
+            "seconds": 5.595
         },
         {
             "defect_id": "SD-27",
@@ -488,7 +488,7 @@
                 "Mod10RiskArmBTest::testEveryBandBoundaryHoldsFromBothSides",
                 "Mod10RiskArmBTest::testEveryScoreAtOrAboveTheHighBoundaryRequiresQualityReview"
             ],
-            "seconds": 5.356
+            "seconds": 5.625
         },
         {
             "defect_id": "SD-28",
@@ -501,7 +501,7 @@
             "failing_tests": 0,
             "total_tests": 70,
             "detecting_tests": [],
-            "seconds": 5.414
+            "seconds": 5.581
         },
         {
             "defect_id": "SD-29",
@@ -517,7 +517,7 @@
                 "Mod11AssistantArmBTest::testApplicantContentCannotSteerTheRecommendation",
                 "Mod11AssistantArmBTest::testApplicantContentCannotElicitDisclosureOrEnumeration"
             ],
-            "seconds": 5.476
+            "seconds": 6.06
         },
         {
             "defect_id": "SD-30",
@@ -532,7 +532,7 @@
             "detecting_tests": [
                 "Mod11AssistantArmBTest::testGeneratedSummaryCannotCarryMarkupIntoThePage"
             ],
-            "seconds": 5.432
+            "seconds": 6.613
         },
         {
             "defect_id": "SD-31",
@@ -547,7 +547,7 @@
             "detecting_tests": [
                 "Mod11AssistantArmBTest::testBrokerRefusesOutOfScopeAndOutOfRoleCalls"
             ],
-            "seconds": 5.379
+            "seconds": 6.723
         }
     ]
 }

@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-08-12T18:00:26+00:00",
+    "generated_at": "2026-08-12T18:27:34+00:00",
     "arms": {
         "A": {
             "by_module": {
@@ -172,11 +172,11 @@
                 "MOD-02": {
                     "module": "Eligibility engine",
                     "mutants_total": 170,
-                    "mutants_killed": 73,
-                    "mutants_escaped": 75,
+                    "mutants_killed": 74,
+                    "mutants_escaped": 74,
                     "mutants_uncovered": 22,
-                    "msi": 0.4294,
-                    "covered_msi": 0.4932,
+                    "msi": 0.4353,
+                    "covered_msi": 0.5,
                     "statements": 154,
                     "line_coverage": 0.8831,
                     "branches": 0,
@@ -288,12 +288,12 @@
                 },
                 "MOD-11": {
                     "module": "AI case-summary assistant",
-                    "mutants_total": 92,
+                    "mutants_total": 94,
                     "mutants_killed": 24,
-                    "mutants_escaped": 57,
+                    "mutants_escaped": 59,
                     "mutants_uncovered": 11,
-                    "msi": 0.2609,
-                    "covered_msi": 0.2963,
+                    "msi": 0.2553,
+                    "covered_msi": 0.2892,
                     "statements": 72,
                     "line_coverage": 0.8611,
                     "branches": 0,
@@ -301,9 +301,9 @@
                 }
             },
             "totals": {
-                "mutants_total": 974,
-                "msi": 0.3162,
-                "covered_msi": 0.4731,
+                "mutants_total": 976,
+                "msi": 0.3166,
+                "covered_msi": 0.4732,
                 "line_coverage": 0.6982
             }
         }

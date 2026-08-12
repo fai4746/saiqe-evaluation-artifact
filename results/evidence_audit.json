@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-08-12T18:12:42+00:00",
+    "generated_at": "2026-08-12T18:28:18+00:00",
     "method": "Mechanical resolution against retained artifacts. Timed human assembly not performed \u2014 see the note in this file and \u00a79.",
     "requests": [
         [
@@ -208,8 +208,8 @@
             "text": "Demonstrate that the eligibility engine was tested before this release, and show the result.",
             "obligation": "ISO/IEC/IEEE 29119-3",
             "satisfied": true,
-            "record_id": "6697e20564a0cdcd",
-            "basis": "signed record 6697e20564a0cdcd for C-01, digest 65e936b0263d6b1c99a9c1538c3d8234080c78f062f1ee13871e48f2a25a91f3",
+            "record_id": "3cc75e54f3c37d54",
+            "basis": "signed record 3cc75e54f3c37d54 for C-01, digest 65e936b0263d6b1c99a9c1538c3d8234080c78f062f1ee13871e48f2a25a91f3",
             "minutes": null
         },
         {
@@ -218,8 +218,8 @@
             "text": "Show that the test suite relied upon is capable of detecting faults, not merely of executing the code.",
             "obligation": "EU AI Act Art. 17",
             "satisfied": true,
-            "record_id": "1f4e3cf9be077025",
-            "basis": "signed record 1f4e3cf9be077025 for C-02, digest 02a04f92c735e74bd56be9bb6632b0134461f19358ef8cea6bf6ae8c58a329be",
+            "record_id": "9e41aba26343b97c",
+            "basis": "signed record 9e41aba26343b97c for C-02, digest 7c494eb963fc436a26291062763aa657e3b82546d657364e1bc885e39f177a3a",
             "minutes": null
         },
         {
@@ -228,8 +228,8 @@
             "text": "Produce the static security analysis performed on the code in this release.",
             "obligation": "CRA Annex I Part I; NIST SSDF PW.7",
             "satisfied": true,
-            "record_id": "80063a21121e19ef",
-            "basis": "signed record 80063a21121e19ef for C-03, digest 37861c36bf2edefe4efa0f00548d06574125bf77d8bf6611d3a0affaa3fe2450",
+            "record_id": "7100708cf7efa111",
+            "basis": "signed record 7100708cf7efa111 for C-03, digest 37861c36bf2edefe4efa0f00548d06574125bf77d8bf6611d3a0affaa3fe2450",
             "minutes": null
         },
         {
@@ -238,8 +238,8 @@
             "text": "For each security finding raised, show the disposition and the reasoning recorded for it.",
             "obligation": "CRA Art. 13(8)",
             "satisfied": true,
-            "record_id": "978fa49ff5054185",
-            "basis": "signed record 978fa49ff5054185 for C-04, digest d6f07a509fdd497a30cd956e99988fc013b92096f26e1eedb03460e7df2e3eec",
+            "record_id": "fed54cda7defc593",
+            "basis": "signed record fed54cda7defc593 for C-04, digest d6f07a509fdd497a30cd956e99988fc013b92096f26e1eedb03460e7df2e3eec",
             "minutes": null
         },
         {
@@ -248,8 +248,8 @@
             "text": "List the third-party components in this release and show they carried no known vulnerability at build time.",
             "obligation": "CRA Annex II; NIST SSDF PS.3",
             "satisfied": true,
-            "record_id": "bd8ae84da151efb1",
-            "basis": "signed record bd8ae84da151efb1 for C-05, digest 64df125bac04d161f42d8fdbf9a6b3ad559e3cc9e42ae2e74d0d7e97e2f8bba6",
+            "record_id": "0ede5b8945e8fc70",
+            "basis": "signed record 0ede5b8945e8fc70 for C-05, digest 64df125bac04d161f42d8fdbf9a6b3ad559e3cc9e42ae2e74d0d7e97e2f8bba6",
             "minutes": null
         },
         {
@@ -258,8 +258,8 @@
             "text": "Show which parts of this release were machine-generated and how that was recorded at the time.",
             "obligation": "EU AI Act Art. 12; NIST SSDF PS.3.2",
             "satisfied": true,
-            "record_id": "fc0e9f00e00a62ef",
-            "basis": "signed record fc0e9f00e00a62ef for C-07, digest 01fccdd784642d61c7bcb52af8e81ba1c4f25a51be739b0f47b6670941d6e0d6",
+            "record_id": "28b9547ac8c71704",
+            "basis": "signed record 28b9547ac8c71704 for C-07, digest 01fccdd784642d61c7bcb52af8e81ba1c4f25a51be739b0f47b6670941d6e0d6",
             "minutes": null
         },
         {
@@ -268,8 +268,8 @@
             "text": "Demonstrate that the AI component was tested against adversarial input before release.",
             "obligation": "EU AI Act Art. 15; NIST AI 600-1",
             "satisfied": true,
-            "record_id": "9332ba14f5e0c7f1",
-            "basis": "signed record 9332ba14f5e0c7f1 for C-08, digest b11afdbcff04b7d785ef421a19eb0443bcbd0113beeab6da39f8867ea48d350b",
+            "record_id": "3510d965a17d18ca",
+            "basis": "signed record 3510d965a17d18ca for C-08, digest b11afdbcff04b7d785ef421a19eb0443bcbd0113beeab6da39f8867ea48d350b",
             "minutes": null
         },
         {
@@ -278,8 +278,8 @@
             "text": "Show the release decision, who or what made it, and on what evidence.",
             "obligation": "EU AI Act Art. 43; CRA Art. 13",
             "satisfied": true,
-            "record_id": "cd331a6d424142f4",
-            "basis": "signed record cd331a6d424142f4 for C-11, digest ff7b20655ccc79a332d6826ae864c7aba9b4bcf552ef3ddbbb40bec96aa62b1e",
+            "record_id": "846f14ad0719e020",
+            "basis": "signed record 846f14ad0719e020 for C-11, digest 73bf1a603002a8916538e139f5d5859c76bbea7cff4d5db20411953becd432bb",
             "minutes": null
         },
         {
@@ -288,8 +288,8 @@
             "text": "Trace a named requirement to the test that verifies it and to that test's result in this release.",
             "obligation": "EU AI Act Annex IV(2)(g)",
             "satisfied": true,
-            "record_id": "2e5c81dee0b641d4",
-            "basis": "signed record 2e5c81dee0b641d4 for C-12, digest 0df5185c2f4e83da5325c88bdbd49b295b12be5752d6bbf04580659c3285c5cc",
+            "record_id": "b3bb9c572b82fe58",
+            "basis": "signed record b3bb9c572b82fe58 for C-12, digest d009c0b3fc6cb7648fff14ce69cc86fee88995cd1131d2268faf167f76443a2a",
             "minutes": null
         },
         {
@@ -298,8 +298,8 @@
             "text": "Demonstrate that the retained records for this release have not been altered since they were made.",
             "obligation": "CRA Art. 13(12)",
             "satisfied": true,
-            "record_id": "0a421b5255e381a3",
-            "basis": "signed record 0a421b5255e381a3 for C-13, digest 70177592f50e5e2a8c7100b88c68cf3bf7c9243d03515f80de23919844940fb2",
+            "record_id": "cc5b9ba9ba6ef4f8",
+            "basis": "signed record cc5b9ba9ba6ef4f8 for C-13, digest 70177592f50e5e2a8c7100b88c68cf3bf7c9243d03515f80de23919844940fb2",
             "minutes": null
         }
     ]

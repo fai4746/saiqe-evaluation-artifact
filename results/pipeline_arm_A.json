@@ -1,17 +1,17 @@
 {
     "arm": "A",
-    "generated_at": "2026-08-12T18:12:31+00:00",
-    "wall_seconds": 8.11,
+    "generated_at": "2026-08-12T18:28:59+00:00",
+    "wall_seconds": 5.48,
     "stage_seconds": {
-        "C-01": 4.963,
+        "C-01": 4.141,
         "C-02": 0,
         "C-03": 0,
         "C-04": 0,
-        "C-05": 3.134,
+        "C-05": 1.333,
         "C-06": 0.001,
         "C-07": 0,
         "C-08": 0,
-        "C-12": 0.006,
+        "C-12": 0.002,
         "C-14": 0
     },
     "gate": {
@@ -109,7 +109,7 @@
         "M15_control_coverage": 0.4375,
         "M16_evidence_completeness": 0,
         "M17_traceability": 0.8519,
-        "M28_wall_seconds": 8.11,
+        "M28_wall_seconds": 5.48,
         "M11_precision": null,
         "M12_adversarial_pass_rate": null,
         "M08_density_by_provenance": null
