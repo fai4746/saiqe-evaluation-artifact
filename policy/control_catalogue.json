@@ -1,0 +1,88 @@
+{
+  "schema": "saiqe.controls/1",
+  "as_verified": "2026-08-12",
+  "note": "The regulation -> control -> test -> evidence mapping (paper Table 4), reduced to the controls this instantiation can actually execute. Each control names the pipeline stage that produces it, the evidence artifact, and the obligations it carries. M15 control coverage is computed as controls with an executing automated check divided by controls applicable to this system.",
+  "controls": [
+    {
+      "id": "C-01", "name": "Requirement-linked test execution", "stage": "ci_build",
+      "obligations": ["ISO/IEC/IEEE 29119-3 test completion report", "EU AI Act Art. 15 (accuracy, robustness)"],
+      "automated_check": "phpunit_suite", "evidence": "test_report", "retention": "standard", "applicable": true
+    },
+    {
+      "id": "C-02", "name": "Fault-detection power of the test suite", "stage": "ci_build",
+      "obligations": ["EU AI Act Art. 17 (quality management system)"],
+      "automated_check": "infection_msi", "evidence": "mutation_report", "retention": "standard", "applicable": true
+    },
+    {
+      "id": "C-03", "name": "Static application security testing", "stage": "ci_build",
+      "obligations": ["CRA Annex I Part I (secure by design)", "NIST SSDF PW.7", "EU AI Act Art. 15 (cybersecurity)"],
+      "automated_check": "semgrep_scan", "evidence": "sast_report", "retention": "long", "applicable": true
+    },
+    {
+      "id": "C-04", "name": "Security-finding triage with recorded rationale", "stage": "ci_build",
+      "obligations": ["CRA Art. 13(8) (vulnerability handling)", "NIST SSDF RV.1"],
+      "automated_check": "triage_record", "evidence": "triage_log", "retention": "long", "applicable": true
+    },
+    {
+      "id": "C-05", "name": "Dependency inventory and known-vulnerability check", "stage": "ci_build",
+      "obligations": ["CRA Annex II (SBOM)", "NIST SSDF PS.3"],
+      "automated_check": "composer_audit", "evidence": "sbom", "retention": "long", "applicable": true
+    },
+    {
+      "id": "C-06", "name": "Secret detection across the tree", "stage": "pre_commit",
+      "obligations": ["CRA Annex I Part I(2)(f)", "ISO/IEC 27001 A.8.24"],
+      "automated_check": "detect_secrets", "evidence": "secrets_report", "retention": "standard", "applicable": true
+    },
+    {
+      "id": "C-07", "name": "Provenance recorded at authoring time", "stage": "author",
+      "obligations": ["EU AI Act Art. 12 (logging and traceability)", "NIST SSDF PS.3.2"],
+      "automated_check": "provenance_index", "evidence": "provenance_attestation", "retention": "long", "applicable": true
+    },
+    {
+      "id": "C-08", "name": "Adversarial evaluation of AI components", "stage": "ai_lane",
+      "obligations": ["EU AI Act Art. 15 (robustness, cybersecurity)", "NIST AI 600-1 GV/MP", "OWASP LLM Top 10"],
+      "automated_check": "adversarial_suite", "evidence": "model_evaluation_record", "retention": "long", "applicable": true
+    },
+    {
+      "id": "C-09", "name": "Tool-permission and least-privilege verification for agentic components", "stage": "ai_lane",
+      "obligations": ["EU AI Act Art. 14 (human oversight)", "OWASP Agentic Top 10"],
+      "automated_check": "tool_scope_suite", "evidence": "model_evaluation_record", "retention": "long", "applicable": true
+    },
+    {
+      "id": "C-10", "name": "Behavioural drift monitoring across releases", "stage": "production",
+      "obligations": ["EU AI Act Art. 72 (post-market monitoring)"],
+      "automated_check": "drift_monitor", "evidence": "post_market_monitoring_log", "retention": "long", "applicable": true
+    },
+    {
+      "id": "C-11", "name": "Policy-as-code release gate", "stage": "release_gate",
+      "obligations": ["EU AI Act Art. 43 (conformity assessment)", "CRA Art. 13 (due diligence)"],
+      "automated_check": "policy_gate", "evidence": "gate_decision_record", "retention": "long", "applicable": true
+    },
+    {
+      "id": "C-12", "name": "Requirement to test to result traceability", "stage": "release_gate",
+      "obligations": ["ISO/IEC/IEEE 29119-3", "EU AI Act Annex IV(2)(g)"],
+      "automated_check": "traceability_index", "evidence": "traceability_matrix", "retention": "long", "applicable": true
+    },
+    {
+      "id": "C-13", "name": "Signed, append-only evidence retention", "stage": "release_gate",
+      "obligations": ["EU AI Act Art. 12", "CRA Art. 13(12) (technical documentation retained 10 years)"],
+      "automated_check": "evidence_chain_verify", "evidence": "evidence_manifest", "retention": "decade", "applicable": true
+    },
+    {
+      "id": "C-14", "name": "Accessibility of interactive controls", "stage": "ci_build",
+      "obligations": ["EN 301 549 §9", "WCAG 2.2 SC 1.3.1, 4.1.2"],
+      "automated_check": "accessible_name_check", "evidence": "test_report", "retention": "standard", "applicable": true
+    },
+    {
+      "id": "C-15", "name": "Dynamic application security testing against a running instance", "stage": "integration",
+      "obligations": ["CRA Annex I Part I", "NIST SSDF PW.8"],
+      "automated_check": "dast_scan", "evidence": "dast_report", "retention": "standard", "applicable": true,
+      "instantiation_note": "Not executed. OWASP ZAP was unreachable from the build environment; recorded as a gap rather than counted as satisfied."
+    },
+    {
+      "id": "C-16", "name": "Human oversight decision recorded at the gate", "stage": "release_gate",
+      "obligations": ["EU AI Act Art. 14"],
+      "automated_check": "override_record", "evidence": "gate_decision_record", "retention": "long", "applicable": true
+    }
+  ]
+}

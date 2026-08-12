@@ -1,0 +1,1232 @@
+{
+    "generated_at": "2026-08-12T18:13:23+00:00",
+    "kind": "simulated_operation",
+    "caveat": "Synthetic release series over a controlled fault stream. Not field data. See docs/PRE-REGISTRATION.md \u00a76.",
+    "releases": 24,
+    "seed": 20260812,
+    "plan": {
+        "1": [
+            "password_plaintext_logged"
+        ],
+        "2": [
+            "eligibility_active_benefit_skipped"
+        ],
+        "3": [],
+        "4": [
+            "risk_score_not_recomputed",
+            "missing_form_labels"
+        ],
+        "5": [
+            "invalid_status_transition_allowed"
+        ],
+        "6": [],
+        "7": [
+            "duplicate_app_limit_bypass"
+        ],
+        "8": [
+            "missing_form_labels",
+            "invalid_status_transition_allowed"
+        ],
+        "9": [],
+        "10": [
+            "missing_phone_validation"
+        ],
+        "11": [
+            "account_lockout_not_enforced"
+        ],
+        "12": [
+            "supervisor_no_comment_required",
+            "sla_calculation_ignores_weekends"
+        ],
+        "13": [
+            "eligibility_poverty_multiplier_wrong"
+        ],
+        "14": [
+            "sla_breach_check_grace_window"
+        ],
+        "15": [],
+        "16": [
+            "missing_phone_validation",
+            "ai_tool_scope_unbounded"
+        ],
+        "17": [
+            "invalid_status_transition_allowed"
+        ],
+        "18": [],
+        "19": [
+            "doc_path_traversal_stored_name"
+        ],
+        "20": [
+            "file_type_extension_only",
+            "report_sql_concatenated_sort"
+        ],
+        "21": [],
+        "22": [
+            "password_plaintext_logged"
+        ],
+        "23": [
+            "eligibility_poverty_multiplier_wrong"
+        ],
+        "24": [
+            "api_citizen_sees_all_apps",
+            "session_not_regenerated_on_login"
+        ]
+    },
+    "arms": {
+        "A": {
+            "releases": 24,
+            "shipped": 12,
+            "blocked": 12,
+            "M26_deployment_frequency": 0.5,
+            "M02_change_failure_rate": 1,
+            "M03_median_releases_to_restore": 10,
+            "M09_median_remediation_lead": 0,
+            "M27_median_lead_seconds": 4.56,
+            "defects_never_detected": 7,
+            "release_log": [
+                {
+                    "release": 1,
+                    "introduced": [
+                        "password_plaintext_logged"
+                    ],
+                    "active_defects": 1,
+                    "detected": [],
+                    "escaping": [
+                        "password_plaintext_logged"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 4.06
+                },
+                {
+                    "release": 2,
+                    "introduced": [
+                        "eligibility_active_benefit_skipped"
+                    ],
+                    "active_defects": 2,
+                    "detected": [],
+                    "escaping": [
+                        "password_plaintext_logged",
+                        "eligibility_active_benefit_skipped"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 4.52
+                },
+                {
+                    "release": 3,
+                    "introduced": [],
+                    "active_defects": 2,
+                    "detected": [],
+                    "escaping": [
+                        "password_plaintext_logged",
+                        "eligibility_active_benefit_skipped"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 4.37
+                },
+                {
+                    "release": 4,
+                    "introduced": [
+                        "risk_score_not_recomputed",
+                        "missing_form_labels"
+                    ],
+                    "active_defects": 4,
+                    "detected": [
+                        "missing_form_labels"
+                    ],
+                    "escaping": [
+                        "password_plaintext_logged",
+                        "eligibility_active_benefit_skipped",
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.38
+                },
+                {
+                    "release": 5,
+                    "introduced": [
+                        "invalid_status_transition_allowed"
+                    ],
+                    "active_defects": 4,
+                    "detected": [
+                        "invalid_status_transition_allowed"
+                    ],
+                    "escaping": [
+                        "password_plaintext_logged",
+                        "eligibility_active_benefit_skipped",
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 5.2
+                },
+                {
+                    "release": 6,
+                    "introduced": [],
+                    "active_defects": 3,
+                    "detected": [],
+                    "escaping": [
+                        "password_plaintext_logged",
+                        "eligibility_active_benefit_skipped",
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 6.19
+                },
+                {
+                    "release": 7,
+                    "introduced": [
+                        "duplicate_app_limit_bypass"
+                    ],
+                    "active_defects": 4,
+                    "detected": [],
+                    "escaping": [
+                        "password_plaintext_logged",
+                        "eligibility_active_benefit_skipped",
+                        "risk_score_not_recomputed",
+                        "duplicate_app_limit_bypass"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 5.6
+                },
+                {
+                    "release": 8,
+                    "introduced": [
+                        "missing_form_labels",
+                        "invalid_status_transition_allowed"
+                    ],
+                    "active_defects": 6,
+                    "detected": [
+                        "missing_form_labels",
+                        "invalid_status_transition_allowed"
+                    ],
+                    "escaping": [
+                        "password_plaintext_logged",
+                        "eligibility_active_benefit_skipped",
+                        "risk_score_not_recomputed",
+                        "duplicate_app_limit_bypass"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.73
+                },
+                {
+                    "release": 9,
+                    "introduced": [],
+                    "active_defects": 4,
+                    "detected": [],
+                    "escaping": [
+                        "password_plaintext_logged",
+                        "eligibility_active_benefit_skipped",
+                        "risk_score_not_recomputed",
+                        "duplicate_app_limit_bypass"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 4.65
+                },
+                {
+                    "release": 10,
+                    "introduced": [
+                        "missing_phone_validation"
+                    ],
+                    "active_defects": 5,
+                    "detected": [
+                        "missing_phone_validation"
+                    ],
+                    "escaping": [
+                        "password_plaintext_logged",
+                        "eligibility_active_benefit_skipped",
+                        "risk_score_not_recomputed",
+                        "duplicate_app_limit_bypass"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.65
+                },
+                {
+                    "release": 11,
+                    "introduced": [
+                        "account_lockout_not_enforced"
+                    ],
+                    "active_defects": 5,
+                    "detected": [
+                        "password_plaintext_logged",
+                        "account_lockout_not_enforced"
+                    ],
+                    "escaping": [
+                        "eligibility_active_benefit_skipped",
+                        "risk_score_not_recomputed",
+                        "duplicate_app_limit_bypass"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.76
+                },
+                {
+                    "release": 12,
+                    "introduced": [
+                        "supervisor_no_comment_required",
+                        "sla_calculation_ignores_weekends"
+                    ],
+                    "active_defects": 5,
+                    "detected": [
+                        "supervisor_no_comment_required",
+                        "sla_calculation_ignores_weekends"
+                    ],
+                    "escaping": [
+                        "eligibility_active_benefit_skipped",
+                        "risk_score_not_recomputed",
+                        "duplicate_app_limit_bypass"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.56
+                },
+                {
+                    "release": 13,
+                    "introduced": [
+                        "eligibility_poverty_multiplier_wrong"
+                    ],
+                    "active_defects": 4,
+                    "detected": [
+                        "eligibility_active_benefit_skipped",
+                        "duplicate_app_limit_bypass",
+                        "eligibility_poverty_multiplier_wrong"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.56
+                },
+                {
+                    "release": 14,
+                    "introduced": [
+                        "sla_breach_check_grace_window"
+                    ],
+                    "active_defects": 2,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 4.93
+                },
+                {
+                    "release": 15,
+                    "introduced": [],
+                    "active_defects": 2,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 4.57
+                },
+                {
+                    "release": 16,
+                    "introduced": [
+                        "missing_phone_validation",
+                        "ai_tool_scope_unbounded"
+                    ],
+                    "active_defects": 4,
+                    "detected": [
+                        "missing_phone_validation"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window",
+                        "ai_tool_scope_unbounded"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.56
+                },
+                {
+                    "release": 17,
+                    "introduced": [
+                        "invalid_status_transition_allowed"
+                    ],
+                    "active_defects": 4,
+                    "detected": [
+                        "invalid_status_transition_allowed"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window",
+                        "ai_tool_scope_unbounded"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.2
+                },
+                {
+                    "release": 18,
+                    "introduced": [],
+                    "active_defects": 3,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window",
+                        "ai_tool_scope_unbounded"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 4.1
+                },
+                {
+                    "release": 19,
+                    "introduced": [
+                        "doc_path_traversal_stored_name"
+                    ],
+                    "active_defects": 4,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window",
+                        "ai_tool_scope_unbounded",
+                        "doc_path_traversal_stored_name"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 4.21
+                },
+                {
+                    "release": 20,
+                    "introduced": [
+                        "file_type_extension_only",
+                        "report_sql_concatenated_sort"
+                    ],
+                    "active_defects": 6,
+                    "detected": [
+                        "report_sql_concatenated_sort"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window",
+                        "ai_tool_scope_unbounded",
+                        "doc_path_traversal_stored_name",
+                        "file_type_extension_only"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.59
+                },
+                {
+                    "release": 21,
+                    "introduced": [],
+                    "active_defects": 5,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window",
+                        "ai_tool_scope_unbounded",
+                        "doc_path_traversal_stored_name",
+                        "file_type_extension_only"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 5.02
+                },
+                {
+                    "release": 22,
+                    "introduced": [
+                        "password_plaintext_logged"
+                    ],
+                    "active_defects": 6,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window",
+                        "ai_tool_scope_unbounded",
+                        "doc_path_traversal_stored_name",
+                        "file_type_extension_only",
+                        "password_plaintext_logged"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 4.23
+                },
+                {
+                    "release": 23,
+                    "introduced": [
+                        "eligibility_poverty_multiplier_wrong"
+                    ],
+                    "active_defects": 7,
+                    "detected": [
+                        "eligibility_poverty_multiplier_wrong"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window",
+                        "ai_tool_scope_unbounded",
+                        "doc_path_traversal_stored_name",
+                        "file_type_extension_only",
+                        "password_plaintext_logged"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.55
+                },
+                {
+                    "release": 24,
+                    "introduced": [
+                        "api_citizen_sees_all_apps",
+                        "session_not_regenerated_on_login"
+                    ],
+                    "active_defects": 8,
+                    "detected": [
+                        "api_citizen_sees_all_apps"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed",
+                        "sla_breach_check_grace_window",
+                        "ai_tool_scope_unbounded",
+                        "doc_path_traversal_stored_name",
+                        "file_type_extension_only",
+                        "password_plaintext_logged",
+                        "session_not_regenerated_on_login"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 4.56
+                }
+            ],
+            "incidents": [
+                {
+                    "defect": "missing_form_labels",
+                    "introduced_at": 4,
+                    "detected_at": 4,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "invalid_status_transition_allowed",
+                    "introduced_at": 5,
+                    "detected_at": 5,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "missing_form_labels",
+                    "introduced_at": 8,
+                    "detected_at": 8,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "invalid_status_transition_allowed",
+                    "introduced_at": 8,
+                    "detected_at": 8,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "missing_phone_validation",
+                    "introduced_at": 10,
+                    "detected_at": 10,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "password_plaintext_logged",
+                    "introduced_at": 1,
+                    "detected_at": 11,
+                    "lead_releases": 10,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "account_lockout_not_enforced",
+                    "introduced_at": 11,
+                    "detected_at": 11,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "supervisor_no_comment_required",
+                    "introduced_at": 12,
+                    "detected_at": 12,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "sla_calculation_ignores_weekends",
+                    "introduced_at": 12,
+                    "detected_at": 12,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "eligibility_active_benefit_skipped",
+                    "introduced_at": 2,
+                    "detected_at": 13,
+                    "lead_releases": 11,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "duplicate_app_limit_bypass",
+                    "introduced_at": 7,
+                    "detected_at": 13,
+                    "lead_releases": 6,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "eligibility_poverty_multiplier_wrong",
+                    "introduced_at": 13,
+                    "detected_at": 13,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "missing_phone_validation",
+                    "introduced_at": 16,
+                    "detected_at": 16,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "invalid_status_transition_allowed",
+                    "introduced_at": 17,
+                    "detected_at": 17,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "report_sql_concatenated_sort",
+                    "introduced_at": 20,
+                    "detected_at": 20,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "eligibility_poverty_multiplier_wrong",
+                    "introduced_at": 23,
+                    "detected_at": 23,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "api_citizen_sees_all_apps",
+                    "introduced_at": 24,
+                    "detected_at": 24,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "risk_score_not_recomputed",
+                    "introduced_at": 4,
+                    "detected_at": null,
+                    "lead_releases": null,
+                    "censored": true
+                },
+                {
+                    "defect": "sla_breach_check_grace_window",
+                    "introduced_at": 14,
+                    "detected_at": null,
+                    "lead_releases": null,
+                    "censored": true
+                },
+                {
+                    "defect": "ai_tool_scope_unbounded",
+                    "introduced_at": 16,
+                    "detected_at": null,
+                    "lead_releases": null,
+                    "censored": true
+                },
+                {
+                    "defect": "doc_path_traversal_stored_name",
+                    "introduced_at": 19,
+                    "detected_at": null,
+                    "lead_releases": null,
+                    "censored": true
+                },
+                {
+                    "defect": "file_type_extension_only",
+                    "introduced_at": 20,
+                    "detected_at": null,
+                    "lead_releases": null,
+                    "censored": true
+                },
+                {
+                    "defect": "password_plaintext_logged",
+                    "introduced_at": 22,
+                    "detected_at": null,
+                    "lead_releases": null,
+                    "censored": true
+                },
+                {
+                    "defect": "session_not_regenerated_on_login",
+                    "introduced_at": 24,
+                    "detected_at": null,
+                    "lead_releases": null,
+                    "censored": true
+                }
+            ]
+        },
+        "B": {
+            "releases": 24,
+            "shipped": 6,
+            "blocked": 18,
+            "M26_deployment_frequency": 0.25,
+            "M02_change_failure_rate": 0.8333,
+            "M03_median_releases_to_restore": null,
+            "M09_median_remediation_lead": 0,
+            "M27_median_lead_seconds": 6.605,
+            "defects_never_detected": 1,
+            "release_log": [
+                {
+                    "release": 1,
+                    "introduced": [
+                        "password_plaintext_logged"
+                    ],
+                    "active_defects": 1,
+                    "detected": [
+                        "password_plaintext_logged"
+                    ],
+                    "escaping": [],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 9.88
+                },
+                {
+                    "release": 2,
+                    "introduced": [
+                        "eligibility_active_benefit_skipped"
+                    ],
+                    "active_defects": 1,
+                    "detected": [
+                        "eligibility_active_benefit_skipped"
+                    ],
+                    "escaping": [],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 7.41
+                },
+                {
+                    "release": 3,
+                    "introduced": [],
+                    "active_defects": 0,
+                    "detected": [],
+                    "escaping": [],
+                    "shipped": true,
+                    "change_failure": false,
+                    "lead_seconds": 8.91
+                },
+                {
+                    "release": 4,
+                    "introduced": [
+                        "risk_score_not_recomputed",
+                        "missing_form_labels"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "missing_form_labels"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 8.83
+                },
+                {
+                    "release": 5,
+                    "introduced": [
+                        "invalid_status_transition_allowed"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "invalid_status_transition_allowed"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 6.29
+                },
+                {
+                    "release": 6,
+                    "introduced": [],
+                    "active_defects": 1,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 6.5
+                },
+                {
+                    "release": 7,
+                    "introduced": [
+                        "duplicate_app_limit_bypass"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "duplicate_app_limit_bypass"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 6.56
+                },
+                {
+                    "release": 8,
+                    "introduced": [
+                        "missing_form_labels",
+                        "invalid_status_transition_allowed"
+                    ],
+                    "active_defects": 3,
+                    "detected": [
+                        "missing_form_labels",
+                        "invalid_status_transition_allowed"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 5.82
+                },
+                {
+                    "release": 9,
+                    "introduced": [],
+                    "active_defects": 1,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 7.81
+                },
+                {
+                    "release": 10,
+                    "introduced": [
+                        "missing_phone_validation"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "missing_phone_validation"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 7.52
+                },
+                {
+                    "release": 11,
+                    "introduced": [
+                        "account_lockout_not_enforced"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "account_lockout_not_enforced"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 6.19
+                },
+                {
+                    "release": 12,
+                    "introduced": [
+                        "supervisor_no_comment_required",
+                        "sla_calculation_ignores_weekends"
+                    ],
+                    "active_defects": 3,
+                    "detected": [
+                        "supervisor_no_comment_required",
+                        "sla_calculation_ignores_weekends"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 5.79
+                },
+                {
+                    "release": 13,
+                    "introduced": [
+                        "eligibility_poverty_multiplier_wrong"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "eligibility_poverty_multiplier_wrong"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 5.93
+                },
+                {
+                    "release": 14,
+                    "introduced": [
+                        "sla_breach_check_grace_window"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "sla_breach_check_grace_window"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 5.9
+                },
+                {
+                    "release": 15,
+                    "introduced": [],
+                    "active_defects": 1,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 6.76
+                },
+                {
+                    "release": 16,
+                    "introduced": [
+                        "missing_phone_validation",
+                        "ai_tool_scope_unbounded"
+                    ],
+                    "active_defects": 3,
+                    "detected": [
+                        "missing_phone_validation",
+                        "ai_tool_scope_unbounded"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 6.48
+                },
+                {
+                    "release": 17,
+                    "introduced": [
+                        "invalid_status_transition_allowed"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "invalid_status_transition_allowed"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 6.8
+                },
+                {
+                    "release": 18,
+                    "introduced": [],
+                    "active_defects": 1,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 7.7
+                },
+                {
+                    "release": 19,
+                    "introduced": [
+                        "doc_path_traversal_stored_name"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "doc_path_traversal_stored_name"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 6.4
+                },
+                {
+                    "release": 20,
+                    "introduced": [
+                        "file_type_extension_only",
+                        "report_sql_concatenated_sort"
+                    ],
+                    "active_defects": 3,
+                    "detected": [
+                        "file_type_extension_only",
+                        "report_sql_concatenated_sort"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 6.38
+                },
+                {
+                    "release": 21,
+                    "introduced": [],
+                    "active_defects": 1,
+                    "detected": [],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": true,
+                    "change_failure": true,
+                    "lead_seconds": 6.35
+                },
+                {
+                    "release": 22,
+                    "introduced": [
+                        "password_plaintext_logged"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "password_plaintext_logged"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 6.65
+                },
+                {
+                    "release": 23,
+                    "introduced": [
+                        "eligibility_poverty_multiplier_wrong"
+                    ],
+                    "active_defects": 2,
+                    "detected": [
+                        "eligibility_poverty_multiplier_wrong"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 7.15
+                },
+                {
+                    "release": 24,
+                    "introduced": [
+                        "api_citizen_sees_all_apps",
+                        "session_not_regenerated_on_login"
+                    ],
+                    "active_defects": 3,
+                    "detected": [
+                        "api_citizen_sees_all_apps",
+                        "session_not_regenerated_on_login"
+                    ],
+                    "escaping": [
+                        "risk_score_not_recomputed"
+                    ],
+                    "shipped": false,
+                    "change_failure": false,
+                    "lead_seconds": 6.78
+                }
+            ],
+            "incidents": [
+                {
+                    "defect": "password_plaintext_logged",
+                    "introduced_at": 1,
+                    "detected_at": 1,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "eligibility_active_benefit_skipped",
+                    "introduced_at": 2,
+                    "detected_at": 2,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "missing_form_labels",
+                    "introduced_at": 4,
+                    "detected_at": 4,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "invalid_status_transition_allowed",
+                    "introduced_at": 5,
+                    "detected_at": 5,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "duplicate_app_limit_bypass",
+                    "introduced_at": 7,
+                    "detected_at": 7,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "missing_form_labels",
+                    "introduced_at": 8,
+                    "detected_at": 8,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "invalid_status_transition_allowed",
+                    "introduced_at": 8,
+                    "detected_at": 8,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "missing_phone_validation",
+                    "introduced_at": 10,
+                    "detected_at": 10,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "account_lockout_not_enforced",
+                    "introduced_at": 11,
+                    "detected_at": 11,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "supervisor_no_comment_required",
+                    "introduced_at": 12,
+                    "detected_at": 12,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "sla_calculation_ignores_weekends",
+                    "introduced_at": 12,
+                    "detected_at": 12,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "eligibility_poverty_multiplier_wrong",
+                    "introduced_at": 13,
+                    "detected_at": 13,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "sla_breach_check_grace_window",
+                    "introduced_at": 14,
+                    "detected_at": 14,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "missing_phone_validation",
+                    "introduced_at": 16,
+                    "detected_at": 16,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "ai_tool_scope_unbounded",
+                    "introduced_at": 16,
+                    "detected_at": 16,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "invalid_status_transition_allowed",
+                    "introduced_at": 17,
+                    "detected_at": 17,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "doc_path_traversal_stored_name",
+                    "introduced_at": 19,
+                    "detected_at": 19,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "file_type_extension_only",
+                    "introduced_at": 20,
+                    "detected_at": 20,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "report_sql_concatenated_sort",
+                    "introduced_at": 20,
+                    "detected_at": 20,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "password_plaintext_logged",
+                    "introduced_at": 22,
+                    "detected_at": 22,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "eligibility_poverty_multiplier_wrong",
+                    "introduced_at": 23,
+                    "detected_at": 23,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "api_citizen_sees_all_apps",
+                    "introduced_at": 24,
+                    "detected_at": 24,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "session_not_regenerated_on_login",
+                    "introduced_at": 24,
+                    "detected_at": 24,
+                    "lead_releases": 0,
+                    "shipped_before_detection": false
+                },
+                {
+                    "defect": "risk_score_not_recomputed",
+                    "introduced_at": 4,
+                    "detected_at": null,
+                    "lead_releases": null,
+                    "censored": true
+                }
+            ]
+        }
+    },
+    "M25_drift": {
+        "introduced_at_release": 12,
+        "arm_a": null,
+        "arm_b": 0,
+        "note": "Drift modelled as the AI component losing its injection control at release 12. Latency is the number of releases until the arm's suite flags it. An arm with no AI verification lane never flags it."
+    }
+}

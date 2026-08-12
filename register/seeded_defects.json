@@ -1,0 +1,232 @@
+{
+  "schema": "saiqe.seeded-defects/1",
+  "status": "FROZEN",
+  "frozen_at": "2026-08-12",
+  "system_under_test": "FCCSMS",
+  "activation": "Each defect is activated by name via the SAIQE_DEFECTS environment variable, read by TrainingDefectModel::loadActive().",
+  "freeze_rule": "No defect may be added, removed or reworded after the first measurement run. Any change invalidates the run and requires a new register version.",
+  "classes": {
+    "functional": "Violates a documented functional requirement. No direct security consequence.",
+    "security": "Violates a security property. Carries a CWE and, where applicable, an OWASP LLM Top 10 identifier.",
+    "accessibility": "Violates an accessibility success criterion (WCAG 2.2 / EN 301 549)."
+  },
+  "defects": [
+    {
+      "id": "SD-01", "key": "missing_phone_validation", "module": "MOD-01",
+      "class": "functional", "cwe": null, "severity": "medium",
+      "site": "app/core/IntakeValidator.php::validateRegistration",
+      "expected": "A phone number must match the North American format before registration is accepted.",
+      "injected": "The format check is skipped; any non-empty string is accepted."
+    },
+    {
+      "id": "SD-02", "key": "intake_reason_length_unchecked", "module": "MOD-01",
+      "class": "functional", "cwe": null, "severity": "medium",
+      "site": "app/core/IntakeValidator.php::validateReasonForRequest",
+      "expected": "The justification narrative must be at least 50 characters.",
+      "injected": "Any non-empty narrative is accepted."
+    },
+    {
+      "id": "SD-03", "key": "intake_household_size_unbounded", "module": "MOD-01",
+      "class": "security", "cwe": "CWE-1284", "severity": "high",
+      "site": "app/core/IntakeValidator.php::validateHouseholdSize",
+      "expected": "Household size must be within 1..20; the value feeds the poverty-threshold calculation.",
+      "injected": "The upper bound is removed, so an arbitrary value propagates into the eligibility decision."
+    },
+    {
+      "id": "SD-04", "key": "missing_form_labels", "module": "MOD-01",
+      "class": "accessibility", "cwe": null, "wcag": "1.3.1, 4.1.2", "severity": "medium",
+      "site": "app/core/FormRenderer.php::field",
+      "expected": "Every control carries a <label for> bound to the control id.",
+      "injected": "Controls render with a placeholder only and have no accessible name."
+    },
+    {
+      "id": "SD-05", "key": "eligibility_age_off_by_one", "module": "MOD-02",
+      "class": "functional", "cwe": null, "severity": "high",
+      "site": "app/core/EligibilityEngine.php::evaluate (Rule 1)",
+      "expected": "Applicants under 18 fail the age hard-stop rule.",
+      "injected": "The minimum age drops to 17, admitting a class of ineligible applicants."
+    },
+    {
+      "id": "SD-06", "key": "eligibility_poverty_multiplier_wrong", "module": "MOD-02",
+      "class": "functional", "cwe": null, "severity": "high",
+      "site": "app/core/EligibilityEngine.php::evaluate (Rule 5)",
+      "expected": "Income above 1.85x the poverty threshold is flagged for officer verification.",
+      "injected": "The multiplier becomes 2.85, so over-threshold incomes are never flagged."
+    },
+    {
+      "id": "SD-07", "key": "eligibility_active_benefit_skipped", "module": "MOD-02",
+      "class": "functional", "cwe": null, "severity": "high",
+      "site": "app/core/EligibilityEngine.php::evaluate (Rule 2)",
+      "expected": "An existing approved benefit for the same programme is a hard stop.",
+      "injected": "The rule never evaluates; duplicate benefits pass eligibility."
+    },
+    {
+      "id": "SD-08", "key": "duplicate_app_limit_bypass", "module": "MOD-02",
+      "class": "functional", "cwe": null, "severity": "medium",
+      "site": "app/core/EligibilityEngine.php::evaluate (Rule 4)",
+      "expected": "A citizen may hold at most 3 active applications.",
+      "injected": "The cap is not enforced."
+    },
+    {
+      "id": "SD-09", "key": "api_citizen_sees_all_apps", "module": "MOD-03",
+      "class": "security", "cwe": "CWE-639", "severity": "critical",
+      "site": "api/v1/index.php GET /applications",
+      "expected": "A citizen token returns only that citizen's applications.",
+      "injected": "The ownership scope is dropped; every applicant's records are returned."
+    },
+    {
+      "id": "SD-10", "key": "rbac_role_check_loose_compare", "module": "MOD-03",
+      "class": "security", "cwe": "CWE-697", "severity": "high",
+      "site": "core/Auth.php::requireRole",
+      "expected": "Role membership is decided by strict comparison.",
+      "injected": "Loose comparison admits numeric-string and leading-numeric role values."
+    },
+    {
+      "id": "SD-11", "key": "jwt_signature_not_verified", "module": "MOD-03",
+      "class": "security", "cwe": "CWE-347", "severity": "critical",
+      "site": "core/Auth.php::verifyJwt",
+      "expected": "A token whose HMAC does not match is rejected.",
+      "injected": "The comparison is skipped; any well-formed token is accepted with attacker-set claims."
+    },
+    {
+      "id": "SD-12", "key": "invalid_status_transition_allowed", "module": "MOD-04",
+      "class": "functional", "cwe": null, "severity": "high",
+      "site": "app/controllers/CaseController.php, app/controllers/SupervisorController.php",
+      "expected": "Case status changes follow VALID_TRANSITIONS; an officer cannot reach Approved directly.",
+      "injected": "An officer can set a case straight to Approved, bypassing supervisor review."
+    },
+    {
+      "id": "SD-13", "key": "supervisor_no_comment_required", "module": "MOD-04",
+      "class": "functional", "cwe": null, "severity": "medium",
+      "site": "app/controllers/SupervisorController.php",
+      "expected": "A supervisor decision requires a recorded justification comment.",
+      "injected": "The comment requirement is skipped, breaking the decision audit trail."
+    },
+    {
+      "id": "SD-14", "key": "sla_calculation_ignores_weekends", "module": "MOD-05",
+      "class": "functional", "cwe": null, "severity": "high",
+      "site": "app/models/SLAModel.php::addBusinessDays",
+      "expected": "SLA deadlines advance by business days, excluding Saturday and Sunday.",
+      "injected": "Calendar days are counted, so every deadline lands early."
+    },
+    {
+      "id": "SD-15", "key": "sla_breach_check_grace_window", "module": "MOD-05",
+      "class": "functional", "cwe": null, "severity": "medium",
+      "site": "app/models/SLAModel.php::checkBreaches",
+      "expected": "A case past its deadline is marked breached.",
+      "injected": "An undocumented 48-hour grace window suppresses genuine breaches."
+    },
+    {
+      "id": "SD-16", "key": "file_type_extension_only", "module": "MOD-06",
+      "class": "security", "cwe": "CWE-434", "severity": "critical",
+      "site": "app/core/UploadValidator.php::validate",
+      "expected": "Upload admission is decided by the content-sniffed MIME type.",
+      "injected": "The filename extension decides admission, so a payload named invoice.pdf is stored."
+    },
+    {
+      "id": "SD-17", "key": "doc_path_traversal_stored_name", "module": "MOD-06",
+      "class": "security", "cwe": "CWE-22", "severity": "critical",
+      "site": "app/core/UploadValidator.php::storedName",
+      "expected": "Storage names are randomly generated and never derived from user input.",
+      "injected": "The client-supplied filename is reused, carrying traversal sequences into the storage path."
+    },
+    {
+      "id": "SD-18", "key": "doc_size_limit_not_enforced", "module": "MOD-06",
+      "class": "functional", "cwe": null, "severity": "medium",
+      "site": "app/core/UploadValidator.php::validate",
+      "expected": "Uploads above 5 MB are rejected.",
+      "injected": "The size cap is not applied."
+    },
+    {
+      "id": "SD-19", "key": "notification_message_not_escaped", "module": "MOD-07",
+      "class": "security", "cwe": "CWE-79", "severity": "high",
+      "site": "app/models/NotificationModel.php::renderMessage",
+      "expected": "Notification bodies are HTML-escaped before display.",
+      "injected": "Stored markup reaches the browser intact (stored XSS)."
+    },
+    {
+      "id": "SD-20", "key": "notification_markread_missing_owner_check", "module": "MOD-07",
+      "class": "security", "cwe": "CWE-639", "severity": "high",
+      "site": "app/models/NotificationModel.php::markRead",
+      "expected": "A notification can only be mutated by its recipient.",
+      "injected": "The recipient predicate is dropped; any id can be mutated by any user."
+    },
+    {
+      "id": "SD-21", "key": "report_sql_concatenated_sort", "module": "MOD-08",
+      "class": "security", "cwe": "CWE-89", "severity": "critical",
+      "site": "app/models/AuditLogModel.php::sortClause",
+      "expected": "The sort parameter is resolved against an allow-list; ORDER BY cannot be parameterised.",
+      "injected": "The raw parameter is concatenated into the statement."
+    },
+    {
+      "id": "SD-22", "key": "audit_log_deletable", "module": "MOD-08",
+      "class": "security", "cwe": "CWE-284", "severity": "critical",
+      "site": "api/v1/index.php DELETE /audit-logs/{id}",
+      "expected": "The audit trail is append-only; deletion is refused with 405.",
+      "injected": "The refusal is lifted and records are destroyed."
+    },
+    {
+      "id": "SD-23", "key": "missing_csrf_token", "module": "MOD-09",
+      "class": "security", "cwe": "CWE-352", "severity": "critical",
+      "site": "core/Session.php::verifyCsrf",
+      "expected": "State-changing requests must present a matching CSRF token.",
+      "injected": "Verification always succeeds."
+    },
+    {
+      "id": "SD-24", "key": "session_not_regenerated_on_login", "module": "MOD-09",
+      "class": "security", "cwe": "CWE-384", "severity": "high",
+      "site": "core/Auth.php::login",
+      "expected": "The session identifier is regenerated at authentication.",
+      "injected": "The pre-authentication identifier survives, enabling session fixation."
+    },
+    {
+      "id": "SD-25", "key": "password_plaintext_logged", "module": "MOD-09",
+      "class": "security", "cwe": "CWE-532", "severity": "critical",
+      "site": "app/controllers/AuthController.php::processLogin",
+      "expected": "A failed login records the attempt without the submitted secret.",
+      "injected": "The attempted password is written to the audit trail in clear text."
+    },
+    {
+      "id": "SD-26", "key": "account_lockout_not_enforced", "module": "MOD-09",
+      "class": "security", "cwe": "CWE-307", "severity": "high",
+      "site": "app/controllers/AuthController.php::processLogin",
+      "expected": "An account locks after MAX_FAILED_LOGINS consecutive failures.",
+      "injected": "The lock is never applied."
+    },
+    {
+      "id": "SD-27", "key": "risk_level_boundary_shifted", "module": "MOD-10",
+      "class": "functional", "cwe": null, "severity": "high",
+      "site": "app/core/RiskScoreEngine.php::scoreToLevel",
+      "expected": "Bands are low <25, medium <50, high <75, critical >=75; high and critical require Quality Review.",
+      "injected": "Every boundary moves up ten points, so high-risk cases are graded medium and skip Quality Review."
+    },
+    {
+      "id": "SD-28", "key": "risk_score_not_recomputed", "module": "MOD-10",
+      "class": "functional", "cwe": null, "severity": "medium",
+      "site": "app/controllers/DocumentController.php::upload",
+      "expected": "The risk score is recomputed after a document upload changes the evidence set.",
+      "injected": "The score is left stale."
+    },
+    {
+      "id": "SD-29", "key": "ai_prompt_injection_unfiltered", "module": "MOD-11",
+      "class": "security", "cwe": "CWE-77", "owasp_llm": "LLM01", "severity": "critical",
+      "site": "app/ai/CaseSummaryAssistant.php::neutralise, ::assemble",
+      "expected": "Applicant-supplied content is neutralised and fenced before entering the model context; it cannot change the recommendation.",
+      "injected": "Applicant content is passed verbatim and unfenced, so an instruction in an uploaded document steers the recommendation."
+    },
+    {
+      "id": "SD-30", "key": "ai_output_rendered_unescaped", "module": "MOD-11",
+      "class": "security", "cwe": "CWE-79", "owasp_llm": "LLM05", "severity": "high",
+      "site": "app/ai/CaseSummaryAssistant.php::renderForDisplay",
+      "expected": "Generated text is escaped before reaching a template.",
+      "injected": "Generated text reaches the officer's browser as markup."
+    },
+    {
+      "id": "SD-31", "key": "ai_tool_scope_unbounded", "module": "MOD-11",
+      "class": "security", "cwe": "CWE-269", "owasp_llm": "LLM06", "severity": "critical",
+      "site": "app/ai/ToolBroker.php::decide",
+      "expected": "Every tool call is checked against the role registry and the case in scope.",
+      "injected": "The registry is not enforced; a tool call carried in from untrusted content executes with ambient authority."
+    }
+  ]
+}

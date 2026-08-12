@@ -1,0 +1,553 @@
+{
+    "arm": "B",
+    "generated_at": "2026-08-12T17:29:07+00:00",
+    "php": "8.4.24",
+    "wall_seconds": 172.25,
+    "summary": {
+        "total": 31,
+        "detected": 30,
+        "escaped": 1,
+        "detection_rate": 0.9677,
+        "security_total": 17,
+        "security_detected": 17,
+        "security_escapes": 0,
+        "functional_total": 13,
+        "functional_detected": 12,
+        "by_module": {
+            "MOD-01": {
+                "present": 4,
+                "detected": 4,
+                "rate": 1
+            },
+            "MOD-02": {
+                "present": 4,
+                "detected": 4,
+                "rate": 1
+            },
+            "MOD-03": {
+                "present": 3,
+                "detected": 3,
+                "rate": 1
+            },
+            "MOD-04": {
+                "present": 2,
+                "detected": 2,
+                "rate": 1
+            },
+            "MOD-05": {
+                "present": 2,
+                "detected": 2,
+                "rate": 1
+            },
+            "MOD-06": {
+                "present": 3,
+                "detected": 3,
+                "rate": 1
+            },
+            "MOD-07": {
+                "present": 2,
+                "detected": 2,
+                "rate": 1
+            },
+            "MOD-08": {
+                "present": 2,
+                "detected": 2,
+                "rate": 1
+            },
+            "MOD-09": {
+                "present": 4,
+                "detected": 4,
+                "rate": 1
+            },
+            "MOD-10": {
+                "present": 2,
+                "detected": 1,
+                "rate": 0.5
+            },
+            "MOD-11": {
+                "present": 3,
+                "detected": 3,
+                "rate": 1
+            }
+        }
+    },
+    "results": [
+        {
+            "defect_id": "SD-01",
+            "defect_key": "missing_phone_validation",
+            "module": "MOD-01",
+            "class": "functional",
+            "severity": "medium",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod01IntakeArmBTest::testPhoneFieldRejectsFreeText"
+            ],
+            "seconds": 5.42
+        },
+        {
+            "defect_id": "SD-02",
+            "defect_key": "intake_reason_length_unchecked",
+            "module": "MOD-01",
+            "class": "functional",
+            "severity": "medium",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 2,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod01IntakeArmBTest::testNarrativeLengthBoundaryHolds",
+                "Mod01IntakeArmBTest::testWhitespacePaddedNarrativeDoesNotSatisfyTheMinimum"
+            ],
+            "seconds": 5.488
+        },
+        {
+            "defect_id": "SD-03",
+            "defect_key": "intake_household_size_unbounded",
+            "module": "MOD-01",
+            "class": "security",
+            "severity": "high",
+            "cwe": "CWE-1284",
+            "detected": true,
+            "failing_tests": 2,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod01IntakeArmBTest::testHouseholdSizeRejectsValuesOutsideItsRange",
+                "Mod01IntakeArmBTest::testHouseholdSizeRejectsAnExtremeValue"
+            ],
+            "seconds": 5.445
+        },
+        {
+            "defect_id": "SD-04",
+            "defect_key": "missing_form_labels",
+            "module": "MOD-01",
+            "class": "accessibility",
+            "severity": "medium",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod01IntakeArmBTest::testRenderedFieldCarriesItsLabelText"
+            ],
+            "seconds": 5.338
+        },
+        {
+            "defect_id": "SD-05",
+            "defect_key": "eligibility_age_off_by_one",
+            "module": "MOD-02",
+            "class": "functional",
+            "severity": "high",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod02EligibilityArmBTest::testAgeHardStopHoldsAtItsBoundary"
+            ],
+            "seconds": 4.934
+        },
+        {
+            "defect_id": "SD-06",
+            "defect_key": "eligibility_poverty_multiplier_wrong",
+            "module": "MOD-02",
+            "class": "functional",
+            "severity": "high",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod02EligibilityArmBTest::testPovertyFlagHoldsAtItsBoundary"
+            ],
+            "seconds": 5.354
+        },
+        {
+            "defect_id": "SD-07",
+            "defect_key": "eligibility_active_benefit_skipped",
+            "module": "MOD-02",
+            "class": "functional",
+            "severity": "high",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod02EligibilityArmBTest::testExistingApprovedBenefitIsAHardStop"
+            ],
+            "seconds": 5.37
+        },
+        {
+            "defect_id": "SD-08",
+            "defect_key": "duplicate_app_limit_bypass",
+            "module": "MOD-02",
+            "class": "functional",
+            "severity": "medium",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod02EligibilityArmBTest::testActiveApplicationCapHoldsAtItsBoundary"
+            ],
+            "seconds": 6.515
+        },
+        {
+            "defect_id": "SD-09",
+            "defect_key": "api_citizen_sees_all_apps",
+            "module": "MOD-03",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-639",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod03AccessControlArmBTest::testCitizenPrincipalIsAlwaysScopedToOwnRecords"
+            ],
+            "seconds": 6.39
+        },
+        {
+            "defect_id": "SD-10",
+            "defect_key": "rbac_role_check_loose_compare",
+            "module": "MOD-03",
+            "class": "security",
+            "severity": "high",
+            "cwe": "CWE-697",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod03AccessControlArmBTest::testLooselyEqualRoleValuesAreNotAdmitted"
+            ],
+            "seconds": 5.605
+        },
+        {
+            "defect_id": "SD-11",
+            "defect_key": "jwt_signature_not_verified",
+            "module": "MOD-03",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-347",
+            "detected": true,
+            "failing_tests": 2,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod03AccessControlArmBTest::testTokenWithForgedClaimsIsRejected",
+                "Mod03AccessControlArmBTest::testTokenWithoutAValidSignatureIsRejected"
+            ],
+            "seconds": 5.669
+        },
+        {
+            "defect_id": "SD-12",
+            "defect_key": "invalid_status_transition_allowed",
+            "module": "MOD-04",
+            "class": "functional",
+            "severity": "high",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 3,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod04WorkflowArmBTest::testNoTransitionOutsideTheDeclaredStateMachineIsPermitted",
+                "Mod04WorkflowArmBTest::testApprovedIsReachableOnlyFromSupervisorReview",
+                "Mod04WorkflowArmBTest::testHighRiskCaseIsHeldUntilQualityReview"
+            ],
+            "seconds": 5.85
+        },
+        {
+            "defect_id": "SD-13",
+            "defect_key": "supervisor_no_comment_required",
+            "module": "MOD-04",
+            "class": "functional",
+            "severity": "medium",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod04WorkflowArmBTest::testSupervisorDecisionRequiresAComment"
+            ],
+            "seconds": 5.835
+        },
+        {
+            "defect_id": "SD-14",
+            "defect_key": "sla_calculation_ignores_weekends",
+            "module": "MOD-05",
+            "class": "functional",
+            "severity": "high",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 3,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod05SlaArmBTest::testFiveBusinessDaysFromMondayIsTheFollowingMonday",
+                "Mod05SlaArmBTest::testWeekendsAreExcludedFromEveryHorizon",
+                "Mod05SlaArmBTest::testDeadlineNeverLandsOnAWeekend"
+            ],
+            "seconds": 5.52
+        },
+        {
+            "defect_id": "SD-15",
+            "defect_key": "sla_breach_check_grace_window",
+            "module": "MOD-05",
+            "class": "functional",
+            "severity": "medium",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod05SlaArmBTest::testBreachDetectionHoldsOnBothSidesOfTheDeadline"
+            ],
+            "seconds": 5.385
+        },
+        {
+            "defect_id": "SD-16",
+            "defect_key": "file_type_extension_only",
+            "module": "MOD-06",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-434",
+            "detected": true,
+            "failing_tests": 2,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod06DocumentsArmBTest::testFileIsJudgedOnContentNotOnItsName",
+                "Mod06DocumentsArmBTest::testDisallowedContentIsRefusedUnderEveryName"
+            ],
+            "seconds": 5.353
+        },
+        {
+            "defect_id": "SD-17",
+            "defect_key": "doc_path_traversal_stored_name",
+            "module": "MOD-06",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-22",
+            "detected": true,
+            "failing_tests": 2,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod06DocumentsArmBTest::testStorageNameIsNotDerivedFromTheSuppliedName",
+                "Mod06DocumentsArmBTest::testStorageNameCarriesNoPathSeparatorsOrTraversal"
+            ],
+            "seconds": 5.325
+        },
+        {
+            "defect_id": "SD-18",
+            "defect_key": "doc_size_limit_not_enforced",
+            "module": "MOD-06",
+            "class": "functional",
+            "severity": "medium",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod06DocumentsArmBTest::testSizeCapHoldsAtItsBoundary"
+            ],
+            "seconds": 5.751
+        },
+        {
+            "defect_id": "SD-19",
+            "defect_key": "notification_message_not_escaped",
+            "module": "MOD-07",
+            "class": "security",
+            "severity": "high",
+            "cwe": "CWE-79",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod07NotificationsArmBTest::testStoredMessageContentCannotBecomeMarkup"
+            ],
+            "seconds": 5.689
+        },
+        {
+            "defect_id": "SD-20",
+            "defect_key": "notification_markread_missing_owner_check",
+            "module": "MOD-07",
+            "class": "security",
+            "severity": "high",
+            "cwe": "CWE-639",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod07NotificationsArmBTest::testANotificationCannotBeMutatedByANonRecipient"
+            ],
+            "seconds": 5.979
+        },
+        {
+            "defect_id": "SD-21",
+            "defect_key": "report_sql_concatenated_sort",
+            "module": "MOD-08",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-89",
+            "detected": true,
+            "failing_tests": 3,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod08ReportingArmBTest::testRecognisedSortKeysResolve",
+                "Mod08ReportingArmBTest::testSortKeyIsResolvedThroughAnAllowListNotEchoed",
+                "Mod08ReportingArmBTest::testResolvedClauseIsAlwaysFromTheClosedSet"
+            ],
+            "seconds": 5.607
+        },
+        {
+            "defect_id": "SD-22",
+            "defect_key": "audit_log_deletable",
+            "module": "MOD-08",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-284",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod08ReportingArmBTest::testAuditTrailOffersNoDeletionPath"
+            ],
+            "seconds": 5.348
+        },
+        {
+            "defect_id": "SD-23",
+            "defect_key": "missing_csrf_token",
+            "module": "MOD-09",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-352",
+            "detected": true,
+            "failing_tests": 2,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod09AuthSessionArmBTest::testCsrfVerificationRefusesTokensItDidNotIssue",
+                "Mod09AuthSessionArmBTest::testSessionWithoutAnIssuedTokenAcceptsNothing"
+            ],
+            "seconds": 5.488
+        },
+        {
+            "defect_id": "SD-24",
+            "defect_key": "session_not_regenerated_on_login",
+            "module": "MOD-09",
+            "class": "security",
+            "severity": "high",
+            "cwe": "CWE-384",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod09AuthSessionArmBTest::testSessionIdentifierChangesAtAuthentication"
+            ],
+            "seconds": 5.445
+        },
+        {
+            "defect_id": "SD-25",
+            "defect_key": "password_plaintext_logged",
+            "module": "MOD-09",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-532",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod09AuthSessionArmBTest::testFailedLoginRecordCarriesNoCredential"
+            ],
+            "seconds": 5.467
+        },
+        {
+            "defect_id": "SD-26",
+            "defect_key": "account_lockout_not_enforced",
+            "module": "MOD-09",
+            "class": "security",
+            "severity": "high",
+            "cwe": "CWE-307",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod09AuthSessionArmBTest::testLockoutThresholdHoldsAtItsBoundary"
+            ],
+            "seconds": 5.46
+        },
+        {
+            "defect_id": "SD-27",
+            "defect_key": "risk_level_boundary_shifted",
+            "module": "MOD-10",
+            "class": "functional",
+            "severity": "high",
+            "cwe": null,
+            "detected": true,
+            "failing_tests": 2,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod10RiskArmBTest::testEveryBandBoundaryHoldsFromBothSides",
+                "Mod10RiskArmBTest::testEveryScoreAtOrAboveTheHighBoundaryRequiresQualityReview"
+            ],
+            "seconds": 5.356
+        },
+        {
+            "defect_id": "SD-28",
+            "defect_key": "risk_score_not_recomputed",
+            "module": "MOD-10",
+            "class": "functional",
+            "severity": "medium",
+            "cwe": null,
+            "detected": false,
+            "failing_tests": 0,
+            "total_tests": 70,
+            "detecting_tests": [],
+            "seconds": 5.414
+        },
+        {
+            "defect_id": "SD-29",
+            "defect_key": "ai_prompt_injection_unfiltered",
+            "module": "MOD-11",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-77",
+            "detected": true,
+            "failing_tests": 2,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod11AssistantArmBTest::testApplicantContentCannotSteerTheRecommendation",
+                "Mod11AssistantArmBTest::testApplicantContentCannotElicitDisclosureOrEnumeration"
+            ],
+            "seconds": 5.476
+        },
+        {
+            "defect_id": "SD-30",
+            "defect_key": "ai_output_rendered_unescaped",
+            "module": "MOD-11",
+            "class": "security",
+            "severity": "high",
+            "cwe": "CWE-79",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod11AssistantArmBTest::testGeneratedSummaryCannotCarryMarkupIntoThePage"
+            ],
+            "seconds": 5.432
+        },
+        {
+            "defect_id": "SD-31",
+            "defect_key": "ai_tool_scope_unbounded",
+            "module": "MOD-11",
+            "class": "security",
+            "severity": "critical",
+            "cwe": "CWE-269",
+            "detected": true,
+            "failing_tests": 1,
+            "total_tests": 70,
+            "detecting_tests": [
+                "Mod11AssistantArmBTest::testBrokerRefusesOutOfScopeAndOutOfRoleCalls"
+            ],
+            "seconds": 5.379
+        }
+    ]
+}

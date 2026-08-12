@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="harness/bootstrap.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         executionOrder="default"
+         failOnWarning="false"
+         failOnRisky="false"
+         beStrictAboutOutputDuringTests="false"
+         displayDetailsOnTestsThatTriggerWarnings="false"
+         displayDetailsOnTestsThatTriggerNotices="false"
+         displayDetailsOnTestsThatTriggerDeprecations="false">
+
+    <testsuites>
+        <testsuite name="arm-a">
+            <directory>harness/tests/ArmA</directory>
+        </testsuite>
+        <testsuite name="arm-b">
+            <directory>harness/tests/ArmB</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory suffix=".php">sut/app/core</directory>
+            <directory suffix=".php">sut/app/models</directory>
+            <directory suffix=".php">sut/app/ai</directory>
+            <file>sut/core/Auth.php</file>
+            <file>sut/core/Session.php</file>
+        </include>
+        <exclude>
+            <file>sut/app/models/TrainingDefectModel.php</file>
+        </exclude>
+    </source>
+</phpunit>

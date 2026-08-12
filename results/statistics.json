@@ -1,0 +1,244 @@
+{
+  "alpha": 0.05,
+  "n_modules": 11,
+  "modules": [
+    "MOD-01",
+    "MOD-02",
+    "MOD-03",
+    "MOD-04",
+    "MOD-05",
+    "MOD-06",
+    "MOD-07",
+    "MOD-08",
+    "MOD-09",
+    "MOD-10",
+    "MOD-11"
+  ],
+  "power_note": "With n = 11 modules the study is powered to detect large effects only; smaller differences may be present but undetected.",
+  "pre_specified": [
+    "M01",
+    "M04",
+    "M04c",
+    "M05"
+  ],
+  "results": [
+    {
+      "metric": "M01",
+      "label": "Seeded-defect detection rate",
+      "n_pairs": 11,
+      "n_non_tied": 9,
+      "arm_a_median": 0.3333,
+      "arm_a_iqr": [
+        0.25,
+        0.5
+      ],
+      "arm_b_median": 1.0,
+      "arm_b_iqr": [
+        1.0,
+        1.0
+      ],
+      "median_difference": 0.6667,
+      "improved_in": 9,
+      "regressed_in": 0,
+      "tied_in": 2,
+      "wilcoxon_w": 0.0,
+      "p_value": 0.00391,
+      "significant": true,
+      "cliffs_delta": 0.8678,
+      "cliffs_magnitude": "large",
+      "vargha_delaney_a12": 0.9339,
+      "direction": "improvement"
+    },
+    {
+      "metric": "M04",
+      "label": "Mutation score (MSI)",
+      "n_pairs": 11,
+      "n_non_tied": 11,
+      "arm_a_median": 0.3333,
+      "arm_a_iqr": [
+        0.2402,
+        0.3772
+      ],
+      "arm_b_median": 0.4,
+      "arm_b_iqr": [
+        0.2713,
+        0.4577
+      ],
+      "median_difference": 0.0667,
+      "improved_in": 9,
+      "regressed_in": 2,
+      "tied_in": 0,
+      "wilcoxon_w": 18.0,
+      "p_value": 0.20605,
+      "significant": false,
+      "cliffs_delta": 0.2727,
+      "cliffs_magnitude": "small",
+      "vargha_delaney_a12": 0.6364,
+      "direction": "improvement"
+    },
+    {
+      "metric": "M04c",
+      "label": "Mutation score, covered code",
+      "n_pairs": 11,
+      "n_non_tied": 11,
+      "arm_a_median": 0.6232,
+      "arm_a_iqr": [
+        0.4271,
+        0.7
+      ],
+      "arm_b_median": 0.575,
+      "arm_b_iqr": [
+        0.4431,
+        0.6945
+      ],
+      "median_difference": 0.0161,
+      "improved_in": 6,
+      "regressed_in": 5,
+      "tied_in": 0,
+      "wilcoxon_w": 33.0,
+      "p_value": 1.0,
+      "significant": false,
+      "cliffs_delta": -0.0248,
+      "cliffs_magnitude": "negligible",
+      "vargha_delaney_a12": 0.4876,
+      "direction": "improvement"
+    },
+    {
+      "metric": "M05",
+      "label": "Line coverage",
+      "n_pairs": 11,
+      "n_non_tied": 6,
+      "arm_a_median": 0.6667,
+      "arm_a_iqr": [
+        0.5435,
+        0.7606
+      ],
+      "arm_b_median": 0.6917,
+      "arm_b_iqr": [
+        0.6067,
+        0.8115
+      ],
+      "median_difference": 0.0417,
+      "improved_in": 6,
+      "regressed_in": 0,
+      "tied_in": 5,
+      "wilcoxon_w": 0.0,
+      "p_value": 0.03125,
+      "significant": true,
+      "cliffs_delta": 0.1818,
+      "cliffs_magnitude": "small",
+      "vargha_delaney_a12": 0.5909,
+      "direction": "improvement"
+    }
+  ],
+  "per_module_vectors": {
+    "A": {
+      "detection": [
+        0.5,
+        0.25,
+        0.3333,
+        1,
+        0.5,
+        0.3333,
+        0,
+        0.5,
+        0.25,
+        0.5,
+        0
+      ],
+      "msi": [
+        0.3839,
+        0.3706,
+        0.3011,
+        0.3333,
+        0.1831,
+        0.56,
+        0.4167,
+        0.2973,
+        0.3333,
+        0.1,
+        0.1413
+      ],
+      "covered_msi": [
+        0.6232,
+        0.4468,
+        0.7,
+        0.7778,
+        0.8667,
+        0.7,
+        0.6818,
+        0.4074,
+        0.4545,
+        0.1694,
+        0.1733
+      ],
+      "line_coverage": [
+        0.7593,
+        0.8312,
+        0.4578,
+        0.6667,
+        0.1279,
+        0.7619,
+        0.587,
+        0.5,
+        0.65,
+        0.6917,
+        0.8194
+      ]
+    },
+    "B": {
+      "detection": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0.5,
+        1
+      ],
+      "msi": [
+        0.4554,
+        0.4294,
+        0.3763,
+        0.619,
+        0.2817,
+        0.46,
+        0.4722,
+        0.1486,
+        0.4,
+        0.1095,
+        0.2609
+      ],
+      "covered_msi": [
+        0.7391,
+        0.4932,
+        0.6034,
+        0.7222,
+        0.6667,
+        0.575,
+        0.7727,
+        0.3929,
+        0.5455,
+        0.1855,
+        0.2963
+      ],
+      "line_coverage": [
+        0.7593,
+        0.8831,
+        0.6265,
+        0.9333,
+        0.3953,
+        0.7619,
+        0.587,
+        0.5735,
+        0.65,
+        0.6917,
+        0.8611
+      ]
+    }
+  }
+}

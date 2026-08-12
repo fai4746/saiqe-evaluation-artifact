@@ -1,0 +1,32 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "sut/app/core",
+            "sut/app/models",
+            "sut/app/ai",
+            "sut/core"
+        ],
+        "excludes": [
+            "sut/app/models/TrainingDefectModel.php",
+            "sut/core/Database.php",
+            "sut/core/Router.php",
+            "sut/core/Response.php"
+        ]
+    },
+    "timeout": 30,
+    "logs": {
+        "text": "results/infection/infection.log",
+        "json": "results/infection/infection.json",
+        "summary": "results/infection/summary.log"
+    },
+    "tmpDir": "C:/Users/Admin/AppData/Local/Temp/saiqe-infection",
+    "phpUnit": {
+        "configDir": "."
+    },
+    "mutators": {
+        "@default": true
+    },
+    "minMsi": 0,
+    "minCoveredMsi": 0
+}

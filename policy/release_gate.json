@@ -1,0 +1,78 @@
+{
+  "schema": "saiqe.gate/1",
+  "note": "Release-gate rules. Arm A evaluates the coverage rule; Arm B evaluates the mutation rule instead — that substitution is the framework's headline design decision. Rules whose fact an arm does not produce are recorded NOT_EVALUATED rather than silently passed.",
+  "rules": [
+    {
+      "id": "G-01", "control": "C-01", "arm": "both",
+      "fact": "tests_failing", "operator": "==", "threshold": 0,
+      "on_violation": "BLOCK",
+      "obligation": "ISO/IEC/IEEE 29119-3 — a release is not made on a failing suite"
+    },
+    {
+      "id": "G-02", "control": "C-01", "arm": "A",
+      "fact": "line_coverage", "operator": ">=", "threshold": 0.6,
+      "on_violation": "BLOCK",
+      "obligation": "Internal quality policy — the baseline admission gate"
+    },
+    {
+      "id": "G-03", "control": "C-02", "arm": "B",
+      "fact": "covered_msi", "operator": ">=", "threshold": 0.6,
+      "on_violation": "BLOCK",
+      "obligation": "EU AI Act Art. 17 — the suite must be shown able to detect faults, not merely to execute code"
+    },
+    {
+      "id": "G-04", "control": "C-04", "arm": "B",
+      "fact": "untriaged_findings", "operator": "==", "threshold": 0,
+      "on_violation": "BLOCK",
+      "obligation": "CRA Art. 13(8) — every finding is dispositioned with a recorded rationale"
+    },
+    {
+      "id": "G-05", "control": "C-03", "arm": "both",
+      "fact": "unresolved_true_positives", "operator": "==", "threshold": 0,
+      "on_violation": "BLOCK",
+      "obligation": "CRA Annex I Part I — no known exploitable defect ships"
+    },
+    {
+      "id": "G-06", "control": "C-06", "arm": "both",
+      "fact": "secrets_found", "operator": "==", "threshold": 0,
+      "on_violation": "BLOCK",
+      "obligation": "ISO/IEC 27001 A.8.24"
+    },
+    {
+      "id": "G-07", "control": "C-08", "arm": "B",
+      "fact": "adversarial_pass_rate", "operator": ">=", "threshold": 1.0,
+      "on_violation": "BLOCK",
+      "obligation": "EU AI Act Art. 15 — AI components resist adversarial input before release"
+    },
+    {
+      "id": "G-08", "control": "C-07", "arm": "B",
+      "fact": "provenance_complete", "operator": "is", "threshold": true,
+      "on_violation": "WARN",
+      "obligation": "EU AI Act Art. 12 — the origin of every artifact is recorded"
+    },
+    {
+      "id": "G-09", "control": "C-12", "arm": "B",
+      "fact": "traceability_completeness", "operator": ">=", "threshold": 0.95,
+      "on_violation": "WARN",
+      "obligation": "EU AI Act Annex IV(2)(g) — requirement to test to result chains are unbroken"
+    },
+    {
+      "id": "G-10", "control": "C-13", "arm": "B",
+      "fact": "evidence_chain_intact", "operator": "is", "threshold": true,
+      "on_violation": "BLOCK",
+      "obligation": "CRA Art. 13(12) — retained documentation is tamper-evident"
+    },
+    {
+      "id": "G-11", "control": "C-14", "arm": "both",
+      "fact": "accessibility_failures", "operator": "==", "threshold": 0,
+      "on_violation": "WARN",
+      "obligation": "EN 301 549 §9"
+    },
+    {
+      "id": "G-12", "control": "C-05", "arm": "both",
+      "fact": "vulnerable_dependencies", "operator": "==", "threshold": 0,
+      "on_violation": "BLOCK",
+      "obligation": "CRA Annex I Part II(1) — no shipped component carries a known exploitable vulnerability"
+    }
+  ]
+}

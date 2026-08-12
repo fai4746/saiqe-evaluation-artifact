@@ -1,0 +1,306 @@
+{
+    "arm": "B",
+    "generated_at": "2026-08-12T18:12:41+00:00",
+    "wall_seconds": 10.31,
+    "stage_seconds": {
+        "C-01": 7.163,
+        "C-02": 0,
+        "C-03": 0,
+        "C-04": 0,
+        "C-05": 2.924,
+        "C-06": 0.001,
+        "C-07": 0.023,
+        "C-08": 0.001,
+        "C-12": 0.008,
+        "C-14": 0
+    },
+    "gate": {
+        "decision": "BLOCK",
+        "evaluated": [
+            {
+                "id": "G-01",
+                "control": "C-01",
+                "arm": "both",
+                "fact": "tests_failing",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "BLOCK",
+                "obligation": "ISO/IEC/IEEE 29119-3 \u2014 a release is not made on a failing suite",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "tests_failing = 0 satisfies == 0"
+            },
+            {
+                "id": "G-03",
+                "control": "C-02",
+                "arm": "B",
+                "fact": "covered_msi",
+                "operator": ">=",
+                "threshold": 0.6,
+                "on_violation": "BLOCK",
+                "obligation": "EU AI Act Art. 17 \u2014 the suite must be shown able to detect faults, not merely to execute code",
+                "observed": 0.4731,
+                "outcome": "BLOCK",
+                "explanation": "covered_msi = 0.4731 violates >= 0.6"
+            },
+            {
+                "id": "G-04",
+                "control": "C-04",
+                "arm": "B",
+                "fact": "untriaged_findings",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "BLOCK",
+                "obligation": "CRA Art. 13(8) \u2014 every finding is dispositioned with a recorded rationale",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "untriaged_findings = 0 satisfies == 0"
+            },
+            {
+                "id": "G-05",
+                "control": "C-03",
+                "arm": "both",
+                "fact": "unresolved_true_positives",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "BLOCK",
+                "obligation": "CRA Annex I Part I \u2014 no known exploitable defect ships",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "unresolved_true_positives = 0 satisfies == 0"
+            },
+            {
+                "id": "G-06",
+                "control": "C-06",
+                "arm": "both",
+                "fact": "secrets_found",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "BLOCK",
+                "obligation": "ISO/IEC 27001 A.8.24",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "secrets_found = 0 satisfies == 0"
+            },
+            {
+                "id": "G-07",
+                "control": "C-08",
+                "arm": "B",
+                "fact": "adversarial_pass_rate",
+                "operator": ">=",
+                "threshold": 1,
+                "on_violation": "BLOCK",
+                "obligation": "EU AI Act Art. 15 \u2014 AI components resist adversarial input before release",
+                "observed": 1,
+                "outcome": "PASS",
+                "explanation": "adversarial_pass_rate = 1 satisfies >= 1"
+            },
+            {
+                "id": "G-08",
+                "control": "C-07",
+                "arm": "B",
+                "fact": "provenance_complete",
+                "operator": "is",
+                "threshold": true,
+                "on_violation": "WARN",
+                "obligation": "EU AI Act Art. 12 \u2014 the origin of every artifact is recorded",
+                "observed": true,
+                "outcome": "PASS",
+                "explanation": "provenance_complete = true satisfies is true"
+            },
+            {
+                "id": "G-09",
+                "control": "C-12",
+                "arm": "B",
+                "fact": "traceability_completeness",
+                "operator": ">=",
+                "threshold": 0.95,
+                "on_violation": "WARN",
+                "obligation": "EU AI Act Annex IV(2)(g) \u2014 requirement to test to result chains are unbroken",
+                "observed": 0.9074,
+                "outcome": "WARN",
+                "explanation": "traceability_completeness = 0.9074 violates >= 0.95"
+            },
+            {
+                "id": "G-10",
+                "control": "C-13",
+                "arm": "B",
+                "fact": "evidence_chain_intact",
+                "operator": "is",
+                "threshold": true,
+                "on_violation": "BLOCK",
+                "obligation": "CRA Art. 13(12) \u2014 retained documentation is tamper-evident",
+                "observed": true,
+                "outcome": "PASS",
+                "explanation": "evidence_chain_intact = true satisfies is true"
+            },
+            {
+                "id": "G-11",
+                "control": "C-14",
+                "arm": "both",
+                "fact": "accessibility_failures",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "WARN",
+                "obligation": "EN 301 549 \u00a79",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "accessibility_failures = 0 satisfies == 0"
+            },
+            {
+                "id": "G-12",
+                "control": "C-05",
+                "arm": "both",
+                "fact": "vulnerable_dependencies",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "BLOCK",
+                "obligation": "CRA Annex I Part II(1) \u2014 no shipped component carries a known exploitable vulnerability",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "vulnerable_dependencies = 0 satisfies == 0"
+            }
+        ],
+        "blocking": [
+            {
+                "id": "G-03",
+                "control": "C-02",
+                "arm": "B",
+                "fact": "covered_msi",
+                "operator": ">=",
+                "threshold": 0.6,
+                "on_violation": "BLOCK",
+                "obligation": "EU AI Act Art. 17 \u2014 the suite must be shown able to detect faults, not merely to execute code",
+                "observed": 0.4731,
+                "outcome": "BLOCK",
+                "explanation": "covered_msi = 0.4731 violates >= 0.6"
+            }
+        ],
+        "warnings": [
+            {
+                "id": "G-09",
+                "control": "C-12",
+                "arm": "B",
+                "fact": "traceability_completeness",
+                "operator": ">=",
+                "threshold": 0.95,
+                "on_violation": "WARN",
+                "obligation": "EU AI Act Annex IV(2)(g) \u2014 requirement to test to result chains are unbroken",
+                "observed": 0.9074,
+                "outcome": "WARN",
+                "explanation": "traceability_completeness = 0.9074 violates >= 0.95"
+            }
+        ]
+    },
+    "evidence_chain": {
+        "intact": true,
+        "records": 12,
+        "signature_failures": 0,
+        "chain_breaks": 0
+    },
+    "metrics": {
+        "M15_control_coverage": 0.8125,
+        "M16_evidence_completeness": 0.75,
+        "M17_traceability": 0.9074,
+        "M28_wall_seconds": 10.31,
+        "M11_precision": 0.0385,
+        "M12_adversarial_pass_rate": 1,
+        "M08_density_by_provenance": {
+            "human": {
+                "kloc": 1.95,
+                "findings": 13,
+                "per_kloc": 6.68
+            },
+            "ai": {
+                "kloc": 0.6,
+                "findings": 0,
+                "per_kloc": 0
+            },
+            "ai_modified": {
+                "kloc": 2.92,
+                "findings": 7,
+                "per_kloc": 2.4
+            }
+        }
+    },
+    "controls": {
+        "C-01": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-02": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-03": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-04": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-05": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-06": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-07": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-08": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-09": {
+            "executed": true,
+            "evidence_signed": false
+        },
+        "C-10": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-11": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-12": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-13": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-14": {
+            "executed": true,
+            "evidence_signed": true
+        },
+        "C-15": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-16": {
+            "executed": false,
+            "evidence_signed": false
+        }
+    },
+    "facts": {
+        "tests_failing": 0,
+        "line_coverage": 0.6982,
+        "covered_msi": 0.4731,
+        "untriaged_findings": 0,
+        "unresolved_true_positives": 0,
+        "secrets_found": 0,
+        "adversarial_pass_rate": 1,
+        "provenance_complete": true,
+        "traceability_completeness": 0.9074,
+        "evidence_chain_intact": true,
+        "accessibility_failures": 0,
+        "vulnerable_dependencies": 0
+    }
+}

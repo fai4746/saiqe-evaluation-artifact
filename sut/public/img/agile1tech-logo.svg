@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 60" width="215" height="60" role="img" aria-label="Agile1Tech">
+  <!-- Gray chevron arrow behind red square -->
+  <polygon points="46,0 82,0 96,30 82,60 46,60 60,30" fill="#9ca3af"/>
+  <!-- Red square -->
+  <rect x="0" y="0" width="65" height="60" rx="3" fill="#C8102E"/>
+  <!-- Agile white text inside red square -->
+  <text x="7" y="39" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#ffffff" letter-spacing="-0.3">Agile</text>
+  <!-- ONE red text -->
+  <text x="102" y="31" font-family="'Arial Black',Arial,sans-serif" font-size="27" font-weight="900" fill="#C8102E" letter-spacing="-0.5">ONE</text>
+  <!-- TECH black text -->
+  <text x="102" y="58" font-family="'Arial Black',Arial,sans-serif" font-size="27" font-weight="900" fill="#1a1a1a" letter-spacing="-0.5">TECH</text>
+</svg>

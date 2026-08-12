@@ -1,0 +1,504 @@
+{
+    "generated_at": "2026-08-12T18:02:30+00:00",
+    "arm_a": {
+        "rulesets": [
+            "p/php",
+            "p/owasp-top-ten",
+            "p/secrets",
+            "p/security-audit",
+            "p/xss",
+            "p/sql-injection",
+            "p/command-injection",
+            "p/insecure-transport"
+        ],
+        "findings": 9,
+        "triaged": false,
+        "precision": null,
+        "note": "Baseline practice files findings without triage. Precision is not measured, not assumed."
+    },
+    "arm_b": {
+        "rulesets": "stock + policy/semgrep/saiqe-properties.yaml",
+        "findings": 52,
+        "true_positive": 2,
+        "effective_fp": 18,
+        "false_positive": 32,
+        "precision_strict": 0.0385,
+        "precision_actionable": 0.3846,
+        "noise_rate": 0.9615
+    },
+    "sast_recall_on_seeded_security_defects": {
+        "seeded_security_defects": 17,
+        "located_by_a_true_positive": 3,
+        "recall": 0.1765,
+        "detail": [
+            {
+                "defect": "SD-03",
+                "key": "intake_household_size_unbounded",
+                "cwe": "CWE-1284",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-09",
+                "key": "api_citizen_sees_all_apps",
+                "cwe": "CWE-639",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-10",
+                "key": "rbac_role_check_loose_compare",
+                "cwe": "CWE-697",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-11",
+                "key": "jwt_signature_not_verified",
+                "cwe": "CWE-347",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-16",
+                "key": "file_type_extension_only",
+                "cwe": "CWE-434",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-17",
+                "key": "doc_path_traversal_stored_name",
+                "cwe": "CWE-22",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-19",
+                "key": "notification_message_not_escaped",
+                "cwe": "CWE-79",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-20",
+                "key": "notification_markread_missing_owner_check",
+                "cwe": "CWE-639",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-21",
+                "key": "report_sql_concatenated_sort",
+                "cwe": "CWE-89",
+                "flagged_as_tp": true
+            },
+            {
+                "defect": "SD-22",
+                "key": "audit_log_deletable",
+                "cwe": "CWE-284",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-23",
+                "key": "missing_csrf_token",
+                "cwe": "CWE-352",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-24",
+                "key": "session_not_regenerated_on_login",
+                "cwe": "CWE-384",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-25",
+                "key": "password_plaintext_logged",
+                "cwe": "CWE-532",
+                "flagged_as_tp": true
+            },
+            {
+                "defect": "SD-26",
+                "key": "account_lockout_not_enforced",
+                "cwe": "CWE-307",
+                "flagged_as_tp": true
+            },
+            {
+                "defect": "SD-29",
+                "key": "ai_prompt_injection_unfiltered",
+                "cwe": "CWE-77",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-30",
+                "key": "ai_output_rendered_unescaped",
+                "cwe": "CWE-79",
+                "flagged_as_tp": false
+            },
+            {
+                "defect": "SD-31",
+                "key": "ai_tool_scope_unbounded",
+                "cwe": "CWE-269",
+                "flagged_as_tp": false
+            }
+        ]
+    },
+    "findings": [
+        {
+            "rule": "echoed-request",
+            "file": "app/views/shared/audit_log.php",
+            "line": 92,
+            "verdict": "EFP",
+            "reason": "Request parameters are reflected into an href, but through http_build_query, which percent-encodes. Real reflection, no usable injection."
+        },
+        {
+            "rule": "detected-bcrypt-hash",
+            "file": "database/seed_data.sql",
+            "line": 27,
+            "verdict": "EFP",
+            "reason": "Shared demo credential hash committed to the repository. Real, and intentional for a teaching fixture."
+        },
+        {
+            "rule": "detected-bcrypt-hash",
+            "file": "database/seed_data.sql",
+            "line": 28,
+            "verdict": "EFP",
+            "reason": "As above."
+        },
+        {
+            "rule": "detected-bcrypt-hash",
+            "file": "database/seed_data.sql",
+            "line": 29,
+            "verdict": "EFP",
+            "reason": "As above."
+        },
+        {
+            "rule": "detected-bcrypt-hash",
+            "file": "database/seed_data.sql",
+            "line": 30,
+            "verdict": "EFP",
+            "reason": "As above."
+        },
+        {
+            "rule": "detected-bcrypt-hash",
+            "file": "database/seed_data.sql",
+            "line": 31,
+            "verdict": "EFP",
+            "reason": "As above."
+        },
+        {
+            "rule": "detected-bcrypt-hash",
+            "file": "database/seed_data.sql",
+            "line": 32,
+            "verdict": "EFP",
+            "reason": "As above."
+        },
+        {
+            "rule": "detected-bcrypt-hash",
+            "file": "database/seed_data.sql",
+            "line": 33,
+            "verdict": "EFP",
+            "reason": "As above."
+        },
+        {
+            "rule": "detected-bcrypt-hash",
+            "file": "database/seed_data.sql",
+            "line": 34,
+            "verdict": "EFP",
+            "reason": "As above."
+        },
+        {
+            "rule": "saiqe-sp02-loose-identity-comparison",
+            "file": "api/v1/index.php",
+            "line": 133,
+            "verdict": "FP",
+            "reason": "The needle is cast to int before comparison and the haystack is a list of int constants. Loose comparison cannot admit anything the strict one would not."
+        },
+        {
+            "rule": "saiqe-sp07-storage-name-from-input",
+            "file": "app/controllers/AppealController.php",
+            "line": 115,
+            "verdict": "EFP",
+            "reason": "The storage name is system-generated here, so the flagged property holds. It does however show a fourth independent upload path that bypasses the shared validator \u2014 a real design finding, not the one the rule claims."
+        },
+        {
+            "rule": "saiqe-sp07-storage-name-from-input",
+            "file": "app/controllers/ApplicationController.php",
+            "line": 143,
+            "verdict": "EFP",
+            "reason": "Storage name is bin2hex(random_bytes(16)); the property holds. Duplicate upload path, as above."
+        },
+        {
+            "rule": "saiqe-sp08-credential-in-record",
+            "file": "app/controllers/AuthController.php",
+            "line": 50,
+            "verdict": "FP",
+            "reason": "password_verify() is the check itself, not a record. The rule matched on the enclosing function name containing \"log\" (processLogin)."
+        },
+        {
+            "rule": "saiqe-sp08-credential-in-record",
+            "file": "app/controllers/AuthController.php",
+            "line": 55,
+            "verdict": "TP",
+            "reason": "A submitted password is passed as an argument into the call that writes the audit record. Whether it survives depends entirely on the callee; the data flow is real and is the right place to require a control."
+        },
+        {
+            "rule": "saiqe-sp05-unescaped-output",
+            "file": "app/controllers/DashboardController.php",
+            "line": 121,
+            "verdict": "FP",
+            "reason": "json_encode output on a JSON endpoint, not HTML."
+        },
+        {
+            "rule": "saiqe-sp07-storage-name-from-input",
+            "file": "app/controllers/DocumentController.php",
+            "line": 71,
+            "verdict": "FP",
+            "reason": "Storage name comes from UploadValidator::storedName(), which is system-generated on the clean path."
+        },
+        {
+            "rule": "saiqe-sp05-unescaped-output",
+            "file": "app/controllers/DocumentController.php",
+            "line": 109,
+            "verdict": "FP",
+            "reason": "A string literal is echoed. No variable reaches output."
+        },
+        {
+            "rule": "saiqe-sp05-unescaped-output",
+            "file": "app/controllers/NotificationController.php",
+            "line": 28,
+            "verdict": "FP",
+            "reason": "json_encode output on a JSON endpoint."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/controllers/QualityReviewerController.php",
+            "line": 79,
+            "verdict": "FP",
+            "reason": "Not SQL. The rule's append pattern matched a plain string builder for reviewer notes."
+        },
+        {
+            "rule": "saiqe-sp05-unescaped-output",
+            "file": "app/controllers/SupervisorController.php",
+            "line": 115,
+            "verdict": "FP",
+            "reason": "String literal."
+        },
+        {
+            "rule": "saiqe-sp05-unescaped-output",
+            "file": "app/controllers/SupervisorController.php",
+            "line": 117,
+            "verdict": "FP",
+            "reason": "String literal."
+        },
+        {
+            "rule": "saiqe-sp02-loose-identity-comparison",
+            "file": "app/controllers/UserController.php",
+            "line": 31,
+            "verdict": "FP",
+            "reason": "Cast to int before comparison, as above."
+        },
+        {
+            "rule": "saiqe-sp07-storage-name-from-input",
+            "file": "app/controllers/WizardController.php",
+            "line": 191,
+            "verdict": "EFP",
+            "reason": "Storage name is system-generated; the property holds. Duplicate upload path, as above."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/core/CaseAssignmentEngine.php",
+            "line": 87,
+            "verdict": "EFP",
+            "reason": "The interpolated fragment is a generated run of placeholders, not data. Safe by construction, though the construction is worth a comment."
+        },
+        {
+            "rule": "saiqe-sp02-loose-identity-comparison",
+            "file": "app/core/CaseAssignmentEngine.php",
+            "line": 106,
+            "verdict": "FP",
+            "reason": "The haystack is built with array_map(intval, ...) immediately above. Both sides are integers."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/core/EligibilityEngine.php",
+            "line": 204,
+            "verdict": "EFP",
+            "reason": "Generated placeholder run, as above."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/core/FormRenderer.php",
+            "line": 27,
+            "verdict": "FP",
+            "reason": "Not SQL. Attribute string builder, and both parts are escaped."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/core/RiskScoreEngine.php",
+            "line": 189,
+            "verdict": "EFP",
+            "reason": "Generated placeholder run, as above."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/ApplicationModel.php",
+            "line": 19,
+            "verdict": "EFP",
+            "reason": "Generated placeholder run, as above."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/ApplicationModel.php",
+            "line": 154,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/ApplicationModel.php",
+            "line": 155,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/ApplicationModel.php",
+            "line": 156,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/ApplicationModel.php",
+            "line": 157,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/ApplicationModel.php",
+            "line": 158,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/ApplicationModel.php",
+            "line": 159,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 60,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 61,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 62,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 63,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 64,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 65,
+            "verdict": "TP",
+            "reason": "ORDER BY is built by concatenating the return of a resolver applied to a caller-supplied key. This is the one place in the codebase where a request value reaches SQL structure, and it is correct to flag it."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 66,
+            "verdict": "EFP",
+            "reason": "LIMIT and OFFSET are interpolated, but from an int parameter and an arithmetic expression on a cast int. Reachable only by changing the signature."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 113,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 114,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 115,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/AuditLogModel.php",
+            "line": 116,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/CaseModel.php",
+            "line": 41,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/CaseModel.php",
+            "line": 42,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/CaseModel.php",
+            "line": 56,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/CaseModel.php",
+            "line": 57,
+            "verdict": "FP",
+            "reason": "The appended fragment is a string literal containing a bound placeholder; the value goes to execute(). No caller data reaches statement structure."
+        },
+        {
+            "rule": "saiqe-sp05-sql-fragment-interpolated",
+            "file": "app/models/SLAModel.php",
+            "line": 56,
+            "verdict": "EFP",
+            "reason": "Generated placeholder run, as above."
+        },
+        {
+            "rule": "saiqe-sp05-unescaped-output",
+            "file": "core/Response.php",
+            "line": 6,
+            "verdict": "FP",
+            "reason": "json_encode output in the JSON responder."
+        }
+    ]
+}

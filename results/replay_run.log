@@ -1,0 +1,68 @@
+Replay — Arm A
+----------------------------------------------------------------------
+  r1   intro 1   active 1   SHIP       << change failure (1 escaping)
+  r2   intro 1   active 2   SHIP       << change failure (2 escaping)
+  r3   intro 0   active 2   SHIP       << change failure (2 escaping)
+  r4   intro 2   active 4   BLOCK    fixed: 1
+  r5   intro 1   active 4   BLOCK    fixed: 1
+  r6   intro 0   active 3   SHIP       << change failure (3 escaping)
+  r7   intro 1   active 4   SHIP       << change failure (4 escaping)
+  r8   intro 2   active 6   BLOCK    fixed: 2
+  r9   intro 0   active 4   SHIP       << change failure (4 escaping)
+  r10  intro 1   active 5   BLOCK    fixed: 1
+  r11  intro 1   active 5   BLOCK    fixed: 2
+  r12  intro 2   active 5   BLOCK    fixed: 2
+  r13  intro 1   active 4   BLOCK    fixed: 3
+  r14  intro 1   active 2   SHIP       << change failure (2 escaping)
+  r15  intro 0   active 2   SHIP       << change failure (2 escaping)
+  r16  intro 2   active 4   BLOCK    fixed: 1
+  r17  intro 1   active 4   BLOCK    fixed: 1
+  r18  intro 0   active 3   SHIP       << change failure (3 escaping)
+  r19  intro 1   active 4   SHIP       << change failure (4 escaping)
+  r20  intro 2   active 6   BLOCK    fixed: 1
+  r21  intro 0   active 5   SHIP       << change failure (5 escaping)
+  r22  intro 1   active 6   SHIP       << change failure (6 escaping)
+  r23  intro 1   active 7   BLOCK    fixed: 1
+  r24  intro 2   active 8   BLOCK    fixed: 1
+  -> shipped 12/24, change failures 12, never detected 7
+
+Replay — Arm B
+----------------------------------------------------------------------
+  r1   intro 1   active 1   BLOCK    fixed: 1
+  r2   intro 1   active 1   BLOCK    fixed: 1
+  r3   intro 0   active 0   SHIP     
+  r4   intro 2   active 2   BLOCK    fixed: 1
+  r5   intro 1   active 2   BLOCK    fixed: 1
+  r6   intro 0   active 1   SHIP       << change failure (1 escaping)
+  r7   intro 1   active 2   BLOCK    fixed: 1
+  r8   intro 2   active 3   BLOCK    fixed: 2
+  r9   intro 0   active 1   SHIP       << change failure (1 escaping)
+  r10  intro 1   active 2   BLOCK    fixed: 1
+  r11  intro 1   active 2   BLOCK    fixed: 1
+  r12  intro 2   active 3   BLOCK    fixed: 2
+  r13  intro 1   active 2   BLOCK    fixed: 1
+  r14  intro 1   active 2   BLOCK    fixed: 1
+  r15  intro 0   active 1   SHIP       << change failure (1 escaping)
+  r16  intro 2   active 3   BLOCK    fixed: 2
+  r17  intro 1   active 2   BLOCK    fixed: 1
+  r18  intro 0   active 1   SHIP       << change failure (1 escaping)
+  r19  intro 1   active 2   BLOCK    fixed: 1
+  r20  intro 2   active 3   BLOCK    fixed: 2
+  r21  intro 0   active 1   SHIP       << change failure (1 escaping)
+  r22  intro 1   active 2   BLOCK    fixed: 1
+  r23  intro 1   active 2   BLOCK    fixed: 1
+  r24  intro 2   active 3   BLOCK    fixed: 2
+  -> shipped 6/24, change failures 5, never detected 1
+
+======================================================================
+metric (simulated operation)              Arm A        Arm B
+----------------------------------------------------------------------
+M26 deployment frequency                  50.0%        25.0%
+M02 change failure rate                  100.0%        83.3%
+M03 median releases to restore               10          n/a
+M09 median remediation lead                   0            0
+M27 median lead time (s)                   4.56        6.605
+defects never detected                        7            1
+M25 drift detection latency          undetected        0 rel
+
+written results/replay.json

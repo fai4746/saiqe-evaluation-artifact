@@ -1,0 +1,18 @@
+/vendor/
+/tools/
+/.phpunit.cache/
+/results/infection/
+/results/infection_arm_*.json
+/results/infection_b_run.log
+/sut/uploads/*
+!/sut/uploads/.gitkeep
+
+# Environment-specific database credentials. The repo copy in
+# sut/config/config.local.php is committed on purpose: it points at the
+# isolated evaluation database and carries no secret.
+*.log
+!results/replay_run.log
+!results/infection_arm_*_summary.log
+
+Thumbs.db
+.DS_Store

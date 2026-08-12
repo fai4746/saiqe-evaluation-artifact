@@ -1,0 +1,311 @@
+{
+    "generated_at": "2026-08-12T18:00:26+00:00",
+    "arms": {
+        "A": {
+            "by_module": {
+                "MOD-01": {
+                    "module": "Case intake and registration",
+                    "mutants_total": 112,
+                    "mutants_killed": 43,
+                    "mutants_escaped": 26,
+                    "mutants_uncovered": 43,
+                    "msi": 0.3839,
+                    "covered_msi": 0.6232,
+                    "statements": 54,
+                    "line_coverage": 0.7593,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-02": {
+                    "module": "Eligibility engine",
+                    "mutants_total": 170,
+                    "mutants_killed": 63,
+                    "mutants_escaped": 78,
+                    "mutants_uncovered": 29,
+                    "msi": 0.3706,
+                    "covered_msi": 0.4468,
+                    "statements": 154,
+                    "line_coverage": 0.8312,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-03": {
+                    "module": "Role-based access control",
+                    "mutants_total": 93,
+                    "mutants_killed": 28,
+                    "mutants_escaped": 12,
+                    "mutants_uncovered": 53,
+                    "msi": 0.3011,
+                    "covered_msi": 0.7,
+                    "statements": 83,
+                    "line_coverage": 0.4578,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-04": {
+                    "module": "Case and appeals workflow",
+                    "mutants_total": 21,
+                    "mutants_killed": 7,
+                    "mutants_escaped": 2,
+                    "mutants_uncovered": 12,
+                    "msi": 0.3333,
+                    "covered_msi": 0.7778,
+                    "statements": 15,
+                    "line_coverage": 0.6667,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-05": {
+                    "module": "SLA tracking",
+                    "mutants_total": 71,
+                    "mutants_killed": 13,
+                    "mutants_escaped": 2,
+                    "mutants_uncovered": 56,
+                    "msi": 0.1831,
+                    "covered_msi": 0.8667,
+                    "statements": 86,
+                    "line_coverage": 0.1279,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-06": {
+                    "module": "Document and attachment handling",
+                    "mutants_total": 50,
+                    "mutants_killed": 28,
+                    "mutants_escaped": 12,
+                    "mutants_uncovered": 10,
+                    "msi": 0.56,
+                    "covered_msi": 0.7,
+                    "statements": 21,
+                    "line_coverage": 0.7619,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-07": {
+                    "module": "Notifications",
+                    "mutants_total": 36,
+                    "mutants_killed": 15,
+                    "mutants_escaped": 7,
+                    "mutants_uncovered": 14,
+                    "msi": 0.4167,
+                    "covered_msi": 0.6818,
+                    "statements": 46,
+                    "line_coverage": 0.587,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-08": {
+                    "module": "Reporting, search and audit trail",
+                    "mutants_total": 74,
+                    "mutants_killed": 22,
+                    "mutants_escaped": 32,
+                    "mutants_uncovered": 20,
+                    "msi": 0.2973,
+                    "covered_msi": 0.4074,
+                    "statements": 68,
+                    "line_coverage": 0.5,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-09": {
+                    "module": "Authentication and session",
+                    "mutants_total": 45,
+                    "mutants_killed": 15,
+                    "mutants_escaped": 18,
+                    "mutants_uncovered": 12,
+                    "msi": 0.3333,
+                    "covered_msi": 0.4545,
+                    "statements": 40,
+                    "line_coverage": 0.65,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-10": {
+                    "module": "Risk scoring",
+                    "mutants_total": 210,
+                    "mutants_killed": 21,
+                    "mutants_escaped": 103,
+                    "mutants_uncovered": 86,
+                    "msi": 0.1,
+                    "covered_msi": 0.1694,
+                    "statements": 133,
+                    "line_coverage": 0.6917,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-11": {
+                    "module": "AI case-summary assistant",
+                    "mutants_total": 92,
+                    "mutants_killed": 13,
+                    "mutants_escaped": 62,
+                    "mutants_uncovered": 17,
+                    "msi": 0.1413,
+                    "covered_msi": 0.1733,
+                    "statements": 72,
+                    "line_coverage": 0.8194,
+                    "branches": 0,
+                    "branch_coverage": null
+                }
+            },
+            "totals": {
+                "mutants_total": 974,
+                "msi": 0.2752,
+                "covered_msi": 0.4309,
+                "line_coverage": 0.6244
+            }
+        },
+        "B": {
+            "by_module": {
+                "MOD-01": {
+                    "module": "Case intake and registration",
+                    "mutants_total": 112,
+                    "mutants_killed": 51,
+                    "mutants_escaped": 18,
+                    "mutants_uncovered": 43,
+                    "msi": 0.4554,
+                    "covered_msi": 0.7391,
+                    "statements": 54,
+                    "line_coverage": 0.7593,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-02": {
+                    "module": "Eligibility engine",
+                    "mutants_total": 170,
+                    "mutants_killed": 73,
+                    "mutants_escaped": 75,
+                    "mutants_uncovered": 22,
+                    "msi": 0.4294,
+                    "covered_msi": 0.4932,
+                    "statements": 154,
+                    "line_coverage": 0.8831,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-03": {
+                    "module": "Role-based access control",
+                    "mutants_total": 93,
+                    "mutants_killed": 35,
+                    "mutants_escaped": 23,
+                    "mutants_uncovered": 35,
+                    "msi": 0.3763,
+                    "covered_msi": 0.6034,
+                    "statements": 83,
+                    "line_coverage": 0.6265,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-04": {
+                    "module": "Case and appeals workflow",
+                    "mutants_total": 21,
+                    "mutants_killed": 13,
+                    "mutants_escaped": 5,
+                    "mutants_uncovered": 3,
+                    "msi": 0.619,
+                    "covered_msi": 0.7222,
+                    "statements": 15,
+                    "line_coverage": 0.9333,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-05": {
+                    "module": "SLA tracking",
+                    "mutants_total": 71,
+                    "mutants_killed": 20,
+                    "mutants_escaped": 10,
+                    "mutants_uncovered": 41,
+                    "msi": 0.2817,
+                    "covered_msi": 0.6667,
+                    "statements": 86,
+                    "line_coverage": 0.3953,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-06": {
+                    "module": "Document and attachment handling",
+                    "mutants_total": 50,
+                    "mutants_killed": 23,
+                    "mutants_escaped": 17,
+                    "mutants_uncovered": 10,
+                    "msi": 0.46,
+                    "covered_msi": 0.575,
+                    "statements": 21,
+                    "line_coverage": 0.7619,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-07": {
+                    "module": "Notifications",
+                    "mutants_total": 36,
+                    "mutants_killed": 17,
+                    "mutants_escaped": 5,
+                    "mutants_uncovered": 14,
+                    "msi": 0.4722,
+                    "covered_msi": 0.7727,
+                    "statements": 46,
+                    "line_coverage": 0.587,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-08": {
+                    "module": "Reporting, search and audit trail",
+                    "mutants_total": 74,
+                    "mutants_killed": 11,
+                    "mutants_escaped": 17,
+                    "mutants_uncovered": 46,
+                    "msi": 0.1486,
+                    "covered_msi": 0.3929,
+                    "statements": 68,
+                    "line_coverage": 0.5735,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-09": {
+                    "module": "Authentication and session",
+                    "mutants_total": 45,
+                    "mutants_killed": 18,
+                    "mutants_escaped": 15,
+                    "mutants_uncovered": 12,
+                    "msi": 0.4,
+                    "covered_msi": 0.5455,
+                    "statements": 40,
+                    "line_coverage": 0.65,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-10": {
+                    "module": "Risk scoring",
+                    "mutants_total": 210,
+                    "mutants_killed": 23,
+                    "mutants_escaped": 101,
+                    "mutants_uncovered": 86,
+                    "msi": 0.1095,
+                    "covered_msi": 0.1855,
+                    "statements": 133,
+                    "line_coverage": 0.6917,
+                    "branches": 0,
+                    "branch_coverage": null
+                },
+                "MOD-11": {
+                    "module": "AI case-summary assistant",
+                    "mutants_total": 92,
+                    "mutants_killed": 24,
+                    "mutants_escaped": 57,
+                    "mutants_uncovered": 11,
+                    "msi": 0.2609,
+                    "covered_msi": 0.2963,
+                    "statements": 72,
+                    "line_coverage": 0.8611,
+                    "branches": 0,
+                    "branch_coverage": null
+                }
+            },
+            "totals": {
+                "mutants_total": 974,
+                "msi": 0.3162,
+                "covered_msi": 0.4731,
+                "line_coverage": 0.6982
+            }
+        }
+    }
+}

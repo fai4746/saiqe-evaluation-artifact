@@ -1,0 +1,197 @@
+{
+    "arm": "A",
+    "generated_at": "2026-08-12T18:12:31+00:00",
+    "wall_seconds": 8.11,
+    "stage_seconds": {
+        "C-01": 4.963,
+        "C-02": 0,
+        "C-03": 0,
+        "C-04": 0,
+        "C-05": 3.134,
+        "C-06": 0.001,
+        "C-07": 0,
+        "C-08": 0,
+        "C-12": 0.006,
+        "C-14": 0
+    },
+    "gate": {
+        "decision": "PASS",
+        "evaluated": [
+            {
+                "id": "G-01",
+                "control": "C-01",
+                "arm": "both",
+                "fact": "tests_failing",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "BLOCK",
+                "obligation": "ISO/IEC/IEEE 29119-3 \u2014 a release is not made on a failing suite",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "tests_failing = 0 satisfies == 0"
+            },
+            {
+                "id": "G-02",
+                "control": "C-01",
+                "arm": "A",
+                "fact": "line_coverage",
+                "operator": ">=",
+                "threshold": 0.6,
+                "on_violation": "BLOCK",
+                "obligation": "Internal quality policy \u2014 the baseline admission gate",
+                "observed": 0.6244,
+                "outcome": "PASS",
+                "explanation": "line_coverage = 0.6244 satisfies >= 0.6"
+            },
+            {
+                "id": "G-05",
+                "control": "C-03",
+                "arm": "both",
+                "fact": "unresolved_true_positives",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "BLOCK",
+                "obligation": "CRA Annex I Part I \u2014 no known exploitable defect ships",
+                "observed": null,
+                "outcome": "NOT_EVALUATED",
+                "explanation": "fact 'unresolved_true_positives' was not produced by this pipeline"
+            },
+            {
+                "id": "G-06",
+                "control": "C-06",
+                "arm": "both",
+                "fact": "secrets_found",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "BLOCK",
+                "obligation": "ISO/IEC 27001 A.8.24",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "secrets_found = 0 satisfies == 0"
+            },
+            {
+                "id": "G-11",
+                "control": "C-14",
+                "arm": "both",
+                "fact": "accessibility_failures",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "WARN",
+                "obligation": "EN 301 549 \u00a79",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "accessibility_failures = 0 satisfies == 0"
+            },
+            {
+                "id": "G-12",
+                "control": "C-05",
+                "arm": "both",
+                "fact": "vulnerable_dependencies",
+                "operator": "==",
+                "threshold": 0,
+                "on_violation": "BLOCK",
+                "obligation": "CRA Annex I Part II(1) \u2014 no shipped component carries a known exploitable vulnerability",
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "vulnerable_dependencies = 0 satisfies == 0"
+            }
+        ],
+        "blocking": [],
+        "warnings": []
+    },
+    "evidence_chain": {
+        "intact": true,
+        "records": 0,
+        "signature_failures": 0,
+        "chain_breaks": 0
+    },
+    "metrics": {
+        "M15_control_coverage": 0.4375,
+        "M16_evidence_completeness": 0,
+        "M17_traceability": 0.8519,
+        "M28_wall_seconds": 8.11,
+        "M11_precision": null,
+        "M12_adversarial_pass_rate": null,
+        "M08_density_by_provenance": null
+    },
+    "controls": {
+        "C-01": {
+            "executed": true,
+            "evidence_signed": false
+        },
+        "C-02": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-03": {
+            "executed": true,
+            "evidence_signed": false
+        },
+        "C-04": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-05": {
+            "executed": true,
+            "evidence_signed": false
+        },
+        "C-06": {
+            "executed": true,
+            "evidence_signed": false
+        },
+        "C-07": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-08": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-09": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-10": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-11": {
+            "executed": true,
+            "evidence_signed": false
+        },
+        "C-12": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-13": {
+            "executed": true,
+            "evidence_signed": false
+        },
+        "C-14": {
+            "executed": true,
+            "evidence_signed": false
+        },
+        "C-15": {
+            "executed": false,
+            "evidence_signed": false
+        },
+        "C-16": {
+            "executed": false,
+            "evidence_signed": false
+        }
+    },
+    "facts": {
+        "tests_failing": 0,
+        "line_coverage": 0.6244,
+        "covered_msi": null,
+        "untriaged_findings": 9,
+        "unresolved_true_positives": null,
+        "secrets_found": 0,
+        "adversarial_pass_rate": null,
+        "provenance_complete": false,
+        "traceability_completeness": 0.8519,
+        "evidence_chain_intact": null,
+        "accessibility_failures": 0,
+        "vulnerable_dependencies": 0
+    }
+}

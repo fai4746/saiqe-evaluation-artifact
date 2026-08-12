@@ -1,0 +1,112 @@
+name: SAIQE evaluation
+
+# Runs the parts of the evaluation that are reproducible in CI: the blinding
+# control, both suites on a clean build, and the AI adversarial lane. The
+# mutation run and the 24-release replay are long and are left to a manual
+# dispatch.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      full:
+        description: 'Also run mutation testing and the operational replay'
+        type: boolean
+        default: false
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+          MYSQL_DATABASE: fccsms_saiqe
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping" --health-interval=10s
+          --health-timeout=5s --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP with a coverage driver
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, mbstring, intl, zip
+          coverage: pcov
+
+      - name: Install PHP dependencies
+        run: composer install --no-interaction --no-progress
+
+      - name: Load the system under test's database
+        run: mysql -h 127.0.0.1 -u root fccsms_saiqe < raw/fccsms_baseline.sql
+
+      - name: Blinding control B2
+        run: php harness/bin/check_blinding.php
+
+      - name: Arm A suite (clean build)
+        run: vendor/bin/phpunit --testsuite arm-a --no-coverage
+
+      - name: Arm B suite (clean build)
+        run: vendor/bin/phpunit --testsuite arm-b --no-coverage
+
+      - name: Equal-budget check
+        run: |
+          A=$(grep -rc "public function test" harness/tests/ArmA | awk -F: '{s+=$2} END {print s}')
+          B=$(grep -rc "public function test" harness/tests/ArmB | awk -F: '{s+=$2} END {print s}')
+          echo "Arm A: $A tests, Arm B: $B tests"
+          [ "$A" = "$B" ] || { echo "Budget constraint violated — the arms must author the same number of tests"; exit 1; }
+
+      - name: AI adversarial lane
+        run: php harness/bin/run_adversarial.php
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install analysis dependencies
+        run: pip install semgrep detect-secrets scipy numpy openpyxl
+
+      - name: Static analysis
+        run: |
+          semgrep scan --config=p/php --config=p/owasp-top-ten --config=p/secrets \
+            --json --output=results/sast/semgrep.json --metrics=off --quiet sut/
+          semgrep scan --config=policy/semgrep/saiqe-properties.yaml \
+            --json --output=results/sast/semgrep_saiqe.json --metrics=off --quiet \
+            --exclude=views --exclude=database --exclude=public --exclude=uploads sut/
+
+      - name: Triage and precision
+        run: php harness/bin/triage_findings.php
+
+      - name: Detection runs
+        if: inputs.full
+        run: |
+          php harness/bin/run_detection.php A
+          php harness/bin/run_detection.php B
+
+      - name: Mutation testing
+        if: inputs.full
+        run: |
+          vendor/bin/infection --test-framework-options="--testsuite=arm-a" --threads=4 --no-progress --no-interaction
+          cp results/infection/infection.json results/infection_arm_A.json
+          vendor/bin/infection --test-framework-options="--testsuite=arm-b" --threads=4 --no-progress --no-interaction
+          cp results/infection/infection.json results/infection_arm_B.json
+          php harness/bin/aggregate_quality.php
+
+      - name: Paired analysis
+        if: inputs.full
+        run: python harness/bin/analyse.py
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saiqe-results
+          path: results/

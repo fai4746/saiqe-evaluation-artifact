@@ -1,0 +1,162 @@
+# SAIQE security-property rules (Arm B only)
+#
+# Derived from docs/SPEC-security-properties.md — the same module-agnostic
+# checklist Arm B authors tests against. Each rule states a property, not a
+# known defect: no rule names a file, a function, or a seeded fault, and the
+# set was written before it was run against this codebase.
+#
+# Pillar 2 of the framework prescribes exactly this: the generic property
+# catalogue expressed as executable checks, so that the property is verified
+# wherever it has a referent rather than only where someone remembered to look.
+
+rules:
+  - id: saiqe-sp02-loose-identity-comparison
+    languages: [php]
+    severity: ERROR
+    message: >-
+      SP-02: identity or role membership decided by a non-strict comparison.
+      A value of another type that loosely compares equal will be admitted.
+    metadata:
+      property: SP-02
+      cwe: "CWE-697: Incorrect Comparison"
+      confidence: MEDIUM
+    patterns:
+      - pattern-either:
+          - pattern: in_array($NEEDLE, $HAYSTACK)
+          - pattern: in_array($NEEDLE, $HAYSTACK, false)
+      - metavariable-regex:
+          metavariable: $NEEDLE
+          regex: (?i).*(role|user|owner|principal|permission|id)\b.*
+
+  - id: saiqe-sp05-sql-fragment-interpolated
+    languages: [php]
+    severity: ERROR
+    message: >-
+      SP-05: a variable is interpolated into a SQL statement. ORDER BY and
+      identifiers cannot be parameterised, so the value must be allow-listed
+      before it reaches the statement.
+    metadata:
+      property: SP-05
+      cwe: "CWE-89: SQL Injection"
+      confidence: HIGH
+    pattern-either:
+      - pattern: $DB->query("...$X...")
+      - pattern: $DB->prepare("...$X...")
+      - pattern: $DB->exec("...$X...")
+      - pattern: $SQL .= $X;
+
+  - id: saiqe-sp05-unescaped-output
+    languages: [php]
+    severity: WARNING
+    message: >-
+      SP-05: a value is returned or echoed for HTML display without escaping.
+      If any part of it originates outside the trust boundary it becomes markup.
+    metadata:
+      property: SP-05
+      cwe: "CWE-79: Cross-site Scripting"
+      confidence: LOW
+    patterns:
+      - pattern-either:
+          - pattern: echo $X;
+          - pattern: print $X;
+      - pattern-not: echo htmlspecialchars(...);
+      - pattern-not: echo htmlentities(...);
+      - pattern-not: echo (int) $X;
+      - pattern-not: echo (float) $X;
+
+  - id: saiqe-sp07-storage-name-from-input
+    languages: [php]
+    severity: ERROR
+    message: >-
+      SP-07: a filesystem path is composed from a value that may be
+      caller-supplied. Storage names must be system-generated.
+    metadata:
+      property: SP-07
+      cwe: "CWE-22: Path Traversal"
+      confidence: MEDIUM
+    pattern-either:
+      - pattern: move_uploaded_file($TMP, $DIR . $NAME)
+      - pattern: file_put_contents($DIR . $NAME, ...)
+      - pattern: fopen($DIR . $NAME, ...)
+
+  - id: saiqe-sp08-credential-in-record
+    languages: [php]
+    severity: ERROR
+    message: >-
+      SP-08: a credential-shaped value is placed into a structure that is
+      persisted or logged. Records identify the attempt, not the secret.
+    metadata:
+      property: SP-08
+      cwe: "CWE-532: Insertion of Sensitive Information into Log File"
+      confidence: HIGH
+    patterns:
+      - pattern-either:
+          - pattern: $ARR[$K] = $PW;
+          - pattern: $F(..., $PW, ...)
+      - metavariable-regex:
+          metavariable: $PW
+          regex: ^\$(password|passwd|pwd|secret|token|attempted|credential)[A-Za-z_]*$
+      - pattern-inside: |
+          function $FN(...) { ... }
+      - metavariable-regex:
+          metavariable: $FN
+          regex: (?i).*(log|record|audit|track|report|event).*
+
+  - id: saiqe-sp03-signature-compared-loosely
+    languages: [php]
+    severity: ERROR
+    message: >-
+      SP-03: a signature or MAC is compared with a variable-time operator.
+      Use hash_equals() so the comparison does not leak and cannot be skipped.
+    metadata:
+      property: SP-03
+      cwe: "CWE-347: Improper Verification of Cryptographic Signature"
+      confidence: HIGH
+    patterns:
+      - pattern-either:
+          - pattern: $SIG == $EXPECTED
+          - pattern: $SIG === $EXPECTED
+          - pattern: strcmp($SIG, $EXPECTED)
+      - metavariable-regex:
+          metavariable: $SIG
+          regex: (?i)^\$.*(sig|signature|mac|hmac|digest|checksum).*
+
+  - id: saiqe-sp09-login-without-session-regeneration
+    languages: [php]
+    severity: WARNING
+    message: >-
+      SP-09: a function establishes an authenticated session without
+      regenerating the session identifier. The pre-authentication identifier
+      survives, which is session fixation.
+    metadata:
+      property: SP-09
+      cwe: "CWE-384: Session Fixation"
+      confidence: LOW
+    patterns:
+      - pattern: |
+          function $F(...) { ... $_SESSION[$K] = $V; ... }
+      - pattern-not: |
+          function $F(...) { ... session_regenerate_id(...); ... }
+      - metavariable-regex:
+          metavariable: $F
+          regex: (?i)^(login|signin|authenticate|establishSession)$
+
+  - id: saiqe-sp11-untrusted-content-unfenced-in-model-context
+    languages: [php]
+    severity: ERROR
+    message: >-
+      SP-11: externally-sourced text is concatenated into a model prompt or
+      context without a delimiter marking it as data. Instructions and data
+      then share one channel.
+    metadata:
+      property: SP-11
+      owasp_llm: "LLM01: Prompt Injection"
+      confidence: MEDIUM
+    patterns:
+      - pattern-either:
+          - pattern: $THIS->complete($SYS, $CTX . $UNTRUSTED)
+          - pattern: $THIS->complete($SYS, "...$UNTRUSTED...")
+          - pattern: $PROMPT = $BASE . $UNTRUSTED;
+      - metavariable-regex:
+          metavariable: $UNTRUSTED
+          regex: (?i)^\$(untrusted|user|input|narrative|document|content|applicant|external).*

@@ -1,0 +1,78 @@
+{
+  "schema": "saiqe.modules/1",
+  "system_under_test": "FCCSMS — Federal Case & Citizen Service Management System",
+  "unit_of_analysis": "module",
+  "rationale": "One application is n=1. The module is the independently testable unit, giving paired observations across arms (evaluation playbook, Part 1).",
+  "modules": [
+    {
+      "id": "MOD-01",
+      "name": "Case intake and registration",
+      "security_surface": "Input validation, boundary enforcement, state manipulation",
+      "primary_units": ["app/core/IntakeValidator.php", "app/controllers/WizardController.php", "app/core/FormRenderer.php"]
+    },
+    {
+      "id": "MOD-02",
+      "name": "Eligibility engine",
+      "security_surface": "Business-logic flaws, calculation tampering",
+      "primary_units": ["app/core/EligibilityEngine.php"]
+    },
+    {
+      "id": "MOD-03",
+      "name": "Role-based access control",
+      "security_surface": "Authorisation bypass, privilege escalation, IDOR, token forgery",
+      "primary_units": ["core/Auth.php", "api/v1/index.php"],
+      "measured_units": ["core/Auth.php"]
+    },
+    {
+      "id": "MOD-04",
+      "name": "Case and appeals workflow",
+      "security_surface": "State-transition abuse, authorisation on transitions",
+      "primary_units": ["app/core/WorkflowPolicy.php", "app/controllers/CaseController.php", "app/controllers/SupervisorController.php"],
+      "measured_units": ["app/core/WorkflowPolicy.php"]
+    },
+    {
+      "id": "MOD-05",
+      "name": "SLA tracking",
+      "security_surface": "Time manipulation, deadline computation, breach suppression",
+      "primary_units": ["app/models/SLAModel.php"]
+    },
+    {
+      "id": "MOD-06",
+      "name": "Document and attachment handling",
+      "security_surface": "Unrestricted file upload, path traversal, size exhaustion",
+      "primary_units": ["app/core/UploadValidator.php", "app/controllers/DocumentController.php"]
+    },
+    {
+      "id": "MOD-07",
+      "name": "Notifications",
+      "security_surface": "Stored XSS, cross-tenant information disclosure",
+      "primary_units": ["app/models/NotificationModel.php"]
+    },
+    {
+      "id": "MOD-08",
+      "name": "Reporting, search and audit trail",
+      "security_surface": "SQL injection, audit-record integrity",
+      "primary_units": ["app/models/AuditLogModel.php"]
+    },
+    {
+      "id": "MOD-09",
+      "name": "Authentication and session",
+      "security_surface": "Session fixation, CSRF, credential exposure, brute force",
+      "primary_units": ["core/Session.php", "app/controllers/AuthController.php"],
+      "measured_units": ["core/Session.php"]
+    },
+    {
+      "id": "MOD-10",
+      "name": "Risk scoring",
+      "security_surface": "Risk-tier manipulation, review-gate evasion",
+      "primary_units": ["app/core/RiskScoreEngine.php"]
+    },
+    {
+      "id": "MOD-11",
+      "name": "AI case-summary assistant",
+      "security_surface": "Prompt injection, insecure output handling, excessive agency",
+      "primary_units": ["app/ai/CaseSummaryAssistant.php", "app/ai/ToolBroker.php"],
+      "note": "Added to the system under test so that OWASP LLM Top 10 properties become measurable. Backed by a deterministic adapter, not a hosted model — see the instrumentation note in the paper."
+    }
+  ]
+}
