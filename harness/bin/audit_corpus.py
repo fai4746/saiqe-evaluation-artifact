@@ -74,7 +74,7 @@ CORPUS = [
     ("Veracode", 2026, INC, "Grey Tier 2 (vendor benchmarking), correctly labelled. Load-bearing for the 55% security pass rate; the tiering caveat in §2.1 applies and is stated."),
     ("Wang et al.", 2024, SEC, "EC2: survey, therefore secondary. Peer-reviewed (IEEE TSE). Retained for landscape framing."),
     ("Ward & Habli", 2020, INC, "Peer-reviewed (SAFECOMP workshops). IC1–IC5 satisfied."),
-    ("Wienczkowski", 2026, FLAG, "Weakest source in the corpus. IC3 unsatisfied: single-authored arXiv preprint marked 'submitted for review'. It is also the sole support for the structural–adaptive fragmentation gap, which §3.3 and §1.2 both lean on. Either corroborate the claim independently or soften it."),
+    ("Wienczkowski", 2026, FLAG, "IC3 unsatisfied: single-authored arXiv preprint marked 'submitted for review'. RESOLVED: it was the sole support for the structural–adaptive fragmentation gap in §1.2 and §3.3; both now rest on Binbeshr & Imam (2025) and Mohammed et al. (2025), peer-reviewed, and cite this source for terminology only. Venue check still outstanding."),
     ("Willison", 2025, TIER3, "Grey Tier 3. The protocol excludes Tier 3 from any evidentiary claim; the reference list correctly says 'cite as a design heuristic, not evidence'. Verify §3.5 uses it only heuristically — it currently does."),
     ("Wohlin", 2014, MTH, "Snowballing guidelines. Cited for method, not evidence. IC2 does not apply."),
     ("Yang et al.", 2024, INC, "Peer-reviewed. IC1–IC5 satisfied."),

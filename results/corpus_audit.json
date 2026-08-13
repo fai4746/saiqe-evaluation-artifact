@@ -244,7 +244,7 @@
       "source": "Wienczkowski",
       "year": 2026,
       "verdict": "flag",
-      "note": "Weakest source in the corpus. IC3 unsatisfied: single-authored arXiv preprint marked 'submitted for review'. It is also the sole support for the structural–adaptive fragmentation gap, which §3.3 and §1.2 both lean on. Either corroborate the claim independently or soften it."
+      "note": "IC3 unsatisfied: single-authored arXiv preprint marked 'submitted for review'. RESOLVED: it was the sole support for the structural–adaptive fragmentation gap in §1.2 and §3.3; both now rest on Binbeshr & Imam (2025) and Mohammed et al. (2025), peer-reviewed, and cite this source for terminology only. Venue check still outstanding."
     },
     {
       "source": "Willison",
