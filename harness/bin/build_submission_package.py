@@ -37,11 +37,11 @@ FILES = [
 
     # ── figures ───────────────────────────────────────────────
     (RESEARCH / "initial docszip/05_saiqe_framework_diagram.svg",
-     "02_figures/figure3_saiqe_framework.svg",
-     "Figure 3. CORRECTED: Pillar 1 leads with security-property authoring; the mutation gate is marked not-validated-here."),
+     "02_figures/figure1_saiqe_framework.svg",
+     "Figure 1 (was Figure 3; renumbered when the PRISMA figure was withdrawn). CORRECTED: Pillar 1 leads with security-property authoring; the mutation gate is marked not-validated-here."),
     (RESEARCH / "files/11_figure5_paired_outcomes.svg",
-     "02_figures/figure5_paired_outcomes.svg",
-     "Figure 5. NEW. Generated from statistics.json, so it cannot disagree with Table 5."),
+     "02_figures/figure2_paired_outcomes.svg",
+     "Figure 2 (was Figure 5). NEW. Generated from statistics.json, so it cannot disagree with Table 5."),
 
     # ── supplementary ─────────────────────────────────────────
     (SAIQE / "results/04_saiqe_supplementary_matrices_UPDATED.xlsx",

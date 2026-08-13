@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Figure 5 — per-module paired outcomes, Arm A against Arm B.
+Figure 2 — per-module paired outcomes, Arm A against Arm B.
 
 Drawn directly from results/statistics.json so the figure cannot disagree with
 the table. Emits SVG with no external dependencies.
@@ -43,7 +43,7 @@ add(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" 
     f'font-family="Segoe UI, Helvetica, Arial, sans-serif">')
 add(f'<rect width="{W}" height="{H}" fill="#ffffff"/>')
 add(f'<text x="40" y="38" font-size="17" font-weight="600" fill="#171717">'
-    f'Figure 5 — Per-module outcomes, baseline against SAIQE (n = {len(modules)} modules)</text>')
+    f'Figure 2 — Per-module outcomes, baseline against SAIQE (n = {len(modules)} modules)</text>')
 add('<text x="40" y="60" font-size="12" fill="#595959">'
     'Each line is one module. The measure that separates the arms is detection, not mutation score.</text>')
 
