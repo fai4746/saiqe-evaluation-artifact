@@ -29,16 +29,33 @@ much by construction.
 
 | Measure | Arm A | Arm B |
 |---|---|---|
-| Seeded-defect detection (31 defects) | 35.5% | **96.8%** |
+| Seeded-defect detection (31 defects) | 35.5% | **96.8%** (δ = +0.87, p = 0.0039) |
 | — security defects only (17) | 17.6% | **100%** |
-| Mutation score, covered code | 43.1% | 47.3% *(δ = −0.02, p = 1.000 — no discrimination)* |
+| Mutation score, covered code | 43.09% | 47.32% *(δ = −0.02, p = 1.000 — no discrimination)* |
+| Security-finding precision, strict | not measured | 3.85% (2/52) |
+| Adversarial pass rate, clean build as first measured | no lane | 94.7% (36/38) |
+| — after the defeated control was repaired | no lane | 100% (38/38) |
 | Audit requests satisfiable, of 10 | **0** | **10** |
 | Release-gate decision | PASS | **BLOCK** |
-| Deployment frequency (simulated, 24 releases) | 50% | 25% |
+| Gate-stage wall clock (median of 5) | 5.52 s | 8.07 s (+46.2%) |
 
 The mutation-gate result is a **null**: the framework's headline admission
 criterion did not separate the arms. The security-property checklist did. See
 §7.5 of the paper, and `docs/SECTION-7-evaluation.md` here.
+
+Two figures are reported in pairs on purpose. The adversarial suite failed 2 of
+38 trials on its first clean run — a delimiter-escape defeating the framework's
+own prompt-injection fencing — and passes 38/38 only after that control was
+repaired. The gap between those rows is the finding; reporting only the 100%
+would be selective. Likewise the 3.85% precision is reported prominently because
+it is far below the 20–30% abandonment threshold the framework's own argument
+rests on.
+
+Every figure in the paper is cross-checked against the raw files in `results/`:
+
+```bash
+php harness/bin/verify_manuscript.php <path-to-manuscript.md>
+```
 
 ---
 
