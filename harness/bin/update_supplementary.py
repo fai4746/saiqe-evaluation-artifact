@@ -134,6 +134,38 @@ def main():
 
     changes.append(f"Metrics-Catalogue: measured outcomes recorded for {filled} metrics")
 
+    # ── Corpus-Audit: new sheet ───────────────────────────────
+    audit_path = RESULTS / "corpus_audit.json"
+    if audit_path.exists():
+        audit = json.loads(audit_path.read_text(encoding="utf-8"))
+        ws = wb.create_sheet("Corpus-Audit") if "Corpus-Audit" not in wb.sheetnames else wb["Corpus-Audit"]
+        ws.delete_rows(1, ws.max_row or 1)
+        ws.cell(1, 1, "Post-hoc criteria audit of the review corpus").font = bold
+        ws.cell(2, 1, audit["is_not"].capitalize() + ". " + audit["independence"] + ".")
+        ws.cell(3, 1, audit["population"].capitalize() + ".")
+        for i, h in enumerate(["Source", "Year", "Verdict", "Reason"], start=1):
+            ws.cell(5, i, h).font = bold
+        r = 6
+        for e in audit["entries"]:
+            ws.cell(r, 1, e["source"]); ws.cell(r, 2, e["year"])
+            ws.cell(r, 3, e["verdict"]); ws.cell(r, 4, e["note"])
+            r += 1
+        r += 1
+        ws.cell(r, 1, "Cited in the text but absent from the reference list").font = bold
+        r += 1
+        for m in audit["cited_but_missing_from_references"]:
+            ws.cell(r, 1, m["key"]); ws.cell(r, 2, m["year"])
+            ws.cell(r, 3, "resolved"); ws.cell(r, 4, m["issue"] + " ADDED to the reference list.")
+            r += 1
+        r += 1
+        ws.cell(r, 1, "Criteria not checkable from metadata").font = bold
+        r += 1
+        for c, why in audit["criteria_not_checkable_from_metadata"].items():
+            ws.cell(r, 1, c); ws.cell(r, 4, why); r += 1
+        for col, width in ((1, 34), (2, 8), (3, 24), (4, 110)):
+            ws.column_dimensions[openpyxl.utils.get_column_letter(col)].width = width
+        changes.append(f"Corpus-Audit: new sheet, {len(audit['entries'])} sources")
+
     # ── README sheet: provenance of this update ───────────────
     ws = wb["README"]
     last = ws.max_row + 2

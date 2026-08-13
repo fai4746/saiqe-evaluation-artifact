@@ -1,0 +1,280 @@
+{
+  "audit": "post-hoc criteria audit of the review corpus",
+  "is_not": "intra-rater agreement; no prior screening decisions exist, so no kappa is computed",
+  "population": "literature corpus only; standards and regulatory instruments belong to the Phase 2 corpus and are governed by a different protocol",
+  "sources_audited": 41,
+  "verdicts": {
+    "include": 20,
+    "retain_secondary": 5,
+    "retain_foundational": 3,
+    "flag": 9,
+    "method_reference": 3,
+    "tier3_non_evidential": 1
+  },
+  "cited_but_missing_from_references": [
+    {
+      "key": "Kitchenham & Charters",
+      "year": 2007,
+      "issue": "Cited in §2.1 as the source of the systematic review procedure, and ABSENT from the reference list. The review's own methodological basis is uncited."
+    },
+    {
+      "key": "Garousi et al.",
+      "year": 2019,
+      "issue": "Cited in §2.1 for grey-literature inclusion and appraisal, and ABSENT from the reference list. The tiering scheme the paper relies on is uncited."
+    }
+  ],
+  "criteria_not_checkable_from_metadata": {
+    "IC5": "full text obtainable — not checkable without retrieving every source",
+    "EC6": "under 4 pages — not checkable without the documents",
+    "EC5": "duplicate reporting of the same study — no retrieved-record set exists to deduplicate against"
+  },
+  "independence": "IC1, EC1 and EC3 require judgement; that judgement is the author's own and is not independent",
+  "entries": [
+    {
+      "source": "Ami et al.",
+      "year": 2024,
+      "verdict": "include",
+      "note": "Peer-reviewed interview study on SAST use. IC1–IC5 satisfied; no EC trips."
+    },
+    {
+      "source": "Barr et al.",
+      "year": 2015,
+      "verdict": "retain_secondary",
+      "note": "EC2: a survey, therefore secondary. Also pre-window; the oracle problem is foundational to testing but is not one of the three categories the stated IC2 extension names. Retained for framing, not counted as primary evidence."
+    },
+    {
+      "source": "Bessey et al.",
+      "year": 2010,
+      "verdict": "retain_foundational",
+      "note": "IC2 exception: 2010, outside the window and outside the stated 2014 extension. Retained as the foundational source for the false-positive abandonment threshold. The exception must be declared, not silent."
+    },
+    {
+      "source": "Beurer-Kellner et al.",
+      "year": 2025,
+      "verdict": "flag",
+      "note": "IC3 unsatisfied as cited: preprint with no venue, and the entry uses 'et al.' in place of a full author list. Resolve the venue and complete the authors, or drop."
+    },
+    {
+      "source": "Binbeshr & Imam",
+      "year": 2025,
+      "verdict": "retain_secondary",
+      "note": "EC2: comparative analysis of 18 primary studies, therefore secondary. Peer-reviewed (EASE companion). Retained for gap comparison — which is how §3.3 uses it."
+    },
+    {
+      "source": "Capgemini, Sogeti & OpenText",
+      "year": 2025,
+      "verdict": "include",
+      "note": "Grey Tier 2 (industry survey, n>2,000). IC3 satisfied via the Tier 1/2 clause. Used for adoption figures, which is within Tier 2's remit."
+    },
+    {
+      "source": "Chandramouli et al.",
+      "year": 2024,
+      "verdict": "include",
+      "note": "Grey Tier 1 (NIST SP 800-204D). IC3 satisfied."
+    },
+    {
+      "source": "Chen et al.",
+      "year": 2026,
+      "verdict": "flag",
+      "note": "IC3 unsatisfied as cited: arXiv preprint. Load-bearing in §3.2 for the agentic-testing counter-evidence. Check for a published version; if none, label as preprint at the point of use."
+    },
+    {
+      "source": "Cloud Security Alliance",
+      "year": 2026,
+      "verdict": "include",
+      "note": "Grey Tier 1 (CSA named as Tier 1 in the protocol). NOTE: cited in text as [CSA, 2026] but listed under 'Cloud Security Alliance AI Safety Initiative' — citation key does not match the entry."
+    },
+    {
+      "source": "GitClear",
+      "year": 2025,
+      "verdict": "include",
+      "note": "Grey Tier 2 (vendor analysis), correctly labelled. Used for a volume claim, not a security claim."
+    },
+    {
+      "source": "Greshake et al.",
+      "year": 2023,
+      "verdict": "include",
+      "note": "Peer-reviewed (AISec). IC1–IC5 satisfied."
+    },
+    {
+      "source": "He et al.",
+      "year": 2026,
+      "verdict": "include",
+      "note": "Quasi-experimental DiD study. IC1–IC5 satisfied on the entry as written; confirm the venue is final."
+    },
+    {
+      "source": "Hevner et al.",
+      "year": 2004,
+      "verdict": "method_reference",
+      "note": "Design Science Research methodology. Cited for method, not evidence. Correctly outside the evidence corpus; IC2 does not apply."
+    },
+    {
+      "source": "Inozemtseva & Holmes",
+      "year": 2014,
+      "verdict": "include",
+      "note": "IC2 satisfied via the stated extension — test-suite effectiveness is explicitly one of the three named categories."
+    },
+    {
+      "source": "Iranmanesh et al.",
+      "year": 2025,
+      "verdict": "flag",
+      "note": "IC3 unsatisfied as cited: arXiv preprint. Cited in §3.3 and §5.3 for specific F1 figures, so the venue matters."
+    },
+    {
+      "source": "Just et al.",
+      "year": 2014,
+      "verdict": "include",
+      "note": "IC2 satisfied via the stated extension — mutation validity is explicitly named. This is the source the whole Pillar 1 gate argument rests on."
+    },
+    {
+      "source": "Kelly & Weaver",
+      "year": 2004,
+      "verdict": "retain_foundational",
+      "note": "IC2 exception: 2004, outside window and outside the stated extension. Retained as the foundational GSN source. Declare the exception."
+    },
+    {
+      "source": "Lemieux et al.",
+      "year": 2023,
+      "verdict": "include",
+      "note": "Peer-reviewed (ICSE). IC1–IC5 satisfied."
+    },
+    {
+      "source": "Mohammed et al.",
+      "year": 2025,
+      "verdict": "retain_secondary",
+      "note": "EC2: systematic literature review over 36 studies, therefore secondary. Peer-reviewed. Retained for gap comparison."
+    },
+    {
+      "source": "Muhammad et al.",
+      "year": 2026,
+      "verdict": "include",
+      "note": "Peer-reviewed (Frontiers in AI). IC1–IC5 satisfied."
+    },
+    {
+      "source": "Nitin et al.",
+      "year": 2025,
+      "verdict": "flag",
+      "note": "IC3 unsatisfied as cited: arXiv preprint. Cited in §3.5 and §5.2 for the proof-of-vulnerability mechanism."
+    },
+    {
+      "source": "OWASP GenAI Security Project",
+      "year": 2025,
+      "verdict": "include",
+      "note": "Grey Tier 1 (OWASP named as Tier 1). IC3 satisfied."
+    },
+    {
+      "source": "Pearce et al.",
+      "year": 2022,
+      "verdict": "include",
+      "note": "Peer-reviewed (IEEE S&P). IC1–IC5 satisfied."
+    },
+    {
+      "source": "Peffers et al.",
+      "year": 2007,
+      "verdict": "method_reference",
+      "note": "DSR methodology. Cited for method, not evidence. IC2 does not apply."
+    },
+    {
+      "source": "Perry et al.",
+      "year": 2023,
+      "verdict": "include",
+      "note": "Peer-reviewed (ACM CCS). IC1–IC5 satisfied."
+    },
+    {
+      "source": "Pizzorno & Berger",
+      "year": 2024,
+      "verdict": "flag",
+      "note": "Listed with an arXiv identifier and no venue, but not marked as a preprint in the reference list. Either it is published — in which case add the venue — or it is a preprint and should carry the same flag as the others."
+    },
+    {
+      "source": "Rajapakse et al.",
+      "year": 2022,
+      "verdict": "retain_secondary",
+      "note": "EC2: systematic review of 52 studies, therefore secondary. Peer-reviewed (IST). Retained for gap comparison."
+    },
+    {
+      "source": "Sadowski et al.",
+      "year": 2018,
+      "verdict": "retain_foundational",
+      "note": "IC2 exception: 2018, one year outside the window. Static analysis in industrial practice is arguably within the DevSecOps-foundations extension, but 2018 > 2014 so the extension clause does not literally cover it. Declare the exception."
+    },
+    {
+      "source": "Schäfer et al.",
+      "year": 2024,
+      "verdict": "include",
+      "note": "Peer-reviewed (IEEE TSE). The anchor result for LLM test generation. IC1–IC5 satisfied."
+    },
+    {
+      "source": "Schreiber & Tippe",
+      "year": 2025,
+      "verdict": "flag",
+      "note": "IC3 unsatisfied as cited: arXiv preprint. Carries the repository-mining counterpoint in §3.4, which the paper explicitly relies on to qualify the benchmark figures."
+    },
+    {
+      "source": "Shukla et al.",
+      "year": 2025,
+      "verdict": "include",
+      "note": "Peer-reviewed (IEEE ISTAS). IC1–IC5 satisfied."
+    },
+    {
+      "source": "Siddiq et al.",
+      "year": 2025,
+      "verdict": "flag",
+      "note": "Peer-reviewed (ICSE) so IC3 is satisfied, but verify the first author's name: the oracle-study author is commonly cited as Mohammed Latif Siddiq, and the initial given here may be wrong."
+    },
+    {
+      "source": "Veracode",
+      "year": 2026,
+      "verdict": "include",
+      "note": "Grey Tier 2 (vendor benchmarking), correctly labelled. Load-bearing for the 55% security pass rate; the tiering caveat in §2.1 applies and is stated."
+    },
+    {
+      "source": "Wang et al.",
+      "year": 2024,
+      "verdict": "retain_secondary",
+      "note": "EC2: survey, therefore secondary. Peer-reviewed (IEEE TSE). Retained for landscape framing."
+    },
+    {
+      "source": "Ward & Habli",
+      "year": 2020,
+      "verdict": "include",
+      "note": "Peer-reviewed (SAFECOMP workshops). IC1–IC5 satisfied."
+    },
+    {
+      "source": "Wienczkowski",
+      "year": 2026,
+      "verdict": "flag",
+      "note": "Weakest source in the corpus. IC3 unsatisfied: single-authored arXiv preprint marked 'submitted for review'. It is also the sole support for the structural–adaptive fragmentation gap, which §3.3 and §1.2 both lean on. Either corroborate the claim independently or soften it."
+    },
+    {
+      "source": "Willison",
+      "year": 2025,
+      "verdict": "tier3_non_evidential",
+      "note": "Grey Tier 3. The protocol excludes Tier 3 from any evidentiary claim; the reference list correctly says 'cite as a design heuristic, not evidence'. Verify §3.5 uses it only heuristically — it currently does."
+    },
+    {
+      "source": "Wohlin",
+      "year": 2014,
+      "verdict": "method_reference",
+      "note": "Snowballing guidelines. Cited for method, not evidence. IC2 does not apply."
+    },
+    {
+      "source": "Yang et al.",
+      "year": 2024,
+      "verdict": "include",
+      "note": "Peer-reviewed. IC1–IC5 satisfied."
+    },
+    {
+      "source": "Zakharchenko",
+      "year": 2026,
+      "verdict": "include",
+      "note": "Peer-reviewed (Software, MDPI). IC1–IC5 satisfied."
+    },
+    {
+      "source": "Zhao et al.",
+      "year": 2025,
+      "verdict": "flag",
+      "note": "IC3 unsatisfied as cited: arXiv preprint. Cited in §3.5 for PoC-generation rates."
+    }
+  ]
+}

@@ -95,6 +95,8 @@ FILES = [
     (SAIQE / "results/quality_by_module.json", "04_artifact/raw_results/quality_by_module.json", "M04/M05 raw, per module, both arms."),
     (SAIQE / "results/triage.json", "04_artifact/raw_results/triage.json", "M11 raw: all 52 findings with verdict and recorded reason."),
     (SAIQE / "results/statistics.json", "04_artifact/raw_results/statistics.json", "Wilcoxon, Cliff's δ, Vargha-Delaney Â₁₂. Source of Figure 5."),
+    (SAIQE / "results/corpus_audit.json", "04_artifact/corpus_audit.json",
+     "Post-hoc criteria audit of the 41 literature sources against IC1-IC5 / EC1-EC6. NOT intra-rater agreement -- no prior screening decisions exist, so no kappa."),
     (SAIQE / "results/pipeline_arm_A.json", "04_artifact/raw_results/pipeline_arm_A.json", "M15/M16/M17/M28 + gate decision, Arm A."),
     (SAIQE / "results/pipeline_arm_B.json", "04_artifact/raw_results/pipeline_arm_B.json", "M15/M16/M17/M28 + gate decision, Arm B."),
     (SAIQE / "results/evidence_audit.json", "04_artifact/raw_results/evidence_audit.json", "M18 raw: 10 auditor requests against each arm's retained evidence."),
