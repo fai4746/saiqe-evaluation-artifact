@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 470" width="980" height="470" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="980" height="470" fill="#ffffff"/>
+<text x="40" y="38" font-size="17" font-weight="600" fill="#171717">Figure 5 — Per-module outcomes, baseline against SAIQE (n = 11 modules)</text>
+<text x="40" y="60" font-size="12" fill="#595959">Each line is one module. The measure that separates the arms is detection, not mutation score.</text>
+<text x="74" y="70" font-size="13" font-weight="600" fill="#262626">Seeded-defect detection rate</text>
+<text x="74" y="86" font-size="11" fill="#1a7f4b">Cliff's δ = +0.87 (large), p = 0.0039 — significant</text>
+<line x1="74" y1="92" x2="74" y2="352" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="74" y1="352" x2="454" y2="352" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="74" y1="352.0" x2="454" y2="352.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="64" y="356.0" font-size="10" fill="#8c8c8c" text-anchor="end">0%</text>
+<line x1="74" y1="287.0" x2="454" y2="287.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="64" y="291.0" font-size="10" fill="#8c8c8c" text-anchor="end">25%</text>
+<line x1="74" y1="222.0" x2="454" y2="222.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="64" y="226.0" font-size="10" fill="#8c8c8c" text-anchor="end">50%</text>
+<line x1="74" y1="157.0" x2="454" y2="157.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="64" y="161.0" font-size="10" fill="#8c8c8c" text-anchor="end">75%</text>
+<line x1="74" y1="92.0" x2="454" y2="92.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="64" y="96.0" font-size="10" fill="#8c8c8c" text-anchor="end">100%</text>
+<text x="170" y="374" font-size="12" fill="#404040" text-anchor="middle">Arm A</text>
+<text x="358" y="374" font-size="12" fill="#404040" text-anchor="middle">Arm B</text>
+<line x1="170" y1="222.0" x2="358" y2="92.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="170" cy="222.0" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#2f6f9f"/>
+<line x1="170" y1="287.0" x2="358" y2="92.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="170" cy="287.0" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#2f6f9f"/>
+<line x1="170" y1="265.3" x2="358" y2="92.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="170" cy="265.3" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#2f6f9f"/>
+<line x1="170" y1="92.0" x2="358" y2="92.0" stroke="#b5651d" stroke-width="1.6" opacity="0.72" stroke-dasharray="3 3"/>
+<circle cx="170" cy="92.0" r="3.4" fill="#ffffff" stroke="#b5651d" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#b5651d"/>
+<line x1="170" y1="222.0" x2="358" y2="92.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="170" cy="222.0" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#2f6f9f"/>
+<line x1="170" y1="265.3" x2="358" y2="92.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="170" cy="265.3" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#2f6f9f"/>
+<line x1="170" y1="352.0" x2="358" y2="92.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="170" cy="352.0" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#2f6f9f"/>
+<line x1="170" y1="222.0" x2="358" y2="92.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="170" cy="222.0" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#2f6f9f"/>
+<line x1="170" y1="287.0" x2="358" y2="92.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="170" cy="287.0" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#2f6f9f"/>
+<line x1="170" y1="222.0" x2="358" y2="222.0" stroke="#b5651d" stroke-width="1.6" opacity="0.72" stroke-dasharray="3 3"/>
+<circle cx="170" cy="222.0" r="3.4" fill="#ffffff" stroke="#b5651d" stroke-width="1.6"/>
+<circle cx="358" cy="222.0" r="3.4" fill="#b5651d"/>
+<line x1="170" y1="352.0" x2="358" y2="92.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="170" cy="352.0" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="358" cy="92.0" r="3.4" fill="#2f6f9f"/>
+<line x1="140" y1="265.3" x2="200" y2="265.3" stroke="#171717" stroke-width="2.4"/>
+<text x="206" y="269.3" font-size="10" fill="#171717">med 33.3%</text>
+<line x1="328" y1="92.0" x2="388" y2="92.0" stroke="#171717" stroke-width="2.4"/>
+<text x="394" y="96.0" font-size="10" fill="#171717">med 100.0%</text>
+<text x="74" y="394" font-size="10.5" fill="#8c8c8c">improved 9 · regressed 0 · tied 2</text>
+<text x="550" y="70" font-size="13" font-weight="600" fill="#262626">Mutation score, covered code</text>
+<text x="550" y="86" font-size="11" fill="#a33">Cliff's δ = -0.02 (negligible), p = 1.0000 — not significant</text>
+<line x1="550" y1="92" x2="550" y2="352" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="550" y1="352" x2="930" y2="352" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="550" y1="352.0" x2="930" y2="352.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="540" y="356.0" font-size="10" fill="#8c8c8c" text-anchor="end">0%</text>
+<line x1="550" y1="287.0" x2="930" y2="287.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="540" y="291.0" font-size="10" fill="#8c8c8c" text-anchor="end">25%</text>
+<line x1="550" y1="222.0" x2="930" y2="222.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="540" y="226.0" font-size="10" fill="#8c8c8c" text-anchor="end">50%</text>
+<line x1="550" y1="157.0" x2="930" y2="157.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="540" y="161.0" font-size="10" fill="#8c8c8c" text-anchor="end">75%</text>
+<line x1="550" y1="92.0" x2="930" y2="92.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="540" y="96.0" font-size="10" fill="#8c8c8c" text-anchor="end">100%</text>
+<text x="646" y="374" font-size="12" fill="#404040" text-anchor="middle">Arm A</text>
+<text x="834" y="374" font-size="12" fill="#404040" text-anchor="middle">Arm B</text>
+<line x1="646" y1="190.0" x2="834" y2="159.8" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="190.0" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="834" cy="159.8" r="3.4" fill="#2f6f9f"/>
+<line x1="646" y1="235.8" x2="834" y2="222.0" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="235.8" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="834" cy="222.0" r="3.4" fill="#2f6f9f"/>
+<line x1="646" y1="170.0" x2="834" y2="195.1" stroke="#b5651d" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="170.0" r="3.4" fill="#ffffff" stroke="#b5651d" stroke-width="1.6"/>
+<circle cx="834" cy="195.1" r="3.4" fill="#b5651d"/>
+<line x1="646" y1="149.8" x2="834" y2="164.2" stroke="#b5651d" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="149.8" r="3.4" fill="#ffffff" stroke="#b5651d" stroke-width="1.6"/>
+<circle cx="834" cy="164.2" r="3.4" fill="#b5651d"/>
+<line x1="646" y1="126.7" x2="834" y2="178.7" stroke="#b5651d" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="126.7" r="3.4" fill="#ffffff" stroke="#b5651d" stroke-width="1.6"/>
+<circle cx="834" cy="178.7" r="3.4" fill="#b5651d"/>
+<line x1="646" y1="170.0" x2="834" y2="202.5" stroke="#b5651d" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="170.0" r="3.4" fill="#ffffff" stroke="#b5651d" stroke-width="1.6"/>
+<circle cx="834" cy="202.5" r="3.4" fill="#b5651d"/>
+<line x1="646" y1="174.7" x2="834" y2="151.1" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="174.7" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="834" cy="151.1" r="3.4" fill="#2f6f9f"/>
+<line x1="646" y1="246.1" x2="834" y2="249.8" stroke="#b5651d" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="246.1" r="3.4" fill="#ffffff" stroke="#b5651d" stroke-width="1.6"/>
+<circle cx="834" cy="249.8" r="3.4" fill="#b5651d"/>
+<line x1="646" y1="233.8" x2="834" y2="210.2" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="233.8" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="834" cy="210.2" r="3.4" fill="#2f6f9f"/>
+<line x1="646" y1="308.0" x2="834" y2="303.8" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="308.0" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="834" cy="303.8" r="3.4" fill="#2f6f9f"/>
+<line x1="646" y1="306.9" x2="834" y2="276.8" stroke="#2f6f9f" stroke-width="1.6" opacity="0.72"/>
+<circle cx="646" cy="306.9" r="3.4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1.6"/>
+<circle cx="834" cy="276.8" r="3.4" fill="#2f6f9f"/>
+<line x1="616" y1="190.0" x2="676" y2="190.0" stroke="#171717" stroke-width="2.4"/>
+<text x="682" y="194.0" font-size="10" fill="#171717">med 62.3%</text>
+<line x1="804" y1="202.5" x2="864" y2="202.5" stroke="#171717" stroke-width="2.4"/>
+<text x="870" y="206.5" font-size="10" fill="#171717">med 57.5%</text>
+<text x="550" y="394" font-size="10.5" fill="#8c8c8c">improved 6 · regressed 5 · tied 0</text>
+<text x="40" y="440" font-size="10.5" fill="#8c8c8c">Blue: module improved under SAIQE. Orange: module regressed. Dashed: unchanged. Heavy bar: median. Wilcoxon signed-rank, two-sided, α = 0.05.</text>
+<text x="40" y="456" font-size="10.5" fill="#8c8c8c">Generated from results/statistics.json by harness/bin/make_figure5.py — the figure cannot disagree with Table 5.</text>
+</svg>
