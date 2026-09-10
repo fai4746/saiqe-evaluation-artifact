@@ -34,6 +34,22 @@ FILES = [
     (RESEARCH / "manuscripts/06_manuscript_draft.md",
      "01_manuscript/manuscript.md",
      "Manuscript v2.0. Master copy. §7 filled from measured data; all placeholders resolved."),
+    (SAIQE / "results/springer/sn-article.tex",
+     "01_manuscript/springer/sn-article.tex",
+     "SUBMISSION FILE. Manuscript in Springer sn-jnl class, sn-basic reference style, for Software Quality Journal. Generated from the markdown master -- do not hand-edit."),
+    (SAIQE / "results/springer/sn-bibliography.bib",
+     "01_manuscript/springer/sn-bibliography.bib",
+     "43 BibTeX entries generated from the reference list. All 75 in-text citations verified to resolve."),
+    (SAIQE / "results/springer/figures/fig1_saiqe_framework.pdf",
+     "01_manuscript/springer/figures/fig1_saiqe_framework.pdf",
+     "Figure 1 as PDF (Springer does not accept SVG). All 76 text runs verified present after conversion."),
+    (SAIQE / "results/springer/figures/fig2_paired_outcomes.pdf",
+     "01_manuscript/springer/figures/fig2_paired_outcomes.pdf",
+     "Figure 2 as PDF. All 28 text runs verified present after conversion."),
+    (SAIQE / "harness/springer/README_SPRINGER.md",
+     "01_manuscript/springer/README.md",
+     "How to compile, the seven author fields still to complete, and what was changed to meet Springer requirements."),
+
 
     # ── figures ───────────────────────────────────────────────
     (RESEARCH / "initial docszip/05_saiqe_framework_diagram.svg",

@@ -1,0 +1,67 @@
+%% Springer Nature LaTeX template (sn-jnl.cls), author-year reference style.
+%% Target journal: Software Quality Journal.
+%%
+%% GENERATED FILE. Produced by harness/springer/md_to_snjnl.py from the
+%% markdown master. Edit the master and regenerate -- do not hand-edit here,
+%% or the two will drift.
+%%
+%% To compile: upload this file, sn-bibliography.bib and the figures to
+%% Overleaf and select the "Springer Nature LaTeX Template"; sn-jnl.cls and
+%% sn-basic.bst ship with it. Locally: pdflatex -> bibtex -> pdflatex twice.
+
+\documentclass[sn-basic]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{manyfoot}
+\usepackage{url}
+
+\raggedbottom
+
+\begin{document}
+
+\title[Security-Integrated AI-Driven Quality Engineering]{Security-Integrated
+AI-Driven Quality Engineering for Reliable, Compliant, and Trusted Digital
+Systems}
+
+%% ---------------------------------------------------------------------------
+%% AUTHOR BLOCK -- MUST BE COMPLETED BEFORE SUBMISSION.
+%% Springer requires the full given and family name, the complete affiliation
+%% including postal address and country, and an ORCID for the corresponding
+%% author. Editorial Manager will not accept the submission without them.
+%% ---------------------------------------------------------------------------
+\author*[1]{\fnm{CONFIRM-given-name}
+            \sur{CONFIRM-family-name}}\email{mohaiminulbd271@gmail.com}
+
+\affil*[1]{\orgname{CONFIRM-organisation},
+           \orgaddress{\street{CONFIRM-street},
+                       \city{CONFIRM-city},
+                       \postcode{CONFIRM-postcode},
+                       \country{CONFIRM-country}}}
+
+\abstract{__ABSTRACT__}
+
+\keywords{__KEYWORDS__}
+
+\maketitle
+
+__BODY__
+
+\begin{appendices}
+
+\section{Synthetic release series (illustrative)}\label{secA1}
+
+__APPENDIX__
+
+\end{appendices}
+
+\backmatter
+
+__DECLARATIONS__
+
+\bibliography{sn-bibliography}
+
+\end{document}
