@@ -6,10 +6,29 @@ regenerate, or the two will drift and the numbers will stop agreeing with the
 raw results.
 
 ```bash
+# LaTeX route
 python harness/springer/make_bib.py     <master.md> sn-bibliography.bib citemap.json
 python harness/springer/md_to_snjnl.py  <master.md> citemap.json sn-article.tex sn-article.tex.template
 python harness/springer/check_tex.py    sn-article.tex
+
+# Word route
+node   harness/springer/make_docx.js    <master.md> figures/ sn-manuscript.docx
+python harness/springer/check_docx.py   sn-manuscript.docx
 ```
+
+## Which one to submit
+
+Springer Nature accepts **either** for Software Quality Journal. Both are here,
+both generated from the same master, so they say the same thing.
+
+- **`sn-manuscript.docx`** is the easier route from where you are: you can open
+  it now, fill the author block, and send it to a co-author with track changes.
+  No TeX toolchain needed.
+- **`sn-article.tex`** produces better typesetting, especially for the wide
+  tables, and is what Springer will prefer if you are comfortable with Overleaf.
+
+Submit one, not both. Whichever you pick, the other stays useful as a reading
+copy.
 
 ## Contents
 
@@ -19,6 +38,13 @@ python harness/springer/check_tex.py    sn-article.tex
 | `sn-bibliography.bib` | 43 entries, generated from the reference list. Every one of the 75 in-text `\citep` calls resolves — checked, not assumed |
 | `figures/fig1_saiqe_framework.pdf` | Figure 1, converted from SVG. All 76 text runs verified present after conversion |
 | `figures/fig2_paired_outcomes.pdf` | Figure 2, likewise; 28 text runs verified |
+| `sn-manuscript.docx` | The Word route. 7 tables, both figures embedded at 300 dpi, 71 parenthetical citations, Statements and Declarations |
+| `figures/*.png` | 300 dpi renders, embedded in the .docx |
+
+The Word reference list carries 56 entries against the `.bib`'s 43. That is
+correct, not a discrepancy: the `.bib` holds only works cited by author-year
+key, while standards and regulatory instruments are cited by designation in
+prose and belong in a Word reference list but have no BibTeX key.
 
 ## Compiling
 
@@ -66,7 +92,15 @@ Add `\orcid{...}` to the author line if you have one — SQJ asks for it.
   interests, funding, ethics approval, data availability, code availability,
   author contributions, use of generative AI.
 
-## Known limits of the structural check
+## Known limits of the structural checks
+
+**Neither output has been opened.** No TeX distribution, no LibreOffice and no
+poppler on the authoring machine, so nothing could be rendered or paginated.
+`check_tex.py` and `check_docx.py` read the source and the OOXML respectively.
+They verify structure, not appearance.
+
+`check_docx.py` cannot see layout, pagination, or whether one of the six-column
+tables overruns the page. **Open the .docx in Word before submitting.**
 
 `check_tex.py` is not a compiler. It will not catch a missing package, an
 overfull hbox, a float that will not place, or a `.bst` incompatibility. The

@@ -147,9 +147,39 @@ def table(rows, number, caption=None):
     return out
 
 
+def reflow(md):
+    """
+    Join hard-wrapped prose into one line per paragraph.
+
+    The master is wrapped at ~78 columns. Processing it line by line splits
+    inline spans across the wrap -- **bold beginning on one line and closing on
+    the next never matches, and both markers survive into the output. Headings,
+    tables, list items and blank lines are left alone.
+    """
+    out, buf = [], []
+
+    def flush():
+        if buf:
+            out.append(" ".join(x.strip() for x in buf))
+            buf.clear()
+
+    for ln in md.split("\n"):
+        stripped = ln.strip()
+        structural = (not stripped
+                      or stripped.startswith(("#", "|", "- ", "* ", "---", ">"))
+                      or re.match(r"^\d+\.\s", stripped))
+        if structural:
+            flush()
+            out.append(ln)
+        else:
+            buf.append(ln)
+    flush()
+    return "\n".join(out)
+
+
 def convert(md):
     out = []
-    lines = md.split("\n")
+    lines = reflow(md).split("\n")
     i = 0
     tables = 0
     pending_caption = None

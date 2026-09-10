@@ -26,8 +26,8 @@ PANELS = [
     ("M04c", "Mutation score, covered code", "covered_msi"),
 ]
 
-W, H = 980, 470
-PAD_L, PAD_T = 74, 92
+W, H = 980, 486
+PAD_L, PAD_T = 74, 104
 PANEL_W, PANEL_H = 380, 260
 GAP = 96
 
@@ -44,7 +44,7 @@ add(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" 
 add(f'<rect width="{W}" height="{H}" fill="#ffffff"/>')
 add(f'<text x="40" y="38" font-size="17" font-weight="600" fill="#171717">'
     f'Figure 2 — Per-module outcomes, baseline against SAIQE (n = {len(modules)} modules)</text>')
-add('<text x="40" y="60" font-size="12" fill="#595959">'
+add('<text x="40" y="62" font-size="12" fill="#595959">'
     'Each line is one module. The measure that separates the arms is detection, not mutation score.</text>')
 
 for idx, (mid, title, key) in enumerate(PANELS):
