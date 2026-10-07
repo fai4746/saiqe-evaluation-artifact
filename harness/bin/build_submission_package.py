@@ -136,6 +136,13 @@ FILES = [
     (SAIQE / "docs/submission/RESPONSE_TO_REVIEW.md",
      "05_review/RESPONSE_TO_REVIEW.md",
      "Point-by-point response mapping each review item to what changed."),
+    (SAIQE / "docs/PRE-REGISTRATION-AMENDMENT-01.md",
+     "04_artifact/PRE-REGISTRATION-AMENDMENT-01.md",
+     "Amendment dated after the §7 results were known. Adds the blind replication and the second-rater screening as POST-HOC studies, and commits the paper to reporting either outcome."),
+    (SAIQE / "harness/replication/HANDOVER.md",
+     "06_second_author_studies/HANDOVER.md",
+     "Step-by-step for both studies. NEITHER HAS BEEN RUN; the results do not exist yet."),
+
 
     # ── review trail ──────────────────────────────────────────
     (RESEARCH / "10_manuscript_review.md",

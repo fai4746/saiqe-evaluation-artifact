@@ -18,7 +18,7 @@ if (!in_array($arm, ['A', 'B'], true)) {
 
 $root     = dirname(__DIR__, 2);
 $register = json_decode(file_get_contents("$root/register/seeded_defects.json"), true);
-$suite    = $arm === 'A' ? 'arm-a' : 'arm-b';
+$suite    = ['A' => 'arm-a', 'B' => 'arm-b', 'R' => 'arm-r'][$arm];
 $php      = PHP_BINARY;
 $junit    = sys_get_temp_dir() . "/saiqe_junit_$arm.xml";
 

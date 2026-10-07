@@ -19,6 +19,10 @@
         <testsuite name="arm-b">
             <directory>harness/tests/ArmB</directory>
         </testsuite>
+        <!-- Blind replication by the second author. Empty until the kit comes back. -->
+        <testsuite name="arm-r">
+            <directory>harness/tests/Replication</directory>
+        </testsuite>
     </testsuites>
 
     <source>

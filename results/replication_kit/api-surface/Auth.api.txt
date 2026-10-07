@@ -1,0 +1,34 @@
+class Auth
+{
+    public static function isLoggedIn(): bool;
+
+    public static function user(): ?array;
+
+    public static function login(array $userData): void;
+
+    public static function logout(): void;
+
+    public static function requireLogin(): void;
+
+    /** Accept either an array → requireRole([ROLE_ADMIN, ROLE_OFFICER]) or variadic ints → requireRole(ROLE_ADMIN, ROLE_OFFICER) */
+    public static function requireRole(int|array ...$roles): void;
+
+    /** Role membership. A role identifier is an integer; a value of another type that merely compares equal is not the same role. @param array<int> $permitted */
+    public static function hasRole(mixed $roleId, array $permitted): bool;
+
+    /** Breadth of the application collection a principal may read. A citizen sees their own records; every other role sees the queue. */
+    public static function applicationScope(array $claims): string;
+
+    /** The audit entry written for a rejected authentication attempt. Records who tried and when. The submitted secret is not an input to that. */
+    public static function failedLoginRecord(string $email, array $user, string $attempted): array;
+
+    /** Whether a failed attempt should lock the account. @param int $failuresBefore consecutive failures recorded before this attempt */
+    public static function shouldLockAccount(int $failuresBefore): bool;
+
+    public static function generateJwt(array $payload): string;
+
+    public static function verifyJwt(string $token): ?array;
+
+    public static function jwtFromRequest(): ?array;
+
+}

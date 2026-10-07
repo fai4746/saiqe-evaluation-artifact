@@ -16,7 +16,7 @@ $banned = array_merge($keys, $ids, ['seeded_defects', 'register/', 'SAIQE_DEFECT
 $violations = [];
 $files = 0;
 
-foreach (['ArmA', 'ArmB'] as $arm) {
+foreach (['ArmA', 'ArmB', 'Replication'] as $arm) {
     foreach (glob("$root/harness/tests/$arm/*.php") as $file) {
         $files++;
         $body = file_get_contents($file);
