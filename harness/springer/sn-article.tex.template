@@ -27,23 +27,38 @@
 AI-Driven Quality Engineering for Reliable, Compliant, and Trusted Digital
 Systems}
 
-%% ---------------------------------------------------------------------------
 %% -------------------------------------------------------------------------
-%% Author block. Degrees are deliberately absent: Springer's \affil takes the
-%% institutional affiliation, not the author's qualification. Street and
-%% postcode are omitted because they were not supplied; SQJ accepts city,
-%% state and country, so add them only if you have them.
-%% ORCIDs are optional but requested by the journal: add \orcid{...} to either
-%% author line if available.
+%% Author block.
+%%
+%% The first author carries a dual affiliation. Agile1Tech is listed as an
+%% affiliation rather than buried in the competing-interests statement
+%% because FCCSMS, the system under test, is an Agile1Tech application: the
+%% relationship is material to the evaluation and belongs where a reader sees
+%% it. The second author's former employment there is disclosed under
+%% competing interests, which is the correct place for a past relationship.
+%%
+%% Degrees are not included: Springer's \affil takes the institution, not the
+%% author's qualification. No journal prints degrees in the affiliation line.
 %% -------------------------------------------------------------------------
-\author*[1]{\fnm{S A Mohaiminul} \sur{Islam}}\email{mohaiminulbd271@gmail.com}
+\author*[1,2]{\fnm{S A Mohaiminul} \sur{Islam}}\email{mohaiminulbd271@gmail.com}
 
-\author[2]{\fnm{Ankur} \sur{Sarkar}}\email{CONFIRM-second-author-email}
+%% ORCID for Ankur Sarkar: 0009-0009-4381-0787
+%% (verified against the ORCID public API, 7 Oct 2026)
+%% Deliberately not set as a macro: sn-jnl has no author-level \orcid command,
+%% and inventing one is an undefined-control-sequence error. Springer collects
+%% ORCIDs in Editorial Manager at submission; enter it there. If you want it on
+%% the page, load the orcidlink package and append \orcidlink{0009-0009-4381-0787}
+%% to the author name.
+\author[3]{\fnm{Ankur} \sur{Sarkar}}
+  \email{ankursylhet@gmail.com}
 
 \affil*[1]{\orgname{Washington University of Science and Technology},
            \orgaddress{\city{Alexandria}, \state{Virginia}, \country{USA}}}
 
-\affil[2]{\orgname{University of the Potomac},
+\affil[2]{\orgname{Agile1Tech},
+          \orgaddress{\city{CONFIRM-agile1tech-city}, \country{USA}}}
+
+\affil[3]{\orgname{University of the Potomac},
           \orgaddress{\city{Washington}, \state{D.C.}, \country{USA}}}
 
 \abstract{__ABSTRACT__}

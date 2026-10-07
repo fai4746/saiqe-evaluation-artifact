@@ -248,7 +248,7 @@ function declField(name) {
 }
 
 const DECL = [
-  ["Competing interests", declField("Conflicts of interest")],
+  ["Competing interests", declField("Competing interests")],
   ["Funding", declField("Funding")],
   ["Ethics approval and consent to participate", declField("Ethics approval")],
   ["Data availability", declField("Data availability")],
@@ -270,15 +270,15 @@ children.push(new D.Paragraph({
 }));
 
 children.push(new D.Paragraph({
-  children: runs("S A Mohaiminul Islam¹  ·  Ankur Sarkar²", { size: 24 }),
+  children: runs("S A Mohaiminul Islam¹·²  ·  Ankur Sarkar³", { size: 24 }),
   spacing: { after: 60 },
 }));
 children.push(new D.Paragraph({
-  children: runs("¹ Washington University of Science and Technology, Alexandria, Virginia, USA   ² University of the Potomac, Washington, D.C., USA", { size: 20, italics: true }),
+  children: runs("¹ Washington University of Science and Technology, Alexandria, Virginia, USA   ² Agile1Tech, CONFIRM-agile1tech-city, USA   ³ University of the Potomac, Washington, D.C., USA", { size: 20, italics: true }),
   spacing: { after: 60 },
 }));
 children.push(new D.Paragraph({
-  children: runs("Corresponding author: S A Mohaiminul Islam, mohaiminulbd271@gmail.com   ORCID: CONFIRM-orcid", { size: 20 }),
+  children: runs("Corresponding author: S A Mohaiminul Islam, mohaiminulbd271@gmail.com   ·   Ankur Sarkar, ankursylhet@gmail.com, ORCID 0009-0009-4381-0787", { size: 20 }),
   spacing: { after: 300 },
 }));
 

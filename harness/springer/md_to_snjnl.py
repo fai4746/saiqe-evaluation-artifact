@@ -273,7 +273,7 @@ def field(raw, name):
 def springer_declarations(raw):
     """Springer requires these headings, in this order, under one section."""
     fields = [
-        ("Competing interests", field(raw, "Conflicts of interest")),
+        ("Competing interests", field(raw, "Competing interests")),
         ("Funding", field(raw, "Funding")),
         ("Ethics approval and consent to participate", field(raw, "Ethics approval")),
         ("Data availability", field(raw, "Data availability")),
@@ -281,9 +281,14 @@ def springer_declarations(raw):
          "The evaluation harness, both test suites, the security-property rule set, "
          "the seeded-defect register and the pre-registration are published with the "
          "artifact cited under Data availability."),
+        # A two-author paper cannot use a sole-author statement, and the split
+        # between the two is not mine to assert. Springer requires this field.
         ("Author contributions",
-         "Sole author: conception, framework design, implementation of the evaluation "
-         "harness, analysis, and writing."),
+         "CONFIRM-author-contributions. Springer requires a statement of what each "
+         "author did; a two-author paper cannot use a sole-author statement. The CRediT "
+         "vocabulary is the usual form: conceptualization, methodology, software, "
+         "validation, formal analysis, investigation, writing (original draft), "
+         "writing (review and editing)."),
         ("Use of generative AI", field(raw, "AI assistance disclosure")),
     ]
     out = [r"\section*{Statements and Declarations}", ""]

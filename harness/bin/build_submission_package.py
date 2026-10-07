@@ -22,6 +22,7 @@ import json
 import pathlib
 import shutil
 import sys
+import time
 from datetime import date
 
 SAIQE = pathlib.Path(__file__).resolve().parents[2]
@@ -181,7 +182,18 @@ def main():
             continue
         dst = DEST / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src, dst)
+        # OneDrive holds a handle on files it is syncing, so a copy into the
+        # package can fail with WinError 32 for a second or two. Retry rather
+        # than abandoning a half-built package.
+        for attempt in range(6):
+            try:
+                shutil.copy2(src, dst)
+                break
+            except PermissionError:
+                time.sleep(2)
+        else:
+            missing.append("%s  <- LOCKED by another process (OneDrive sync?), retry" % rel)
+            continue
         manifest.append({
             "file": rel,
             "bytes": dst.stat().st_size,
