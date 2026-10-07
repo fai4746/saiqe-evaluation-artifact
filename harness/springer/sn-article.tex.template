@@ -28,19 +28,23 @@ AI-Driven Quality Engineering for Reliable, Compliant, and Trusted Digital
 Systems}
 
 %% ---------------------------------------------------------------------------
-%% AUTHOR BLOCK -- MUST BE COMPLETED BEFORE SUBMISSION.
-%% Springer requires the full given and family name, the complete affiliation
-%% including postal address and country, and an ORCID for the corresponding
-%% author. Editorial Manager will not accept the submission without them.
-%% ---------------------------------------------------------------------------
-\author*[1]{\fnm{CONFIRM-given-name}
-            \sur{CONFIRM-family-name}}\email{mohaiminulbd271@gmail.com}
+%% -------------------------------------------------------------------------
+%% Author block. Degrees are deliberately absent: Springer's \affil takes the
+%% institutional affiliation, not the author's qualification. Street and
+%% postcode are omitted because they were not supplied; SQJ accepts city,
+%% state and country, so add them only if you have them.
+%% ORCIDs are optional but requested by the journal: add \orcid{...} to either
+%% author line if available.
+%% -------------------------------------------------------------------------
+\author*[1]{\fnm{S A Mohaiminul} \sur{Islam}}\email{mohaiminulbd271@gmail.com}
 
-\affil*[1]{\orgname{CONFIRM-organisation},
-           \orgaddress{\street{CONFIRM-street},
-                       \city{CONFIRM-city},
-                       \postcode{CONFIRM-postcode},
-                       \country{CONFIRM-country}}}
+\author[2]{\fnm{Ankur} \sur{Sarkar}}\email{CONFIRM-second-author-email}
+
+\affil*[1]{\orgname{Washington University of Science and Technology},
+           \orgaddress{\city{Alexandria}, \state{Virginia}, \country{USA}}}
+
+\affil[2]{\orgname{University of the Potomac},
+          \orgaddress{\city{Washington}, \state{D.C.}, \country{USA}}}
 
 \abstract{__ABSTRACT__}
 

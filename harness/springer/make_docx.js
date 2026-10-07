@@ -256,7 +256,7 @@ const DECL = [
     "The evaluation harness, both test suites, the security-property rule set, the seeded-defect " +
     "register and the pre-registration are published with the artifact cited under Data availability."],
   ["Author contributions",
-    "Sole author: conception, framework design, implementation of the evaluation harness, analysis, and writing."],
+    "CONFIRM-author-contributions. Springer requires a statement of what each author did. A two-author paper cannot use a sole-author statement; CRediT roles (conceptualization, methodology, software, validation, formal analysis, investigation, writing - original draft, writing - review and editing) are the usual vocabulary."],
   ["Use of generative AI", declField("AI assistance disclosure")],
 ];
 
@@ -270,15 +270,15 @@ children.push(new D.Paragraph({
 }));
 
 children.push(new D.Paragraph({
-  children: runs("CONFIRM-given-name CONFIRM-family-name", { size: 24 }),
+  children: runs("S A Mohaiminul Islam¹  ·  Ankur Sarkar²", { size: 24 }),
   spacing: { after: 60 },
 }));
 children.push(new D.Paragraph({
-  children: runs("CONFIRM-organisation, CONFIRM-street, CONFIRM-city CONFIRM-postcode, CONFIRM-country", { size: 20, italics: true }),
+  children: runs("¹ Washington University of Science and Technology, Alexandria, Virginia, USA   ² University of the Potomac, Washington, D.C., USA", { size: 20, italics: true }),
   spacing: { after: 60 },
 }));
 children.push(new D.Paragraph({
-  children: runs("Corresponding author. E-mail: mohaiminulbd271@gmail.com   ORCID: CONFIRM-orcid", { size: 20 }),
+  children: runs("Corresponding author: S A Mohaiminul Islam, mohaiminulbd271@gmail.com   ORCID: CONFIRM-orcid", { size: 20 }),
   spacing: { after: 300 },
 }));
 
