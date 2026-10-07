@@ -255,8 +255,7 @@ const DECL = [
   ["Code availability",
     "The evaluation harness, both test suites, the security-property rule set, the seeded-defect " +
     "register and the pre-registration are published with the artifact cited under Data availability."],
-  ["Author contributions",
-    "CONFIRM-author-contributions. Springer requires a statement of what each author did. A two-author paper cannot use a sole-author statement; CRediT roles (conceptualization, methodology, software, validation, formal analysis, investigation, writing - original draft, writing - review and editing) are the usual vocabulary."],
+  ["Author contributions", declField("Author contributions")],
   ["Use of generative AI", declField("AI assistance disclosure")],
 ];
 
@@ -274,11 +273,11 @@ children.push(new D.Paragraph({
   spacing: { after: 60 },
 }));
 children.push(new D.Paragraph({
-  children: runs("¹ Washington University of Science and Technology, Alexandria, Virginia, USA   ² Agile1Tech, CONFIRM-agile1tech-city, USA   ³ University of the Potomac, Washington, D.C., USA", { size: 20, italics: true }),
+  children: runs("¹ Washington University of Science and Technology, Alexandria, Virginia, USA   ² Agile1Tech, Fairfax, Virginia, USA   ³ University of the Potomac, Washington, D.C., USA", { size: 20, italics: true }),
   spacing: { after: 60 },
 }));
 children.push(new D.Paragraph({
-  children: runs("Corresponding author: S A Mohaiminul Islam, mohaiminulbd271@gmail.com   ·   Ankur Sarkar, ankursylhet@gmail.com, ORCID 0009-0009-4381-0787", { size: 20 }),
+  children: runs("Corresponding author: S A Mohaiminul Islam, mohaiminulbd271@gmail.com, ORCID 0009-0004-0332-9271   ·   Ankur Sarkar, ankursylhet@gmail.com, ORCID 0009-0009-4381-0787", { size: 20 }),
   spacing: { after: 300 },
 }));
 

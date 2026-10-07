@@ -42,8 +42,9 @@ Systems}
 %% -------------------------------------------------------------------------
 \author*[1,2]{\fnm{S A Mohaiminul} \sur{Islam}}\email{mohaiminulbd271@gmail.com}
 
-%% ORCID for Ankur Sarkar: 0009-0009-4381-0787
-%% (verified against the ORCID public API, 7 Oct 2026)
+%% ORCIDs, both verified against the ORCID public API on 7 Oct 2026:
+%%   S A Mohaiminul Islam  0009-0004-0332-9271
+%%   Ankur Sarkar          0009-0009-4381-0787
 %% Deliberately not set as a macro: sn-jnl has no author-level \orcid command,
 %% and inventing one is an undefined-control-sequence error. Springer collects
 %% ORCIDs in Editorial Manager at submission; enter it there. If you want it on
@@ -56,7 +57,7 @@ Systems}
            \orgaddress{\city{Alexandria}, \state{Virginia}, \country{USA}}}
 
 \affil[2]{\orgname{Agile1Tech},
-          \orgaddress{\city{CONFIRM-agile1tech-city}, \country{USA}}}
+          \orgaddress{\city{Fairfax}, \state{Virginia}, \country{USA}}}
 
 \affil[3]{\orgname{University of the Potomac},
           \orgaddress{\city{Washington}, \state{D.C.}, \country{USA}}}

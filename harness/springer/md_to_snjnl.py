@@ -281,14 +281,7 @@ def springer_declarations(raw):
          "The evaluation harness, both test suites, the security-property rule set, "
          "the seeded-defect register and the pre-registration are published with the "
          "artifact cited under Data availability."),
-        # A two-author paper cannot use a sole-author statement, and the split
-        # between the two is not mine to assert. Springer requires this field.
-        ("Author contributions",
-         "CONFIRM-author-contributions. Springer requires a statement of what each "
-         "author did; a two-author paper cannot use a sole-author statement. The CRediT "
-         "vocabulary is the usual form: conceptualization, methodology, software, "
-         "validation, formal analysis, investigation, writing (original draft), "
-         "writing (review and editing)."),
+        ("Author contributions", field(raw, "Author contributions")),
         ("Use of generative AI", field(raw, "AI assistance disclosure")),
     ]
     out = [r"\section*{Statements and Declarations}", ""]
