@@ -53,6 +53,17 @@ FILES = [
     (SAIQE / "harness/springer/README_SPRINGER.md",
      "01_manuscript/springer/README.md",
      "How to compile, the seven author fields still to complete, and what was changed to meet Springer requirements."),
+    # -- MDPI Algorithms submission set -------------------------
+    (SAIQE / "results/mdpi/algorithms-manuscript.docx",
+     "01_manuscript/mdpi_algorithms/algorithms-manuscript.docx",
+     "SUBMISSION FILE for Algorithms (MDPI), Special Issue Software Engineering for Intelligent Systems. Numbered citations, 200-word structured abstract, MDPI back matter. Generated from the same master as the Springer version."),
+    (SAIQE / "docs/submission/mdpi_cover_letter.md",
+     "01_manuscript/mdpi_algorithms/cover_letter.md",
+     "REQUIRED by MDPI. Carries the two statements they mandate verbatim."),
+    (SAIQE / "results/mdpi/references.json",
+     "01_manuscript/mdpi_algorithms/references_numbered.json",
+     "The 56 references in citation order, converted towards MDPI/ACS form, each with a conversion-confidence flag."),
+
 
 
     # ── figures ───────────────────────────────────────────────

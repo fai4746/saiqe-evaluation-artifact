@@ -15,7 +15,38 @@ const fs = require("fs");
 const path = require("path");
 const D = require(path.join(__dirname, "..", "..", "node_modules", "docx"));
 
-const [, , MASTER, FIGDIR, OUT] = process.argv;
+const [, , MASTER, FIGDIR, OUT, STYLE_ARG] = process.argv;
+
+// One generator, two venues. Keeping a second copy for MDPI would let the two
+// drift -- which is exactly how "Sole author" survived in the LaTeX after the
+// Word file had been corrected.
+const STYLE = (STYLE_ARG || "springer").toLowerCase();
+if (!["springer", "mdpi"].includes(STYLE)) {
+  console.error("style must be springer or mdpi");
+  process.exit(2);
+}
+
+// MDPI: numbered citations in order of appearance, and its own reference list.
+let CITENUM = null, MDPI_REFS = null;
+if (STYLE === "mdpi") {
+  const base = path.join(__dirname, "..", "..", "results", "mdpi");
+  CITENUM = JSON.parse(fs.readFileSync(path.join(base, "citemap.json"), "utf8")).map;
+  MDPI_REFS = JSON.parse(fs.readFileSync(path.join(base, "references.json"), "utf8"));
+}
+
+/** [1], [1,3] or [1-3] -- MDPI collapses three or more consecutive numbers. */
+function formatNumbers(nums) {
+  const s = [...new Set(nums)].sort((a, b) => a - b);
+  const parts = [];
+  let i = 0;
+  while (i < s.length) {
+    let j = i;
+    while (j + 1 < s.length && s[j + 1] === s[j] + 1) j++;
+    parts.push(j - i >= 2 ? s[i] + "–" + s[j] : s.slice(i, j + 1).join(","));
+    i = j + 1;
+  }
+  return "[" + parts.join(",") + "]";
+}
 
 // The master is stored with CRLF endings; normalise, or every line-anchored
 // regex below fails silently.
@@ -57,8 +88,17 @@ const references = refsBlock
 // ── inline markdown -> TextRun[] ──────────────────────────────
 function runs(md, base = {}) {
   const out = [];
-  // Bracketed author-year citations become parenthetical, per Springer basic.
-  md = md.replace(/\[([^\]\[]*?\d{4}[a-z]?(?:\s*,\s*preprint)?)\]/g, "($1)");
+  if (STYLE === "mdpi") {
+    // Numbered style. The master already places the bracket before the
+    // sentence punctuation, which is what MDPI asks for.
+    md = md.replace(/\[([^\]\[]*?\d{4}[a-z]?(?:\s*,\s*preprint)?)\]/g, (whole, inner) => {
+      const nums = inner.split(";").map((p) => CITENUM[p.trim()]).filter((n) => n);
+      return nums.length ? formatNumbers(nums) : whole;
+    });
+  } else {
+    // Bracketed author-year citations become parenthetical, per Springer basic.
+    md = md.replace(/\[([^\]\[]*?\d{4}[a-z]?(?:\s*,\s*preprint)?)\]/g, "($1)");
+  }
   const re = /(\*\*[^*]+\*\*|\*[^*\n]+\*|`[^`]+`)/g;
   let last = 0, m;
   while ((m = re.exec(md)) !== null) {
@@ -247,17 +287,49 @@ function declField(name) {
   return m ? m[1].replace(/\s+/g, " ").trim() : "";
 }
 
-const DECL = [
+const CODE_AVAIL =
+  "The evaluation harness, both test suites, the security-property rule set, the seeded-defect " +
+  "register and the pre-registration are published with the artifact cited under Data availability.";
+
+// Springer's headings and order.
+const DECL_SPRINGER = [
   ["Competing interests", declField("Competing interests")],
   ["Funding", declField("Funding")],
   ["Ethics approval and consent to participate", declField("Ethics approval")],
   ["Data availability", declField("Data availability")],
-  ["Code availability",
-    "The evaluation harness, both test suites, the security-property rule set, the seeded-defect " +
-    "register and the pre-registration are published with the artifact cited under Data availability."],
+  ["Code availability", CODE_AVAIL],
   ["Author contributions", declField("Author contributions")],
   ["Use of generative AI", declField("AI assistance disclosure")],
 ];
+
+// MDPI's required back matter, in MDPI's order. IRB and Informed Consent are
+// mandatory headings even when the answer is "Not applicable" -- omitting them
+// is a pre-check failure, not a stylistic choice.
+const DECL_MDPI = [
+  ["Supplementary Materials",
+    "The following supporting information can be downloaded with the article: Table S1: risk " +
+    "taxonomy across the four layers; Table S2: pillar to capability to evidence mapping; " +
+    "Table S3: regulation to control to evidence mapping; Table S4: metrics catalogue with " +
+    "measured outcomes; Table S5: five-level maturity model; Table S6: post-hoc corpus audit."],
+  ["Author Contributions", declField("Author contributions")],
+  ["Funding", declField("Funding")],
+  ["Institutional Review Board Statement",
+    "Not applicable. The evaluation involves no human subjects, human material or human data: it " +
+    "is an instantiation over a software system, with all measurements taken from automated " +
+    "pipeline execution."],
+  ["Informed Consent Statement",
+    "Not applicable. No human participants were involved in the reported study."],
+  ["Data Availability Statement", declField("Data availability") + " " + CODE_AVAIL],
+  ["Acknowledgments",
+    "The authors thank the reviewers of an earlier draft, whose comments led to the separation of " +
+    "the two design decisions bundled in Pillar 1 and to the two-row reporting of the adversarial " +
+    "result."],
+  ["Conflicts of Interest", declField("Competing interests")],
+  ["Use of Generative AI", declField("AI assistance disclosure")],
+];
+
+const DECL = STYLE === "mdpi" ? DECL_MDPI : DECL_SPRINGER;
+const DECL_HEADING = STYLE === "mdpi" ? "" : "Statements and Declarations";
 
 // ── assemble ──────────────────────────────────────────────────
 const children = [];
@@ -268,18 +340,39 @@ children.push(new D.Paragraph({
   spacing: { after: 240 },
 }));
 
-children.push(new D.Paragraph({
-  children: runs("S A Mohaiminul Islam¹·²  ·  Ankur Sarkar³", { size: 24 }),
-  spacing: { after: 60 },
-}));
-children.push(new D.Paragraph({
-  children: runs("¹ Washington University of Science and Technology, Alexandria, Virginia, USA   ² Agile1Tech, Fairfax, Virginia, USA   ³ University of the Potomac, Washington, D.C., USA", { size: 20, italics: true }),
-  spacing: { after: 60 },
-}));
-children.push(new D.Paragraph({
-  children: runs("Corresponding author: S A Mohaiminul Islam, mohaiminulbd271@gmail.com, ORCID 0009-0004-0332-9271   ·   Ankur Sarkar, ankursylhet@gmail.com, ORCID 0009-0009-4381-0787", { size: 20 }),
-  spacing: { after: 300 },
-}));
+if (STYLE === "mdpi") {
+  // MDPI front matter: author line with superscript affiliation keys and the
+  // corresponding-author asterisk, numbered affiliation lines, then the
+  // "* Correspondence:" line. This mirrors the MDPI Word template.
+  children.push(new D.Paragraph({
+    children: runs("S A Mohaiminul Islam ¹˒²,* and Ankur Sarkar ³", { size: 24 }),
+    spacing: { after: 120 },
+  }));
+  for (const line of [
+    "¹  Washington University of Science and Technology, Alexandria, VA 22314, USA; mohaiminulbd271@gmail.com",
+    "²  Agile1Tech, Fairfax, VA, USA",
+    "³  University of the Potomac, Washington, DC, USA; ankursylhet@gmail.com",
+  ]) {
+    children.push(new D.Paragraph({ children: runs(line, { size: 18 }), spacing: { after: 40 } }));
+  }
+  children.push(new D.Paragraph({
+    children: runs("*  Correspondence: mohaiminulbd271@gmail.com", { size: 18 }),
+    spacing: { after: 260 },
+  }));
+} else {
+  children.push(new D.Paragraph({
+    children: runs("S A Mohaiminul Islam¹·²  ·  Ankur Sarkar³", { size: 24 }),
+    spacing: { after: 60 },
+  }));
+  children.push(new D.Paragraph({
+    children: runs("¹ Washington University of Science and Technology, Alexandria, Virginia, USA   ² Agile1Tech, Fairfax, Virginia, USA   ³ University of the Potomac, Washington, D.C., USA", { size: 20, italics: true }),
+    spacing: { after: 60 },
+  }));
+  children.push(new D.Paragraph({
+    children: runs("Corresponding author: S A Mohaiminul Islam, mohaiminulbd271@gmail.com, ORCID 0009-0004-0332-9271   ·   Ankur Sarkar, ankursylhet@gmail.com, ORCID 0009-0009-4381-0787", { size: 20 }),
+    spacing: { after: 300 },
+  }));
+}
 
 children.push(new D.Paragraph({ children: runs("Abstract", { bold: true, size: 24 }), spacing: { after: 120 } }));
 children.push(para(abstract));
@@ -297,13 +390,24 @@ children.push(new D.Paragraph({
 }));
 children.push(...convert(appendix));
 
-children.push(new D.Paragraph({
-  children: runs("Statements and Declarations", { bold: true, size: 26 }),
-  spacing: { before: 400, after: 120 },
-}));
+if (DECL_HEADING) {
+  children.push(new D.Paragraph({
+    children: runs(DECL_HEADING, { bold: true, size: 26 }),
+    spacing: { before: 400, after: 120 },
+  }));
+}
 for (const [name, val] of DECL) {
-  children.push(new D.Paragraph({ children: runs(name, { bold: true, size: 22 }), spacing: { before: 180, after: 60 } }));
-  children.push(para(val || ""));
+  if (STYLE === "mdpi") {
+    // MDPI runs these as bold run-in headings inside a single paragraph.
+    children.push(new D.Paragraph({
+      children: [new D.TextRun({ text: name + ": ", bold: true, size: 20 }),
+                 ...runs(val || "", { size: 20 })],
+      spacing: { before: 140, after: 60 },
+    }));
+  } else {
+    children.push(new D.Paragraph({ children: runs(name, { bold: true, size: 22 }), spacing: { before: 180, after: 60 } }));
+    children.push(para(val || ""));
+  }
 }
 
 children.push(new D.Paragraph({
@@ -311,12 +415,23 @@ children.push(new D.Paragraph({
   spacing: { before: 400, after: 120 },
   pageBreakBefore: true,
 }));
-for (const r of references) {
-  children.push(new D.Paragraph({
-    children: runs(r, { size: 20 }),
-    spacing: { after: 100 },
-    indent: { left: 360, hanging: 360 },
-  }));
+if (STYLE === "mdpi") {
+  // Numbered list in order of first citation, matching the in-text numbers.
+  for (const r of MDPI_REFS) {
+    children.push(new D.Paragraph({
+      children: [new D.TextRun({ text: r.n + ". ", size: 20 }), ...runs(r.mdpi, { size: 20 })],
+      spacing: { after: 60 },
+      indent: { left: 420, hanging: 420 },
+    }));
+  }
+} else {
+  for (const r of references) {
+    children.push(new D.Paragraph({
+      children: runs(r, { size: 20 }),
+      spacing: { after: 100 },
+      indent: { left: 360, hanging: 360 },
+    }));
+  }
 }
 
 const doc = new D.Document({
@@ -341,6 +456,7 @@ D.Packer.toBuffer(doc).then((buf) => {
   console.log("  blocks       " + children.length);
   console.log("  tables       " + tables);
   console.log("  images       " + imgs);
-  console.log("  references   " + references.length);
+  console.log("  style        " + STYLE);
+  console.log("  references   " + (STYLE === "mdpi" ? MDPI_REFS.length : references.length));
   console.log("  abstract     " + abstract.split(/\s+/).length + " words");
 });
