@@ -168,27 +168,44 @@ def sha256(path):
     return h.hexdigest()
 
 
-def clean(dest):
+def clean(dest, owned):
     """
-    Empty the package folder without requiring the folder itself to be
-    removable. OneDrive keeps a handle on synced directories, so rmtree fails
-    with WinError 5 mid-sync; deleting files and pruning empty directories
-    afterwards achieves the same result and tolerates the lock.
+    Remove the files this script wrote last time, and nothing else.
+
+    An earlier version emptied the folder outright. That deleted a hand-edited
+    manuscript the author had saved into the package directory, which this
+    script had no business touching -- a rebuild should not destroy work it did
+    not create. So deletion is now restricted to the manifest's own paths, and
+    anything else found in the folder is left alone and reported.
+
+    Directories are pruned only when they end up empty, and every failure is
+    tolerated: OneDrive keeps a handle on what it is syncing, so an rmtree over
+    this folder fails with WinError 5 mid-sync.
     """
     if not dest.exists():
-        return
-    for p in sorted(dest.rglob("*"), key=lambda q: len(q.parts), reverse=True):
+        return []
+    for rel in owned:
+        p = dest / rel
         try:
             if p.is_file() or p.is_symlink():
                 p.unlink()
-            elif p.is_dir():
-                p.rmdir()
         except OSError:
-            pass  # a locked directory will simply be reused
+            pass
+    foreign = [str(p.relative_to(dest)) for p in sorted(dest.rglob("*"))
+               if p.is_file() and str(p.relative_to(dest)).replace("\\", "/")
+               not in owned]
+    for p in sorted(dest.rglob("*"), key=lambda q: len(q.parts), reverse=True):
+        if p.is_dir():
+            try:
+                p.rmdir()        # succeeds only if nothing is left inside
+            except OSError:
+                pass
+    return foreign
 
 
 def main():
-    clean(DEST)
+    owned = {rel.replace("\\", "/") for _, rel, _ in FILES} | {"MANIFEST.json"}
+    foreign = clean(DEST, owned)
     DEST.mkdir(parents=True, exist_ok=True)
 
     manifest = []
@@ -230,6 +247,10 @@ def main():
 
     print(f"built {DEST}")
     print(f"  {len(manifest)} files")
+    if foreign:
+        print("\n  kept (not written by this script, left untouched):")
+        for f in foreign:
+            print("    %s" % f)
     if missing:
         print("\n  MISSING:")
         for m in missing:

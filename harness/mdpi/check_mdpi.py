@@ -16,6 +16,7 @@ Rules checked, from the Instructions for Authors:
 
 Usage: python check_mdpi.py <file.docx> [references.json]
 """
+import html
 import json
 import pathlib
 import re
@@ -28,7 +29,8 @@ REFS = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else \
 
 xml = zipfile.ZipFile(DOC).read("word/document.xml").decode("utf-8")
 # Paragraph boundaries matter for the single-paragraph abstract rule.
-paras = [re.sub(r"<[^>]+>", "", p) for p in re.findall(r"<w:p[ >].*?</w:p>", xml, re.S)]
+paras = [html.unescape(re.sub(r"<[^>]+>", "", p))
+         for p in re.findall(r"<w:p[ >].*?</w:p>", xml, re.S)]
 text = "\n".join(paras)
 
 problems = []
