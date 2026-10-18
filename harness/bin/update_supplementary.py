@@ -90,7 +90,7 @@ def main():
     measured = {
         "M01": (pct(detA["summary"]["detection_rate"]), pct(detB["summary"]["detection_rate"]),
                 "Measured. Renamed: seeded-defect DETECTION rate, not production escape rate."),
-        "M02": (100.0, 83.3, "Simulated release series only. Read off gate decisions — partly circular. Appendix C."),
+        "M02": (100.0, 83.3, "Simulated release series only. Read off gate decisions — partly circular. Appendix A."),
         "M03": (None, None, "Not measured. Needs production operation."),
         "M04": (pct(quality["arms"]["A"]["totals"]["msi"], 2), pct(quality["arms"]["B"]["totals"]["msi"], 2),
                 "Measured. NO significant difference between arms (p = 0.206); covered-code MSI p = 1.000."),
@@ -111,9 +111,9 @@ def main():
         "M21": (None, None, "Not measured. Needs production operation and human gate data."),
         "M22": (None, None, "Not measured. Needs the reviewer sub-study."),
         "M23": (None, None, "Not measured. Needs the reviewer sub-study."),
-        "M25": (None, None, "Simulated only: drift never detected by Arm A, detected on appearance by Arm B. Appendix C."),
-        "M26": (50.0, 25.0, "Simulated release series only. Partly circular. Appendix C."),
-        "M27": (4.56, 6.61, "Simulated release series only, in seconds per release. Appendix C."),
+        "M25": (None, None, "Simulated only: drift never detected by Arm A, detected on appearance by Arm B. Appendix A."),
+        "M26": (50.0, 25.0, "Simulated release series only. Partly circular. Appendix A."),
+        "M27": (4.56, 6.61, "Simulated release series only, in seconds per release. Appendix A."),
         # Medians of five runs each, as reported in the paper — not the single
         # run recorded in the last pipeline execution.
         "M28": (5.52, 8.07,

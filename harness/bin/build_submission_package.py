@@ -131,7 +131,7 @@ FILES = [
     (SAIQE / "results/pipeline_arm_A.json", "04_artifact/raw_results/pipeline_arm_A.json", "M15/M16/M17/M28 + gate decision, Arm A."),
     (SAIQE / "results/pipeline_arm_B.json", "04_artifact/raw_results/pipeline_arm_B.json", "M15/M16/M17/M28 + gate decision, Arm B."),
     (SAIQE / "results/evidence_audit.json", "04_artifact/raw_results/evidence_audit.json", "M18 raw: 10 auditor requests against each arm's retained evidence."),
-    (SAIQE / "results/replay.json", "04_artifact/raw_results/replay.json", "Appendix C raw: the 24-release series. ILLUSTRATIVE, not delivery-performance data."),
+    (SAIQE / "results/replay.json", "04_artifact/raw_results/replay.json", "Appendix A raw: the 24-release series. ILLUSTRATIVE, not delivery-performance data."),
     (SAIQE / "results/adversarial/adversarial_clean_before_fence_fix.json",
      "04_artifact/raw_results/adversarial_clean_AS_FIRST_MEASURED.json",
      "M12 raw: 36/38. The two failures are the delimiter-escape reported in §7.4."),

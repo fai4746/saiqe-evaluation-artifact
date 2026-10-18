@@ -69,12 +69,20 @@ const abstract = absM ? absM[1].trim().replace(/\s+/g, " ") : "";
 const keywords = absM ? absM[2].trim() : "";
 
 let body = absM ? beforeRefs.slice(absM.index + absM[0].length) : beforeRefs;
-body = body.split("## Declarations")[0].split("## Appendix C")[0];
+body = body.split("## Declarations")[0].split(/## Appendix [A-Z]/)[0];
 
 const declM = src.match(/## Declarations\s*\n([\s\S]*?)\n---/);
 const declarations = declM ? declM[1] : "";
-const appxM = src.match(/## Appendix C[^\n]*\n([\s\S]*?)\n---/);
-const appendix = appxM ? appxM[1] : "";
+// Anchored on the letter, this silently dropped the appendix -- and the table
+// inside it -- as soon as the appendix was re-lettered in the master. The
+// heading text now comes from the master as well, instead of being written out
+// again further down: that second copy is why a hard-coded "Appendix A"
+// heading sat above in-text references to "Appendix C".
+const appxM = src.match(
+  /## Appendix ([A-Z])[^\n]*?(?:\s*—\s*|\s+)([^\n]*)\n([\s\S]*?)\n---/);
+const appendix = appxM ? appxM[3] : "";
+const appendixHeading = appxM ? `Appendix ${appxM[1]}  ${appxM[2].trim()}` : "";
+if (!appxM) throw new Error("appendix not found in master: heading pattern changed?");
 
 // References: keep the formatted entries, drop the editorial annotations.
 const references = refsBlock
@@ -384,7 +392,7 @@ children.push(new D.Paragraph({
 children.push(...convert(body));
 
 children.push(new D.Paragraph({
-  children: runs("Appendix A  Synthetic release series (illustrative)", { bold: true, size: 26 }),
+  children: runs(appendixHeading, { bold: true, size: 26 }),
   spacing: { before: 400, after: 120 },
   pageBreakBefore: true,
 }));

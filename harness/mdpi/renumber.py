@@ -41,7 +41,9 @@ body_all, refs_block = src.split("## References", 1)
 # The body in reading order: everything before References, plus the appendix,
 # which sits after the reference list in the master but before it in the paper.
 appendix = ""
-am = re.search(r"## Appendix C[^\n]*\n(.*?)\n---", src, re.S)
+# Letter-agnostic: anchoring on a specific letter meant that re-lettering the
+# appendix silently dropped it from the citation scan instead of failing.
+am = re.search(r"## Appendix [A-Z][^\n]*\n(.*?)\n---", src, re.S)
 if am:
     appendix = am.group(1)
 body = body_all + "\n" + appendix
