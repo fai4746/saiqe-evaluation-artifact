@@ -73,6 +73,21 @@ FILES = [
     (RESEARCH / "files/11_figure5_paired_outcomes.svg",
      "02_figures/figure2_paired_outcomes.svg",
      "Figure 2 (was Figure 5). NEW. Generated from statistics.json, so it cannot disagree with Table 5."),
+    # MDPI asks for each figure as a separate file and does not list SVG among
+    # the formats it accepts, so the raster and vector renders ship too. Both
+    # PNGs are over 3000 px wide, against the 1000 px minimum.
+    (SAIQE / "results/springer/figures/fig1_saiqe_framework.png",
+     "02_figures/figure1_saiqe_framework.png",
+     "Figure 1 as PNG, 3250x2188 px. Upload this one to MDPI; SVG is not an accepted submission format."),
+    (SAIQE / "results/springer/figures/fig2_paired_outcomes.png",
+     "02_figures/figure2_paired_outcomes.png",
+     "Figure 2 as PNG, 3063x1469 px."),
+    (SAIQE / "results/springer/figures/fig1_saiqe_framework.pdf",
+     "02_figures/figure1_saiqe_framework.pdf",
+     "Figure 1 as vector PDF, for production if the editors ask for vector."),
+    (SAIQE / "results/springer/figures/fig2_paired_outcomes.pdf",
+     "02_figures/figure2_paired_outcomes.pdf",
+     "Figure 2 as vector PDF."),
 
     # ── supplementary ─────────────────────────────────────────
     (SAIQE / "results/04_saiqe_supplementary_matrices_UPDATED.xlsx",
