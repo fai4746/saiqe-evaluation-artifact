@@ -67,7 +67,7 @@ much by construction.
 
 The mutation-gate result is a **null**: the framework's headline admission
 criterion did not separate the arms. The security-property checklist did. See
-§7.5 of the paper, and `docs/SECTION-7-evaluation.md` here.
+§7.5 of the paper.
 
 Two figures are reported in pairs on purpose. The adversarial suite failed 2 of
 38 trials on its first clean run — a delimiter-escape defeating the framework's
@@ -97,7 +97,6 @@ docs/
   PRE-REGISTRATION.md      arms, metrics, budget, analysis plan — fixed before running
   SPEC-functional.md       the only authoring source for Arm A
   SPEC-security-properties.md  the extra source for Arm B (SP-01..SP-12)
-  SECTION-7-evaluation.md  the written results section
 policy/
   control_catalogue.json   regulation → control → evidence
   release_gate.json        gate rules, each carrying its obligation

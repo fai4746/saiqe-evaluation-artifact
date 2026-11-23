@@ -20,3 +20,19 @@ Thumbs.db
 # npm: docx generator dependency, restored with `npm install docx`
 /node_modules/
 package-lock.json
+
+# ── The paper itself, and private submission material ────────────────
+# This repository is the evaluation artifact: harness, register, specs,
+# test suites and raw results. The manuscript is not part of it. It was
+# briefly published here by accident; the paper is the journal's to
+# distribute, and keeping a copy here also made it ambiguous which
+# version was canonical. Generated locally and kept out of git.
+/docs/SECTION-7-evaluation.md
+/docs/submission/
+/results/mdpi/algorithms-manuscript.docx
+/results/mdpi/citemap.json
+/results/mdpi/references.json
+/results/springer/sn-manuscript.docx
+/results/springer/sn-article.tex
+/results/springer/sn-bibliography.bib
+/results/springer/figures/
