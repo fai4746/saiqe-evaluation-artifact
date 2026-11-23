@@ -9,6 +9,32 @@ management application, included under `sut/`.
 
 ---
 
+## ⚠ Do not deploy `sut/`
+
+**The application under `sut/` is deliberately vulnerable and must never be
+served on a public host or pointed at real data.** It carries **31 seeded
+defects** across 11 modules — 17 of them security defects, each tagged with a
+CWE and three with an OWASP LLM Top 10 identifier. They are the measurement
+ground truth: both the correct and the defective code path are present in
+source at all times, and a defect is switched on at runtime through the
+`SAIQE_DEFECTS` environment variable.
+
+Among them are an unverified JWT signature, a missing CSRF check, a session
+identifier that survives authentication, a submitted password written to the
+audit trail, a deletable audit trail, and prompt injection that steers an AI
+recommendation. The seeded set is listed in `register/seeded_defects.json`.
+
+Run it on `localhost` against the throwaway database the setup script creates,
+and nowhere else. The committed `sut/config/config.php` holds no real
+credentials: it reads overrides from an untracked `config.local.php`, and its
+defaults are localhost, `root`, an empty password, and a placeholder
+`JWT_SECRET` that says to change it.
+
+`sut/` is a snapshot taken for this study, not a maintained application, and it
+is not the upstream FCCSMS.
+
+---
+
 ## What this measures
 
 Two pipelines over the same code, the same database and the same tools. They
