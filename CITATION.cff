@@ -1,0 +1,51 @@
+cff-version: 1.2.0
+message: >-
+  If you use this artifact, please cite the paper it accompanies. Cite this
+  repository as well when you are referring to the harness, the seeded-defect
+  register or the raw results rather than to the framework.
+title: >-
+  SAIQE evaluation artifact: instantiation and two-arm evaluation harness for
+  Security-Integrated AI-driven Quality Engineering
+type: software
+license: MIT
+authors:
+  - given-names: S A Mohaiminul
+    family-names: Islam
+    orcid: https://orcid.org/0009-0004-0332-9271
+    affiliation: >-
+      Washington University of Science and Technology, Alexandria, Virginia,
+      USA; Agile1Tech, Fairfax, Virginia, USA
+    email: mohaiminulbd271@gmail.com
+  - given-names: Ankur
+    family-names: Sarkar
+    orcid: https://orcid.org/0009-0009-4381-0787
+    affiliation: University of the Potomac, Washington, D.C., USA
+keywords:
+  - quality engineering
+  - DevSecOps
+  - AI-driven testing
+  - software assurance
+  - continuous compliance
+  - mutation testing
+  - seeded defects
+  - EU AI Act
+  - design science research
+# Fill in once the first Zenodo release is minted, then commit:
+#   version: 1.0.0
+#   date-released: "2026-11-23"
+#   doi: 10.5281/zenodo.XXXXXXX
+preferred-citation:
+  type: article
+  title: >-
+    Security-Integrated AI-Driven Quality Engineering for Reliable, Compliant,
+    and Trusted Digital Systems
+  authors:
+    - given-names: S A Mohaiminul
+      family-names: Islam
+      orcid: https://orcid.org/0009-0004-0332-9271
+    - given-names: Ankur
+      family-names: Sarkar
+      orcid: https://orcid.org/0009-0009-4381-0787
+  year: 2026
+  journal: Algorithms
+  # Fill in on acceptance: volume, issue, start, doi

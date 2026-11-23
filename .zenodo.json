@@ -1,0 +1,33 @@
+{
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit",
+  "title": "SAIQE evaluation artifact: instantiation and two-arm evaluation harness for Security-Integrated AI-driven Quality Engineering",
+  "description": "<p>Complete evaluation artifact for the paper <em>Security-Integrated AI-Driven Quality Engineering for Reliable, Compliant, and Trusted Digital Systems</em>.</p><p>It instantiates the SAIQE framework as two delivery pipelines over the same application, the same database and the same tools, differing only in test-authoring source, admission gate, finding triage and evidence recording. Test-authoring effort is held equal at 70 tests per arm, and the metric set, the arms, the budget and the analysis plan were pre-registered before the first measurement run.</p><p>Contents: the pre-registration; the frozen register of 31 seeded defects across 11 modules; both authoring specifications; both test suites; the security-property rule set; the policy catalogue and gate rules; the full harness; and every raw result file underlying the reported figures. A checker in the repository verifies that each figure in the manuscript matches the raw output.</p><p>The system under test is a snapshot of FCCSMS, a PHP federal case- and citizen-service management application, included under <code>sut/</code> and published with the permission of Agile1Tech. <strong>That snapshot is deliberately vulnerable and must not be deployed or pointed at real data:</strong> it carries 31 seeded defects, 17 of them security defects, placed as runtime switches so that both the correct and the defective code path are present in source at all times.</p><p>Headline result: seeded-defect detection rose from 35.5% to 96.8% (Cliff's delta = +0.87, p = 0.0039) and all fourteen security-defect escapes were closed, but substituting mutation score for code coverage as the test-admission gate produced no discrimination between the arms (delta = -0.02, p = 1.000). The security-property checklist carries the effect, not the gate.</p>",
+  "creators": [
+    {
+      "name": "Islam, S A Mohaiminul",
+      "affiliation": "Washington University of Science and Technology, Alexandria, Virginia, USA; Agile1Tech, Fairfax, Virginia, USA",
+      "orcid": "0009-0004-0332-9271"
+    },
+    {
+      "name": "Sarkar, Ankur",
+      "affiliation": "University of the Potomac, Washington, D.C., USA",
+      "orcid": "0009-0009-4381-0787"
+    }
+  ],
+  "keywords": [
+    "quality engineering",
+    "DevSecOps",
+    "AI-driven testing",
+    "software assurance",
+    "continuous compliance",
+    "mutation testing",
+    "seeded defects",
+    "EU AI Act",
+    "design science research",
+    "reproducible research"
+  ],
+  "language": "eng",
+  "notes": "Every reported figure is re-derivable by executing this artifact. The evaluation is powered for large effects only (n = 11 modules); the mutation-gate result is a failure to demonstrate discrimination, not a demonstration that mutation score cannot discriminate."
+}
