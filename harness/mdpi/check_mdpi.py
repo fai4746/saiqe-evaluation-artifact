@@ -18,6 +18,7 @@ Usage: python check_mdpi.py <file.docx> [references.json]
 """
 import html
 import json
+import unicodedata
 import pathlib
 import re
 import sys
@@ -107,6 +108,39 @@ missing = [r for r in required if r not in text]
 print("back matter         %d/%d present" % (len(required) - len(missing), len(required)))
 if missing:
     problems.append("missing required back matter: %s" % missing)
+
+# ── glyph coverage ─────────────────────────────────────
+# The body font is Calibri, which does not cover the whole of Geometric
+# Shapes. U+25D0 (circle with left half black) was used as the "partially
+# addressed" marker in Table 1 and Word substituted an empty box in twelve
+# cells and the legend. Nothing caught it: the text was present and correct,
+# it simply did not render, and that is invisible to every other check here.
+#
+# So anything outside the set observed to render in this document is flagged
+# for a human to look at. The list is deliberately an allowlist: a new symbol
+# should have to be checked once rather than assumed.
+RENDERS_OK = set(
+    "§—–−×·→≥≤≈±"
+    "○●€°’“”‘"
+    "αβδΔκσχµ"
+)
+risky = {}
+for ch in set(text):
+    if ord(ch) > 0x7F and ch not in RENDERS_OK and not unicodedata.combining(ch):
+        # Latin letters with diacritics are fine in any text font.
+        base = unicodedata.normalize("NFD", ch)[0]
+        if base.isalpha() and ord(base) < 0x7F:
+            continue
+        if unicodedata.category(ch) == "Lo":
+            continue
+        risky[ch] = text.count(ch)
+print("unusual glyphs    %d %s" % (
+    len(risky),
+    ", ".join("%r U+%04X x%d" % (c, ord(c), n) for c, n in sorted(risky.items()))))
+if risky:
+    problems.append("characters that may not render in the body font: %s "
+                    "-- open the file and check each one"
+                    % ", ".join("%r (U+%04X)" % (c, ord(c)) for c in sorted(risky)))
 
 # ── placeholders ──────────────────────────────────────────────
 ph = sorted(set(re.findall(r"CONFIRM-[a-z-]+", text)))

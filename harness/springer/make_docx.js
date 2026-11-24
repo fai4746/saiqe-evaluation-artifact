@@ -352,14 +352,25 @@ if (STYLE === "mdpi") {
   // MDPI front matter: author line with superscript affiliation keys and the
   // corresponding-author asterisk, numbered affiliation lines, then the
   // "* Correspondence:" line. This mirrors the MDPI Word template.
+  // Real superscript runs, not the Unicode superscript characters. Those
+  // depend on the font carrying U+00B9/B2/B3, they copy out of a PDF as
+  // ordinary digits, and the separator between them had been U+02D2 (a
+  // modifier letter half ring) standing in for a superscript comma, which no
+  // reader would recognise and some fonts do not carry at all.
+  const sup = (text) => new D.TextRun({ text, size: 24, superScript: true });
   children.push(new D.Paragraph({
-    children: runs("S A Mohaiminul Islam ¹˒²,* and Ankur Sarkar ³", { size: 24 }),
+    children: [
+      new D.TextRun({ text: "S A Mohaiminul Islam ", size: 24 }),
+      sup("1,2,*"),
+      new D.TextRun({ text: " and Ankur Sarkar ", size: 24 }),
+      sup("3"),
+    ],
     spacing: { after: 120 },
   }));
   for (const line of [
-    "¹  Washington University of Science and Technology, Alexandria, VA 22314, USA; mohaiminulbd271@gmail.com",
-    "²  Agile1Tech, Fairfax, VA, USA",
-    "³  University of the Potomac, Washington, DC, USA; ankursylhet@gmail.com",
+    "1  Washington University of Science and Technology, Alexandria, VA 22314, USA; mohaiminulbd271@gmail.com",
+    "2  Agile1Tech, Fairfax, VA, USA",
+    "3  University of the Potomac, Washington, DC, USA; ankursylhet@gmail.com",
   ]) {
     children.push(new D.Paragraph({ children: runs(line, { size: 18 }), spacing: { after: 40 } }));
   }
