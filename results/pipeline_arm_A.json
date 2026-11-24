@@ -1,21 +1,21 @@
 {
     "arm": "A",
-    "generated_at": "2026-11-24T21:29:54+00:00",
-    "wall_seconds": 3.84,
+    "generated_at": "2026-08-12T18:28:59+00:00",
+    "wall_seconds": 5.48,
     "stage_seconds": {
-        "C-01": 2.742,
+        "C-01": 4.141,
         "C-02": 0,
         "C-03": 0,
         "C-04": 0,
-        "C-05": 1.096,
-        "C-06": 0,
+        "C-05": 1.333,
+        "C-06": 0.001,
         "C-07": 0,
         "C-08": 0,
         "C-12": 0.002,
         "C-14": 0
     },
     "gate": {
-        "decision": "BLOCK",
+        "decision": "PASS",
         "evaluated": [
             {
                 "id": "G-01",
@@ -65,9 +65,9 @@
                 "threshold": 0,
                 "on_violation": "BLOCK",
                 "obligation": "ISO/IEC 27001 A.8.24",
-                "observed": null,
-                "outcome": "NOT_EVALUATED",
-                "explanation": "fact 'secrets_found' was not produced by this pipeline"
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "secrets_found = 0 satisfies == 0"
             },
             {
                 "id": "G-11",
@@ -91,38 +91,13 @@
                 "threshold": 0,
                 "on_violation": "BLOCK",
                 "obligation": "CRA Annex I Part II(1) \u2014 no shipped component carries a known exploitable vulnerability",
-                "observed": 1,
-                "outcome": "BLOCK",
-                "explanation": "vulnerable_dependencies = 1 violates == 0"
+                "observed": 0,
+                "outcome": "PASS",
+                "explanation": "vulnerable_dependencies = 0 satisfies == 0"
             }
         ],
-        "blocking": [
-            {
-                "id": "G-12",
-                "control": "C-05",
-                "arm": "both",
-                "fact": "vulnerable_dependencies",
-                "operator": "==",
-                "threshold": 0,
-                "on_violation": "BLOCK",
-                "obligation": "CRA Annex I Part II(1) \u2014 no shipped component carries a known exploitable vulnerability",
-                "observed": 1,
-                "outcome": "BLOCK",
-                "explanation": "vulnerable_dependencies = 1 violates == 0"
-            },
-            {
-                "id": "G-00",
-                "control": "C-06",
-                "arm": "both",
-                "fact": "evidence_available",
-                "outcome": "BLOCK",
-                "reason": "no stored secret-scan report at C:\\xampp\\htdocs\\saiqe/results/sast/detect_secrets.json"
-            }
-        ],
-        "warnings": [],
-        "incomplete_evidence": {
-            "C-06": "no stored secret-scan report at C:\\xampp\\htdocs\\saiqe/results/sast/detect_secrets.json"
-        }
+        "blocking": [],
+        "warnings": []
     },
     "evidence_chain": {
         "intact": true,
@@ -134,7 +109,7 @@
         "M15_control_coverage": 0.4375,
         "M16_evidence_completeness": 0,
         "M17_traceability": 0.8519,
-        "M28_wall_seconds": 3.84,
+        "M28_wall_seconds": 5.48,
         "M11_precision": null,
         "M12_adversarial_pass_rate": null,
         "M08_density_by_provenance": null
@@ -211,12 +186,12 @@
         "covered_msi": null,
         "untriaged_findings": 9,
         "unresolved_true_positives": null,
-        "secrets_found": null,
+        "secrets_found": 0,
         "adversarial_pass_rate": null,
         "provenance_complete": false,
         "traceability_completeness": 0.8519,
         "evidence_chain_intact": null,
         "accessibility_failures": 0,
-        "vulnerable_dependencies": 1
+        "vulnerable_dependencies": 0
     }
 }
