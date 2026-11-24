@@ -71,19 +71,38 @@ $tests = $stage('C-01', 'ci_build', function () use ($root, $suite) {
         escapeshellarg("$root/vendor/phpunit/phpunit/phpunit"),
         $suite, escapeshellarg($junit)), $o, $rc);
 
+    // Fail closed. This stage used to initialise $failing = 0 and return
+    // decision PASS whenever the JUnit report was missing or unparseable, with
+    // $rc from exec() captured and never read -- so a PHPUnit that crashed, or
+    // wrote its log elsewhere, scored a clean gate on zero tests. A gate that
+    // reports PASS because it could not find the evidence is the failure this
+    // framework argues against, so absent evidence is now ERROR.
+    if ($rc !== 0) {
+        return ['executed' => true, 'decision' => 'ERROR', 'tests' => 0, 'failing' => 0,
+                'payload' => ['error' => 'phpunit exited non-zero', 'exit_code' => $rc,
+                              'output_tail' => implode("\n", array_slice($o, -5))]];
+    }
+    if (!is_file($junit) || !($xml = @simplexml_load_file($junit))) {
+        return ['executed' => true, 'decision' => 'ERROR', 'tests' => 0, 'failing' => 0,
+                'payload' => ['error' => "no parseable JUnit report at $junit"]];
+    }
     $tests = 0; $failing = 0;
-    if (is_file($junit) && ($xml = @simplexml_load_file($junit))) {
-        foreach ($xml->xpath('//testsuite[@tests]') as $ts) {
-            if ($ts->xpath('testsuite')) continue;
-            $tests   += (int)$ts['tests'];
-            $failing += (int)$ts['failures'] + (int)$ts['errors'];
-        }
+    foreach ($xml->xpath('//testsuite[@tests]') as $ts) {
+        if ($ts->xpath('testsuite')) continue;
+        $tests   += (int)$ts['tests'];
+        $failing += (int)$ts['failures'] + (int)$ts['errors'];
+    }
+    if ($tests === 0) {
+        return ['executed' => true, 'decision' => 'ERROR', 'tests' => 0, 'failing' => 0,
+                'payload' => ['error' => 'JUnit report contains no tests']];
     }
     return ['executed' => true, 'decision' => $failing === 0 ? 'PASS' : 'FAIL',
             'payload' => ['tests' => $tests, 'failing' => $failing],
             'tests' => $tests, 'failing' => $failing];
 });
-printf("  C-01 tests            %d run, %d failing\n", $tests['tests'], $tests['failing']);
+printf("  C-01 tests            %s\n", $tests['decision'] === 'ERROR'
+    ? 'ERROR — ' . ($tests['payload']['error'] ?? 'evidence unavailable')
+    : sprintf('%d run, %d failing', $tests['tests'], $tests['failing']));
 
 // ── C-02 mutation (Arm B gate) / coverage (Arm A gate) ─────────
 $totals = $quality['arms'][$arm]['totals'];
@@ -126,25 +145,55 @@ $sca = $stage('C-05', 'ci_build', function () use ($root) {
     exec(sprintf('%s %s audit --locked --format=json 2>&1',
         escapeshellarg(PHP_BINARY),
         escapeshellarg('C:/ProgramData/ComposerSetup/bin/composer.phar')), $o, $rc);
+    // Fail closed: an undecodable audit, or one missing the advisories key,
+    // used to count as zero advisories and so PASS. Composer exits non-zero
+    // when it finds advisories, so the exit code alone cannot distinguish
+    // "found vulnerabilities" from "did not run" -- the parsed shape decides.
     $json = json_decode(implode("\n", $o), true);
-    $advisories = is_array($json['advisories'] ?? null) ? count($json['advisories']) : 0;
+    if (!is_array($json) || !array_key_exists('advisories', $json)
+        || !is_array($json['advisories'])) {
+        return ['executed' => true, 'decision' => 'ERROR', 'advisories' => null,
+                'payload' => ['error' => 'dependency audit produced no parseable advisories key',
+                              'exit_code' => $rc,
+                              'output_tail' => implode("\n", array_slice($o, -5))]];
+    }
+    $advisories = count($json['advisories']);
     return ['executed' => true, 'decision' => $advisories === 0 ? 'PASS' : 'FAIL',
-            'payload' => ['advisories' => $advisories], 'advisories' => $advisories];
+            'payload' => ['advisories' => $advisories,
+                          'packages' => array_keys($json['advisories'])],
+            'advisories' => $advisories];
 });
-printf("  C-05 dependencies     %d advisories\n", $sca['advisories']);
+printf("  C-05 dependencies     %s\n", $sca['decision'] === 'ERROR'
+    ? 'ERROR — ' . ($sca['payload']['error'] ?? 'evidence unavailable')
+    : sprintf('%d advisories%s', $sca['advisories'],
+        $sca['advisories'] ? ' (' . implode(', ', $sca['payload']['packages']) . ')' : ''));
 
 // ── C-06 secrets ───────────────────────────────────────────────
 $secrets = $stage('C-06', 'pre_commit', function () use ($root) {
+    // Fail closed: a missing or undecodable report used to count as zero
+    // secrets and so PASS. This stage consumes a stored scan rather than
+    // running one, so the record states that, and the report's age is carried
+    // into the evidence instead of being passed off as a fresh measurement.
     $out = "$root/results/sast/detect_secrets.json";
-    $n = 0;
-    if (is_file($out)) {
-        $d = json_decode(file_get_contents($out), true);
-        foreach ($d['results'] ?? [] as $items) $n += count($items);
+    if (!is_file($out)) {
+        return ['executed' => true, 'decision' => 'ERROR', 'secrets' => null,
+                'payload' => ['error' => "no stored secret-scan report at $out"]];
     }
+    $d = json_decode(file_get_contents($out), true);
+    if (!is_array($d) || !array_key_exists('results', $d) || !is_array($d['results'])) {
+        return ['executed' => true, 'decision' => 'ERROR', 'secrets' => null,
+                'payload' => ['error' => 'secret-scan report has no parseable results key']];
+    }
+    $n = 0;
+    foreach ($d['results'] as $items) $n += count($items);
     return ['executed' => true, 'decision' => $n === 0 ? 'PASS' : 'FAIL',
-            'payload' => ['secrets' => $n], 'secrets' => $n];
+            'payload' => ['secrets' => $n, 'source' => 'stored report, not run in this stage',
+                          'report_mtime' => gmdate('c', filemtime($out))],
+            'secrets' => $n];
 });
-printf("  C-06 secrets          %d\n", $secrets['secrets']);
+printf("  C-06 secrets          %s\n", $secrets['decision'] === 'ERROR'
+    ? 'ERROR — ' . ($secrets['payload']['error'] ?? 'evidence unavailable')
+    : sprintf('%d (from a stored report)', $secrets['secrets']));
 
 // ── C-07 provenance ────────────────────────────────────────────
 $prov = $stage('C-07', 'author', function () use ($root, $provIndex, $triage, $integrated) {
@@ -225,6 +274,27 @@ $gateResult['evaluated'] = array_values(array_filter($gateResult['evaluated'],
 $gateResult['blocking'] = array_values(array_filter($gateResult['evaluated'], fn($r) => $r['outcome'] === 'BLOCK'));
 $gateResult['warnings'] = array_values(array_filter($gateResult['evaluated'], fn($r) => $r['outcome'] === 'WARN'));
 $gateResult['decision'] = $gateResult['blocking'] ? 'BLOCK' : ($gateResult['warnings'] ? 'WARN' : 'PASS');
+
+// A stage that could not produce its evidence blocks the release outright,
+// whatever the rules say. Without this the ERROR decisions above would still
+// reach the gate as facts -- 0 failing tests, 0 secrets, null advisories --
+// and a null fact skips its rule, so unavailable evidence would read as
+// satisfied evidence. Incomplete evidence is not a pass.
+$errored = [];
+foreach (['C-01' => $tests, 'C-05' => $sca, 'C-06' => $secrets] as $id => $r) {
+    if (($r['decision'] ?? null) === 'ERROR') {
+        $errored[$id] = $r['payload']['error'] ?? 'evidence unavailable';
+    }
+}
+if ($errored) {
+    $gateResult['decision'] = 'BLOCK';
+    $gateResult['incomplete_evidence'] = $errored;
+    foreach ($errored as $id => $why) {
+        $gateResult['blocking'][] = ['id' => 'G-00', 'control' => $id, 'arm' => 'both',
+                                     'fact' => 'evidence_available', 'outcome' => 'BLOCK',
+                                     'reason' => $why];
+    }
+}
 
 if ($integrated) {
     $store->append('C-11', 'release_gate', $gateResult['decision'],
